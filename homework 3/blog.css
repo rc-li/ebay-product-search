@@ -31,8 +31,12 @@
   text-align: center;
 }
 
+.navbar p{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
 #JamesJantz {
-  display: flex;
+  font-size: 60px;
 }
 
 .links{
