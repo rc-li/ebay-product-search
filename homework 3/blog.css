@@ -54,6 +54,20 @@
   margin: 15px;
 }
 
+.natureText {
+  /* margin-left: 160px; */
+  display: flex;
+  flex-direction: column;
+  /* text-align: left; */
+  width: 600px;
+  margin: auto;
+  text-indent: 0px;
+  padding-inline-start: 0px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: large;
+  /* border: 1px solid black; */
+}
+
 .column img{
   height: 100%;
   width: 100%;
