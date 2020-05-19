@@ -68,6 +68,17 @@
   /* border: 1px solid black; */
 }
 
+p.greyFont {
+  color: gray;
+}
+
+.activeLink {
+  text-decoration: none;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: gray;
+  margin: auto;
+}
+
 .column img{
   height: 100%;
   width: 100%;
