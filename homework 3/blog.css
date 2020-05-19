@@ -31,17 +31,18 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    width: 600px;
+    width: 550px;
     margin: auto;
     border: 1px solid black;
 }
 
 .navbar p {
     font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: x-small
 }
 
 #JamesJantz {
-    font-size: 60px;
+    font-size: 40px;
     margin-top: 10px;
     margin-bottom: 0px;
 }
