@@ -101,6 +101,17 @@ p.greyFont {
     justify-content: center;
 }
 
+.signature {
+    text-align: center;
+}
+
+.icon img {
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    object-fit: cover;
+}
+
 .center {
     margin: auto;
     width: 70%;
