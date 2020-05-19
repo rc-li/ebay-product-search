@@ -7,7 +7,7 @@
   justify-content: center;
   margin: auto;
   position: relative;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
 }
 
 .blogpics {
@@ -16,15 +16,40 @@
 }
 
 .column {
+  display: flex;
   float: left;
+  /* align-items: center;
+  justify-content: center; */
   width: 300px;
+  height: 300px;
   padding: 5px;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
+}
+.navbar{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+#JamesJantz {
+  display: flex;
+}
+
+.links{
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+}
+
+.links p{
+  margin: 20px;
 }
 
 .column img{
   height: 100%;
   width: 100%;
+  margin: auto;
+  object-fit: cover;
 }
 
 /* Clear floats after image containers */
@@ -34,8 +59,7 @@
   display: flex;
   flex-direction: row;
   margin: auto;
-  height: 200px;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
   justify-content: center;
 }
 
@@ -43,6 +67,6 @@
   margin: auto;
   width: 70%;
   height: 400px;
-  border: 3px solid green;
+  /*border: 3px solid green;*/
   padding: 10px;
 }
