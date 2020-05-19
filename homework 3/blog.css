@@ -1,106 +1,110 @@
 /* Three image containers (use 25% for four, and 50% for two, etc) */
+
 .mainpage {
-  width: 80%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: auto;
-  position: relative;
-  /*border: 1px solid black;*/
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    position: relative;
+    /*border: 1px solid black;*/
 }
 
 .blogpics {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .column {
-  display: flex;
-  float: left;
-  /* align-items: center;
+    display: flex;
+    float: left;
+    /* align-items: center;
   justify-content: center; */
-  width: 300px;
-  height: 300px;
-  padding: 5px;
-  /*border: 1px solid black;*/
-}
-.navbar{
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  width: 600px;
-  margin: auto;
-  border: 1px solid black;
+    width: 300px;
+    height: 300px;
+    padding: 5px;
+    /*border: 1px solid black;*/
 }
 
-.navbar p{
-  font-family: Georgia, 'Times New Roman', Times, serif;
+.navbar {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 600px;
+    margin: auto;
+    border: 1px solid black;
+}
+
+.navbar p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 #JamesJantz {
-  font-size: 60px;
-  margin-top: 10px;
-  margin-bottom: 0px;
+    font-size: 60px;
+    margin-top: 10px;
+    margin-bottom: 0px;
 }
 
-.links{
-  display: flex;
-  flex-direction: row;
-  margin: auto;
+.links {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
 }
 
-.links p{
-  margin: 15px;
+.links p {
+    margin: 15px;
 }
 
 .natureText {
-  /* margin-left: 160px; */
-  display: flex;
-  flex-direction: column;
-  /* text-align: left; */
-  width: 600px;
-  margin: auto;
-  text-indent: 0px;
-  padding-inline-start: 0px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: large;
-  /* border: 1px solid black; */
+    /* margin-left: 160px; */
+    display: flex;
+    flex-direction: column;
+    /* text-align: left; */
+    width: 600px;
+    margin: auto;
+    text-indent: 0px;
+    padding-inline-start: 0px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: large;
+    /* border: 1px solid black; */
 }
 
 p.greyFont {
-  color: gray;
+    color: gray;
 }
 
 .activeLink {
-  text-decoration: none;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  color: gray;
-  margin: auto;
+    text-decoration: none;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: gray;
+    margin: auto;
 }
 
-.column img{
-  height: 100%;
-  width: 100%;
-  margin: auto;
-  object-fit: cover;
+.column img {
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    object-fit: cover;
 }
+
 
 /* Clear floats after image containers */
+
 .row {
-  /* content: "";
+    /* content: "";
   clear: both; */
-  display: flex;
-  flex-direction: row;
-  margin: auto;
-  /*border: 1px solid black;*/
-  justify-content: center;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    /*border: 1px solid black;*/
+    justify-content: center;
 }
 
 .center {
-  margin: auto;
-  width: 70%;
-  height: 400px;
-  /*border: 3px solid green;*/
-  padding: 10px;
+    margin: auto;
+    width: 70%;
+    height: 400px;
+    /*border: 3px solid green;*/
+    padding: 10px;
 }
