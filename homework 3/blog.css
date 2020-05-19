@@ -105,9 +105,18 @@ p.greyFont {
     text-align: center;
 }
 
+.iconRow {
+    height: 25px;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    justify-content: center;
+}
+
 .icon img {
-    height: 100%;
-    width: 100%;
+    max-height: 100%;
+    max-width: 100%;
+    padding-left: 10px;
     margin: auto;
     object-fit: cover;
 }
