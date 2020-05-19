@@ -49,11 +49,11 @@
 .links {
     display: flex;
     flex-direction: row;
-    margin: auto;
+    margin: 10px;
 }
 
 .links p {
-    margin: 15px;
+    margin: auto;
 }
 
 .natureText {
