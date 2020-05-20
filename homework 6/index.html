@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>homework6</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        function show(shown, hidden) {
+            document.getElementsByClassName(shown)[0].style.display = 'block';
+            document.getElementsByClassName(hidden)[0].style.display = 'none';
+            return false;
+        }
+    </script>
 </head>
 
 <body>
@@ -12,6 +19,7 @@
         <div class="row">
             <div class="switcher">
                 <p>two buttons for switching pages</p>
+                <button href="#" onclick="return show('searchPage','mainPage');">Show search page</a>
             </div>
 
             <div class="scrollPage">
@@ -56,7 +64,10 @@
             </div>
         </div>
 
+    </div>
 
+    <div class="searchPage" style="display:none">
+        <button href="#" onclick="return show('mainPage','searchPage');">Show main page</a>
 
     </div>
 </body>

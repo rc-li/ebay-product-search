@@ -1,17 +1,24 @@
-<!DOCTYPE html>
-<html>
+html>
 <head>
-<style>
-#para1 {
-  text-align: center;
-  color: red;
+<script>
+function show(shown, hidden) {
+  document.getElementById(shown).style.display='block';
+  document.getElementById(hidden).style.display='none';
+  return false;
 }
-</style>
+</script>
 </head>
 <body>
 
-<p id="para1">Hello World!</p>
-<p>This paragraph is not affected by the style.</p>
+  <div id="Page1">
+    Content of page 1
+    <a href="#" onclick="return show('Page2','Page1');">Show page 2</a>
+  </div>
+
+  <div id="Page2" style="display:none">
+    Content of page 2
+    <a href="#" onclick="return show('Page1','Page2');">Show page 1</a>
+  </div>
 
 </body>
 </html>
