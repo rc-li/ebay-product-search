@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;
+}
+
+.row {
+    display: flex;
+}
+
+.switcher {
+    flex: 1%;
+    border: 2px solid skyblue;
+    text-align: center;
+}
+
+.switcher p{
+    margin: 100px;
+    border: 1px solid green;
+}
+
+.scrollPage {
+    margin-left: 50px;
+    flex: 50%;
+    border: 2px solid skyblue;
+}
+
+#headlinePic {
+    padding: 80px;
+    border: 1px solid red;
+}
+
+#wordMap {
+    padding: 100px;
+    border: 1px solid orange;
+}
+
+.newsAgency {
+    text-align: center;
+    font-size: x-large;
+}
+
+.card.row p{
+    padding: 60px;
+    border: solid palevioletred;
+}
+
+
