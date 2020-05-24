@@ -1,0 +1,40 @@
+
+.body {
+    background-color: blue;
+    margin: 0px;
+}
+
+.mainPage {
+    width: 700px;
+    height: 700px;
+    border: 1px solid orange;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    position: relative;
+    background-color: aqua;
+}
+
+.headline {
+    width: 90%;
+    margin: auto;
+    background-image: url(header.png);
+    background-size: cover;
+    padding: 0px;
+}
+
+
+#mainHeaderWrapper{
+    background: no-repeat url(header.png) 50% / 100%;
+}
+#mainHeaderWrapper img{
+    vertical-align: top;
+    width: 100%; /* max width */
+    opacity: 0;  /* make it transparent */
+}
+#mainHeaderWrapper > div{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
