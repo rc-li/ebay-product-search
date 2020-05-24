@@ -7,7 +7,8 @@
 .mainPage {
     width: 700px;
     height: 650px;
-    border: 1px solid orange;
+    padding-left: 20px;
+    /* border: 1px solid orange; */
     flex-direction: column;
     justify-content: center;
     margin: auto;
@@ -16,7 +17,8 @@
 }
 
 .headline {
-    width: 90%;
+    width: 100%;
+    height: 99px;
     margin: auto;
     background-image: url(header.png);
     background-size: cover;
@@ -25,7 +27,7 @@
 
 
 #mainHeaderWrapper{
-    background: no-repeat url(header.png) 50% / 100%;
+    background: no-repeat url(header.png);
 }
 #mainHeaderWrapper img{
     vertical-align: top;
@@ -47,7 +49,7 @@
 }
 
 .row {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     background-image: url(bar.png);
     height: 57px;
     width: 680px;
