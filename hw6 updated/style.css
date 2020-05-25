@@ -7,5 +7,9 @@
 }
 
 .logo > p {
-    font-size: xx-large;
+    font-size: 50px;
+}
+
+.row {
+    border: 1px solid rgba(128, 128, 128, 0.616);
 }
