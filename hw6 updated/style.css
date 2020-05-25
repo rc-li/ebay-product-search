@@ -1,0 +1,11 @@
+.logo {
+    width: 600px;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    /* border: 1px solid orange; */
+}
+
+.logo > p {
+    font-size: xx-large;
+}
