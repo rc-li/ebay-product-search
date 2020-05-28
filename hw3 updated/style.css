@@ -22,7 +22,7 @@
     margin: auto;
     background-image: url(header.png);
     background-size: cover;
-    padding-left: : 20px;
+    padding-left: 20px;
 }
 
 
@@ -58,8 +58,9 @@
 
 .column {
     font-weight: 600;
-    font-family: Geneva, Tahoma, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
+    text-align: center;
 }
 
 #firstCol {
