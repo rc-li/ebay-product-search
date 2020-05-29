@@ -22,7 +22,7 @@
     margin: auto;
     background-image: url(header.png);
     background-size: cover;
-    padding-left: 20px;
+    padding-left: -10px;
 }
 
 
@@ -61,14 +61,16 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     text-align: center;
+    width: 120px;
+    padding-top: 5px;
 }
-
+/* 
 #firstCol {
     padding-left: 30px;
-}
+} */
 
 .column > a {
-    padding: 30px;
+    /*! padding: 30px; */
     text-decoration: none;
     color: black;
 }

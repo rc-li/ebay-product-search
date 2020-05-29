@@ -1,9 +1,15 @@
 {
 	"folders": [
 		{
+			"name": "hw6 updated",
 			"path": "."
 		},
 		{
+			"name": "GCP_backend",
+			"path": "..\\..\\GCP_backend"
+		},
+		{
+			"name": "hw3 updated",
 			"path": "..\\hw3 updated"
 		}
 	],
