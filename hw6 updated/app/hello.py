@@ -1,5 +1,7 @@
 from flask import Flask
+# from app import app
 import requests
+import json
 app = Flask(__name__)
 
 # need to
@@ -10,19 +12,22 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    # resp = requests.get('http://svcs.ebay.com/services/search/FindingService/v1?'
+    return "hello"
+
+    # resp = requests.get('https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=RayLi-exp-PRD-d2eb6beb6-1a4f60ed&RESPONSE-DATA-FORMAT=JSON&keywords=harry%20potter')
+    # resp = requests.get('https://svcs.ebay.com/services/search/FindingService/v1?'
     # 'OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0'
     # '&SECURITY-APPNAME=RayLi-exp-PRD-d2eb6beb6-1a4f60ed&RESPONSE-DATA-FORMAT=JSON'
     # '&keywords=harry%20potter&sortOrder=PricePlusShippingLowest')
 
 
-    resp = requests.get('https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=RayLi-exp-PRD-d2eb6beb6-1a4f60ed&RESPONSE-DATA-FORMAT=JSON&keywords=harry%20potter')
-
+    
     # resp = requests.get('https://google.com')
     # return resp.content
-    ret = str(resp)
-    return ret
-
+    # res={"data":resp}
+    # response=json.dumps(res)
+    
+    # return response
 
 
     # resp = requests.get('https://todolist.example.com/tasks/')
@@ -32,3 +37,7 @@ def hello():
     # for todo_item in resp.json():
     #     print('{} {}'.format(todo_item['id'], todo_item['summary']))
     # return "busteria"
+
+
+if __name__ == "__main__":
+    app.run()
