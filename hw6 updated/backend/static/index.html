@@ -15,7 +15,7 @@
         <p>Shopping</p>
     </div>
     <form id="form" action="http://localhost:5000" method="GET">
-        
+
         <div class="row">
             <label for="keyword" class="rowHead">Key Words: </label>
             <input type="text" id="keyword" name="keyword" required>
@@ -23,11 +23,10 @@
 
         <div class="row">
             <label for="priceRange" class="rowHead">Prince Range: <span>From</span>
-                <input type="number" name="lowPrice"><span> to </span><input 
-                type="number" name="highPrice">
+                <input type="number" name="lowPrice"><span> to </span><input type="number" name="highPrice">
             </label>
         </div>
-        
+
         <div class="row">
             <label for="" class="rowHead">Condition: </label>
             <input type="checkbox" name="isNew">
@@ -40,7 +39,7 @@
             <label for="">Good</label>
             <input type="checkbox" name="isAccptb">
             <label for="">Acceptable</label>
-        </div>        
+        </div>
 
         <div class="row">
             <label for="" class="rowHead">Seller: </label>
@@ -53,7 +52,7 @@
             <input type="checkbox" name="isFree">
             <label for="">Free</label>
             <input type="checkbox" name="isExpdtd">
-            <label for="">Expedited</label>        
+            <label for="">Expedited</label>
         </div>
 
         <div class="row">
@@ -65,12 +64,34 @@
                 <option value="pPlusS_l">Price + Shipping: lowest first</option>
             </select>
         </div>
-        
+
         <div class="row">
             <input type="reset" value="Clear">
-            <input type="submit" value="Search">
+            <input type="button" value="Search" onclick="callFetch()">
         </div>
     </form>
+
+    <script>
+
+        var ele = document.getElementById("form");
+        if (ele.addEventListener) {
+            ele.addEventListener("submit", callFetch, false); //Modern browsers
+        } else if (ele.attachEvent) {
+            ele.attachEvent('onsubmit', callFetch); //Old IE
+        }
+        
+        function callFetch() {
+            fetch('/test')
+                .then(response => console.log(response))
+                .then(data => console.log(data));
+        }
+
+        // document.querySelector("form").addEventListener("submit", function (e) {
+        //     if (!isValid) {
+        //         e.preventDefault(); //stop form from submitting
+        //     }
+        // });
+    </script>
 
 </body>
 

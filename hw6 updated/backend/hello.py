@@ -8,9 +8,13 @@ app = Flask(__name__,static_url_path="")
 # 3. parse eBay response
 # 4. send back to client
 
-@app.route('/')
+@app.route('/searchPage')
 def hello():
     return app.send_static_file('index.html')
+
+@app.route('/test')
+def test():
+    return "routing successful"
 
     # resp = requests.get('http://svcs.ebay.com/services/search/FindingService/v1?'
     # 'OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0'
