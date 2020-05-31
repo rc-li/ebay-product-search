@@ -1,6 +1,6 @@
 from flask import Flask
-import requests
-app = Flask(__name__)
+from flask import request
+app = Flask(__name__,static_url_path="")
 
 # need to
 # 1. parse URL that client sent
@@ -10,18 +10,20 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
+    return app.send_static_file('index.html')
+
     # resp = requests.get('http://svcs.ebay.com/services/search/FindingService/v1?'
     # 'OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0'
     # '&SECURITY-APPNAME=RayLi-exp-PRD-d2eb6beb6-1a4f60ed&RESPONSE-DATA-FORMAT=JSON'
     # '&keywords=harry%20potter&sortOrder=PricePlusShippingLowest')
 
 
-    resp = requests.get('https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=RayLi-exp-PRD-d2eb6beb6-1a4f60ed&RESPONSE-DATA-FORMAT=JSON&keywords=harry%20potter')
+    # resp = requests.get('https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=RayLi-exp-PRD-d2eb6beb6-1a4f60ed&RESPONSE-DATA-FORMAT=JSON&keywords=harry%20potter')
 
     # resp = requests.get('https://google.com')
     # return resp.content
-    ret = str(resp)
-    return ret
+    # ret = str(resp)
+    # return ret
 
 
 
