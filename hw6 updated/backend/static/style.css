@@ -1,0 +1,39 @@
+.logo {
+    width: 316px;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    /* border: 1px solid orange; */
+}
+
+.logo > p {
+    font-size: 30px;
+/*     padding-top: 30px; */
+}
+
+.logo > a {
+    max-width: 200px;
+    max-height: 150px;
+}
+
+.logo > a > img {
+    object-fit: contain;
+    width: 200px;
+    height: 100px;
+}
+
+#form {
+    text-align: center;
+    width: 600px;
+    margin: auto;
+    border: 1px solid black;
+}
+
+.row {
+    border: 1px solid rgba(128, 128, 128, 0.616);
+    padding: 10px;
+}
+
+.rowHead {
+    font-weight: bold;
+}
