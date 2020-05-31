@@ -1,0 +1,84 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 6</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="logo">
+        <a href="https://www.ebay.com/" target="_blank">
+            <img src="eBayLogo.png" alt="eBayLogo">
+        </a>
+        <p>Shopping</p>
+    </div>
+    <form id="form" action="http://localhost:5000" method="GET">
+
+        <div class="row">
+            <label for="keyword" class="rowHead">Key Words: </label>
+            <input type="text" id="keyword" name="keyword" required>
+        </div>
+
+        <div class="row">
+            <label for="priceRange" class="rowHead">Prince Range: <span>From</span>
+                <input type="number" name="lowPrice"><span> to </span><input type="number" name="highPrice">
+            </label>
+        </div>
+<!-- 
+        <script>
+            fetch('/homepage')
+                .then(response => response.json())
+                .then(data => console.log(JSON.parse(data)));
+        </script> -->
+
+        <div class="row">
+            <label for="" class="rowHead">Condition: </label>
+            <input type="checkbox" name="isNew">
+            <label for="">New</label>
+            <input type="checkbox" name="isUsed">
+            <label for="">Used</label>
+            <input type="checkbox" name="isVrGd">
+            <label for="">Very Good</label>
+            <input type="checkbox" name="isGood">
+            <label for="">Good</label>
+            <input type="checkbox" name="isAccptb">
+            <label for="">Acceptable</label>
+        </div>
+
+        <div class="row">
+            <label for="" class="rowHead">Seller: </label>
+            <input type="checkbox" name="isRtAccptd">
+            <label for="">Return Accepted</label>
+        </div>
+
+        <div class="row">
+            <label for="" class="rowHead">Shipping: </label>
+            <input type="checkbox" name="isFree">
+            <label for="">Free</label>
+            <input type="checkbox" name="isExpdtd">
+            <label for="">Expedited</label>
+        </div>
+
+        <div class="row">
+            <label for="sortBy" class="rowHead">Sort by: </label>
+            <select name="Sort by: " id="sortBy">
+                <option value="bestMatch">Best Match</option>
+                <option value="highestFirst">Price: highest first</option>
+                <option value="pPlusS_h">Price + Shipping: highest first</option>
+                <option value="pPlusS_l">Price + Shipping: lowest first</option>
+            </select>
+        </div>
+
+        <div class="row">
+            <input type="reset" value="Clear">
+            <input type="submit" value="Search">
+        </div>
+    </form>
+
+
+
+</body>
+
+</html>

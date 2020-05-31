@@ -1,8 +1,11 @@
 from app import app
+from flask import request, send_from_directory
+import os
+
 
 @app.route("/")
 def index():
-    return "Hello world"
+    return app.send_static_file(os.path.join('js','index.html').replace('\\','/'))
 
 @app.route("/about")
 def about():

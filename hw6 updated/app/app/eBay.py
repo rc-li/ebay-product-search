@@ -11,8 +11,8 @@ app = Flask(__name__)
 # 4. send back to client
 
 @app.route('/')
-def hello():
-    return "hello"
+def root():
+    return app.send_static_file('./frontend/search.html')
 
     # resp = requests.get('https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=RayLi-exp-PRD-d2eb6beb6-1a4f60ed&RESPONSE-DATA-FORMAT=JSON&keywords=harry%20potter')
     # resp = requests.get('https://svcs.ebay.com/services/search/FindingService/v1?'
