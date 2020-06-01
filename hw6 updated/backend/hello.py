@@ -15,15 +15,30 @@ def hello():
     return app.send_static_file('index.html')
 
 
-@app.route('/test')
-def test():
+@app.route('/test/<string>/<int>/<int2>/<string2>')
+def test(string,int,int2,string2):
     return "routing successful"
 
 
-@app.route('/keyword=<string:keyword>&LowPrice=<int:lowPrice>&highPrice=<int:highPrice>')
-def toEbay(keyword,lowPrice,highPrice):
-    print(lowPrice+highPrice)
-    return app.send_static_file('index.html')
+@app.route('/q')
+def toEbay():
+    keyword = request.args.get('keyword')
+    lowPrice = request.args.get('LowPrice')
+    highPrice = request.args.get('highPrice')
+
+    isNew = request.args.get('isNew')
+    isUsed = request.args.get('isUsed')
+    isVrGd = request.args.get('isVrGd')
+    isGood = request.args.get('isGood')
+    isAccptb = request.args.get('isAccptb')
+
+    isRtAccptd = request.args.get('isRtAccptd')
+
+    isFree = request.args.get('isFree')
+    isExpdtd = request.args.get('isExpdtd')
+
+    choice = request.args.get('Sort by: ')
+    return "routed"
 
 # http://localhost:5000/keyword=abathur&lowPrice=132&highPrice=&Sort+by%3A+=bestMatch"
 
