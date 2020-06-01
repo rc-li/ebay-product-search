@@ -72,18 +72,20 @@
     </form>
 
     <script>
-
         var ele = document.getElementById("form");
         if (ele.addEventListener) {
             ele.addEventListener("submit", callFetch, false); //Modern browsers
         } else if (ele.attachEvent) {
             ele.attachEvent('onsubmit', callFetch); //Old IE
         }
-        
+
         function callFetch() {
-            fetch('/test')
-                .then(response => console.log(response))
-                .then(data => console.log(data));
+            const formData = new FormData(form);
+            const params = new URLSearchParams(formData);
+            console.log(params.toString());
+            fetch(params)
+                // .then(response => console.log(response))
+                // .then(data => console.log(data));
         }
 
         // document.querySelector("form").addEventListener("submit", function (e) {
