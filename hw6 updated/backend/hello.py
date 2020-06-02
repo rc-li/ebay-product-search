@@ -2,6 +2,7 @@ from flask import Flask
 from flask import request
 import requests
 import urllib
+import json
 app = Flask(__name__, static_url_path="")
 
 # need to
@@ -13,7 +14,7 @@ app = Flask(__name__, static_url_path="")
 
 @app.route('/searchPage')
 def hello():
-    print('the light is my strength')
+    # print('the light is my strength')
     return app.send_static_file('index.html')
 
 
@@ -42,7 +43,7 @@ def toEbay():
     sortOrder = request.args.get('Sort by: ')
 
     # urlHead = 'https://svcs.eBay.com/services/FindingService/v1?'+'OPERATION-NAME=findItemsAdvanced'+'&SERVICE-VERSION'
-    url = 'https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=RayLi-exp-PRD-d2eb6beb6-1a4f60ed&RESPONSE-DATA-FORMAT=JSON&'
+    url = 'https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=RayLi-exp-PRD-d2eb6beb6-1a4f60ed&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&'
 
     print(lowPrice, highPrice)
 
@@ -111,9 +112,10 @@ def toEbay():
     print(url)
 
     r = requests.get(url)
-    # print(r.json())
+    r= r.json()
+    print(r)
 
-    return r.json()
+    return r
 
     # filters = []
     # if lowPrice is not None and highPrice is not None:

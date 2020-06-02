@@ -83,16 +83,16 @@
             const formData = new FormData(form);
             const params = new URLSearchParams(formData);
             console.log(params.toString());
-            fetch('/q?'+params)
-                .then(response => console.log(response))
-                .then(data => console.log(data));
+            fetch('/q?' + params)
+                .then(response => {
+                    console.log(response.json())
+                    return response.json()
+                })
+                .then(data => {
+                    // data=JSON.parse(data)
+                    console.log(data)
+                });
         }
-
-        // document.querySelector("form").addEventListener("submit", function (e) {
-        //     if (!isValid) {
-        //         e.preventDefault(); //stop form from submitting
-        //     }
-        // });
     </script>
 
 </body>
