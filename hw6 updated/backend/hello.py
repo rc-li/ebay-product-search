@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import request
+import urllib
 app = Flask(__name__, static_url_path="")
 
 # need to
@@ -16,7 +17,7 @@ def hello():
 
 
 @app.route('/test/<string>/<int>/<int2>/<string2>')
-def test(string,int,int2,string2):
+def test(string, int, int2, string2):
     return "routing successful"
 
 
@@ -38,7 +39,23 @@ def toEbay():
     isExpdtd = request.args.get('isExpdtd')
 
     choice = request.args.get('Sort by: ')
+
+    # urlHead = 'https://svcs.eBay.com/services/FindingService/v1?'+'OPERATION-NAME=findItemsAdvanced'+'&SERVICE-VERSION'
+    url = '''https://svcs.ebay.com/services/search/FindingService/v1?
+        OPERATION-NAME=findItemsAdvanced
+        &SERVICE-VERSION=1.0.0
+        &SECURITY-APPNAME=RayLi-exp-PRD-d2eb6beb6-1a4f60ed
+        &RESPONSE-DATA-FORMAT=JSON
+        '''
+
+    url = url + '&keywords=' + urllib.parse.quote_plus(keyword)
+
+    print(url)
     return "routed"
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
 # http://localhost:5000/keyword=abathur&lowPrice=132&highPrice=&Sort+by%3A+=bestMatch"
 
