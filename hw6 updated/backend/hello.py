@@ -48,21 +48,42 @@ def toEbay():
 
     counter = 0
 
-    if lowPrice is not None:
+    if lowPrice is not '':
         url = url + 'itemFilter(' + str(counter) + ').name=MinPrice&'
         url = url + 'itemFilter(' + str(counter) + ').value=' + str(lowPrice) + '&'
         url = url + 'itemFilter(' + str(counter) + ').paramName=Currency&'
         url = url + 'itemFilter(' + str(counter) + ').paramValue=USD&'
         counter = counter + 1
 
-    if highPrice is not None:
+    if highPrice is not '':
         url = url + 'itemFilter(' + str(counter) + ').name=MaxPrices&'
         url = url + 'itemFilter(' + str(counter) + ').value=' + str(highPrice) + '&'
         url = url + 'itemFilter(' + str(counter) + ').paramName=Currency&'
         url = url + 'itemFilter(' + str(counter) + ').paramValue=USD&'
         counter = counter + 1
 
-    
+    if isNew == 'on' or isUsed == 'on' or isVrGd == 'on' or isGood == 'on' or isAccptb == 'on':
+        num_cdt = 0
+        url = url + 'itemFilter(' + str(counter) + ').name=Condition&'
+        if isNew == 'on':
+            url = url + 'itemFilter(' + str(counter) + ').value('+str(num_cdt)+')=New&'
+            num_cdt = num_cdt + 1
+        if isUsed == 'on':
+            url = url + 'itemFilter(' + str(counter) + ').value('+str(num_cdt)+')=Used&'
+            num_cdt = num_cdt + 1
+        if isVrGd == 'on':
+            url = url + 'itemFilter(' + str(counter) + ').value('+str(num_cdt)+')=4000&'
+            num_cdt = num_cdt + 1
+        if isGood == 'on':
+            url = url + 'itemFilter(' + str(counter) + ').value('+str(num_cdt)+')=5000&'
+            num_cdt = num_cdt + 1
+        if isAccptb == 'on':
+            url = url + 'itemFilter(' + str(counter) + ').value('+str(num_cdt)+')=6000&'
+            num_cdt = num_cdt + 1
+        counter = counter + 1
+
+    if isRtAccptd == 'on':
+        pass
 
 
 
