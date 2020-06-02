@@ -39,7 +39,7 @@ def toEbay():
     isFree = request.args.get('isFree')
     isExpdtd = request.args.get('isExpdtd')
 
-    choice = request.args.get('Sort by: ')
+    sortOrder = request.args.get('Sort by: ')
 
     # urlHead = 'https://svcs.eBay.com/services/FindingService/v1?'+'OPERATION-NAME=findItemsAdvanced'+'&SERVICE-VERSION'
     url = 'https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=RayLi-exp-PRD-d2eb6beb6-1a4f60ed&RESPONSE-DATA-FORMAT=JSON&'
@@ -83,22 +83,43 @@ def toEbay():
         counter = counter + 1
 
     if isRtAccptd == 'on':
-        pass
+        url = url + 'itemFilter(' + str(counter) + ').name=ReturnsAcceptedOnly&'
+        url = url + 'itemFilter(' + str(counter) + ').value=true&'
+        counter = counter + 1
 
+    if isFree == 'on':
+        url = url + 'itemFilter(' + str(counter) + ').name=FreeShippingOnly&'
+        url = url + 'itemFilter(' + str(counter) + ').value=true&'
+        counter = counter + 1
 
+    if isExpdtd == 'on':
+        url = url + 'itemFilter(' + str(counter) + ').name=ExpeditedShippingType&'
+        url = url + 'itemFilter(' + str(counter) + ').value=Expedited&'
+        counter = counter + 1
+
+    url = url + 'itemFilter(' + str(counter) + ').name=SortOrderType&'
+    if sortOrder == 'bestMatch':
+        url = url + 'itemFilter(' + str(counter) + ').value=BestMatch&'
+    elif sortOrder == 'highestFirst':
+        url = url + 'itemFilter(' + str(counter) + ').value=CurrentPriceHighest&'
+    elif sortOrder == 'pPlusS_h':
+        url = url + 'itemFilter(' + str(counter) + ').value=PricePlusShippingHighest&'
+    elif sortOrder == 'pPlusS_l':
+        url = url + 'itemFilter(' + str(counter) + ').value=PricePlusShippingLowest&'
 
     url = url + 'keywords=' + urllib.parse.quote_plus(keyword)
+    print(url)
 
-    # r = requests.get(url)
+    r = requests.get(url)
     # print(r.json())
+
+    return r.json()
 
     # filters = []
     # if lowPrice is not None and highPrice is not None:
     #     ele = {'name': 'MinPrice', 'value': lowPrice,
     #            'paramName': 'Currency', 'paramValue': 'USD'}
     #     filters = filters + ele
-    print(url)
-    return "routed"
 
 
 if __name__ == '__main__':
