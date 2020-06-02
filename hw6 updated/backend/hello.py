@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import request
+import requests
 import urllib
 app = Flask(__name__, static_url_path="")
 
@@ -24,7 +25,7 @@ def test(string, int, int2, string2):
 @app.route('/q')
 def toEbay():
     keyword = request.args.get('keyword')
-    lowPrice = request.args.get('LowPrice')
+    lowPrice = request.args.get('lowPrice')
     highPrice = request.args.get('highPrice')
 
     isNew = request.args.get('isNew')
@@ -41,23 +42,39 @@ def toEbay():
     choice = request.args.get('Sort by: ')
 
     # urlHead = 'https://svcs.eBay.com/services/FindingService/v1?'+'OPERATION-NAME=findItemsAdvanced'+'&SERVICE-VERSION'
-    url = '''https://svcs.ebay.com/services/search/FindingService/v1?
-        OPERATION-NAME=findItemsAdvanced
-        &SERVICE-VERSION=1.0.0
-        &SECURITY-APPNAME=RayLi-exp-PRD-d2eb6beb6-1a4f60ed
-        &RESPONSE-DATA-FORMAT=JSON
-        '''
+    url = 'https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=RayLi-exp-PRD-d2eb6beb6-1a4f60ed&RESPONSE-DATA-FORMAT=JSON&'
 
-    url = url + '&keywords=' + urllib.parse.quote_plus(keyword)
+    print(lowPrice, highPrice)
 
+    counter = 0
+
+    if lowPrice is not None and highPrice is not None:
+        url = url + 'itemFilter(' + str(counter) + ').name=MinPrice&'
+        url = url + 'itemFilter(' + str(counter) + \
+            ').value=' + str(lowPrice) + '&'
+        url = url + 'itemFilter(' + str(counter) + ').paramName=Currency&'
+        url = url + 'itemFilter(' + str(counter) + ').paramValue=USD&'
+        url = url + 'itemFilter(' + str(counter) + ').paramValue=USD&'
+        url = url + 'itemFilter(' + str(counter) + ').paramValue=USD&'
+        url = url + 'itemFilter(' + str(counter) + ').paramValue=USD&'
+        url = url + 'itemFilter(' + str(counter) + ').paramValue=USD&'
+
+    url = url + 'keywords=' + urllib.parse.quote_plus(keyword)
+
+    r = requests.get(url)
+    print(r.json())
+
+    # filters = []
+    # if lowPrice is not None and highPrice is not None:
+    #     ele = {'name': 'MinPrice', 'value': lowPrice,
+    #            'paramName': 'Currency', 'paramValue': 'USD'}
+    #     filters = filters + ele
     print(url)
     return "routed"
 
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-# http://localhost:5000/keyword=abathur&lowPrice=132&highPrice=&Sort+by%3A+=bestMatch"
 
     # resp = requests.get('http://svcs.ebay.com/services/search/FindingService/v1?'
     # 'OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0'
