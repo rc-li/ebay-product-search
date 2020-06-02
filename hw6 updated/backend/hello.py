@@ -48,22 +48,28 @@ def toEbay():
 
     counter = 0
 
-    if lowPrice is not None and highPrice is not None:
+    if lowPrice is not None:
         url = url + 'itemFilter(' + str(counter) + ').name=MinPrice&'
         url = url + 'itemFilter(' + str(counter) + ').value=' + str(lowPrice) + '&'
         url = url + 'itemFilter(' + str(counter) + ').paramName=Currency&'
         url = url + 'itemFilter(' + str(counter) + ').paramValue=USD&'
-
         counter = counter + 1
+
+    if highPrice is not None:
         url = url + 'itemFilter(' + str(counter) + ').name=MaxPrices&'
-        url = url + 'itemFilter(' + str(counter) + ').value=' + highPrice + '&'
+        url = url + 'itemFilter(' + str(counter) + ').value=' + str(highPrice) + '&'
         url = url + 'itemFilter(' + str(counter) + ').paramName=Currency&'
         url = url + 'itemFilter(' + str(counter) + ').paramValue=USD&'
+        counter = counter + 1
+
+    
+
+
 
     url = url + 'keywords=' + urllib.parse.quote_plus(keyword)
 
-    r = requests.get(url)
-    print(r.json())
+    # r = requests.get(url)
+    # print(r.json())
 
     # filters = []
     # if lowPrice is not None and highPrice is not None:
