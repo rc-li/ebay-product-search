@@ -29,3 +29,5 @@ function callFetch() {
         }
     }
 }
+
+document.getElementById('cards').innerHTML = 'hello'
