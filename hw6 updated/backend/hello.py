@@ -113,7 +113,7 @@ def toEbay():
 
     r = requests.get(url)
     r= r.json()
-    print(r)
+    # print(r)
 
     return r
 
