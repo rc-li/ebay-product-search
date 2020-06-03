@@ -79,20 +79,42 @@
             ele.attachEvent('onsubmit', callFetch); //Old IE
         }
 
+        var json;
+        function getJSON(response) {
+            json =  response.json()
+        }
+
         function callFetch() {
             const formData = new FormData(form);
             const params = new URLSearchParams(formData);
             console.log(params.toString());
+
             fetch('/q?' + params)
                 .then(response => {
-                    console.log(response.json())
-                    return response.json()
+                    getJSON(response)
                 })
-                .then(data => {
-                    // data=JSON.parse(data)
-                    console.log(data)
-                });
+
+
+
+            // declare res variable from outside directly doesn't work
+            // var res;
+            // fetch('/q?' + params)
+            //     .then(response => {
+            //         res = response.json()
+            //         // console.log(response.json())
+            //         // return response.json()
+            //     })
+            // console.log(res)
+            // console.log('so something!')
+
+            // var resJSON = res.json();
+
+            // .then(data => {
+            //     // data=JSON.parse(data)
+            //     console.log(data)
+            // });
         }
+
     </script>
 
 </body>
