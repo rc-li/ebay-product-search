@@ -80,8 +80,10 @@
         }
 
         var json;
+
         function getJSON(response) {
-            json =  response.json()
+            console.log(response)
+            json = response
         }
 
         function callFetch() {
@@ -90,31 +92,18 @@
             console.log(params.toString());
 
             fetch('/q?' + params)
-                .then(response => {
-                    getJSON(response)
-                })
-
-
-
-            // declare res variable from outside directly doesn't work
-            // var res;
-            // fetch('/q?' + params)
-            //     .then(response => {
-            //         res = response.json()
-            //         // console.log(response.json())
-            //         // return response.json()
-            //     })
-            // console.log(res)
-            // console.log('so something!')
-
-            // var resJSON = res.json();
-
-            // .then(data => {
-            //     // data=JSON.parse(data)
-            //     console.log(data)
-            // });
+                .then(response => getJSON(response.json()))
+            // getJSON(response))
+            // response.json())
+            // .then(data => getJSON(data))
         }
 
+        const checkUserHosting = async (hostEmail, callback) => {
+            let hostEmailData = await fetch(`http://localhost:3001/activities/${hostEmail}`)
+            //use string literals
+            let hostEmailJson = await hostEmailData.json();
+            return hostEmailJson;
+        }
     </script>
 
 </body>
