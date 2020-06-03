@@ -84,36 +84,26 @@
             json =  response.json()
         }
 
+        var req;
         function callFetch() {
             const formData = new FormData(form);
             const params = new URLSearchParams(formData);
             console.log(params.toString());
 
-            fetch('/q?' + params)
-                .then(response => {
-                    getJSON(response)
-                })
+            req = new XMLHttpRequest();
+            req.open("GET","/q?" + params, true);
+            req.onreadystatechange = myCode; 
+            req.send(null);
 
-
-
-            // declare res variable from outside directly doesn't work
-            // var res;
-            // fetch('/q?' + params)
-            //     .then(response => {
-            //         res = response.json()
-            //         // console.log(response.json())
-            //         // return response.json()
-            //     })
-            // console.log(res)
-            // console.log('so something!')
-
-            // var resJSON = res.json();
-
-            // .then(data => {
-            //     // data=JSON.parse(data)
-            //     console.log(data)
-            // });
+            function myCode() {
+                if (req.readyState == 4) {
+                    if (req.Status == 200) {
+                        var doc = eval('(' + req.responseText + ')');
+                    }
+                }
+            }
         }
+
 
     </script>
 
