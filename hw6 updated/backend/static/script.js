@@ -30,4 +30,6 @@ function callFetch() {
     }
 }
 
-document.getElementById('cards').innerHTML = 'hello'
+var card_test=document.getElementById('cards')
+// console.log(document)
+card_test.innerHTML = 'hello'
