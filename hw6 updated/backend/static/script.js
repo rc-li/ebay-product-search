@@ -6,8 +6,8 @@ if (ele.addEventListener) {
 }
 
 
-var req;
 var result;
+var num_entries;
 function callFetch() {
     const formData = new FormData(form);
     const params = new URLSearchParams(formData);
@@ -17,30 +17,17 @@ function callFetch() {
     req.open("GET", "/q?" + params, false);
     // req.onreadystatechange = myCode();
     req.send();
-    res=req.responseText
-    console.log(res)
-
-    // function myCode() {
-    //     if (req.readyState == 4) {
-    //         if (req.Status == 200) {
-    //             var doc = eval('(' + req.responseText + ')');
-    //             result = req.response;
-    //         }
-    //     }
-    // }
+    res = req.responseText
+    obj = JSON.parse(res)
+    num_entries = obj.findItemsAdvancedResponse[0].paginationOutput[0].totalEntries[0]
+    searchResult = obj.findItemsAdvancedResponse[0].searchResult[0];
+    updateSummary();
 }
-
-callFetch();
 
 // let resJSON = JSON.parse(result);
 // resJSON.
 
 
 function updateSummary() {
-
-    // document.getElementById('summary').innerHTML
+    document.getElementById('summary').innerHTML = 'Found ' + num_entries + ' entries'
 }
-
-var card_test=document.getElementById('cards')
-// console.log(document)
-card_test.innerHTML = 'hello'
