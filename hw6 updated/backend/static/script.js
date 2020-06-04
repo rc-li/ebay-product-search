@@ -22,10 +22,52 @@ function callFetch() {
     num_entries = obj.findItemsAdvancedResponse[0].paginationOutput[0].totalEntries[0]
     searchResult = obj.findItemsAdvancedResponse[0].searchResult[0];
     updateSummary();
+    setData(0)
 }
 
-// let resJSON = JSON.parse(result);
-// resJSON.
+function setData(i) {
+    let doc = document.getElementById(i);
+    doc.getElementsByTagName("img")[0].src = searchResult.item[i].galleryURL
+
+    let div = doc.getElementsByTagName('div')[0]
+    let a = div.getElementsByTagName('a')[0]
+    a.innerHTML = searchResult.item[i].title
+
+    let catagory = div.getElementsByClassName('category')[0]
+    catagory.innerHTML = 'Category: ' + searchResult.item[i].primaryCategory[0].categoryName[0]
+
+    let condition = div.getElementsByClassName('condition')[0]
+    condition.innerHTML = 'Condition: ' + searchResult.item[i].condition[0].conditionDisplayName[0]
+
+    let accptReturn = div.getElementsByClassName('accptReturn')[0]
+    let isAccepted = searchResult.item[i].returnsAccepted[0]
+    if (isAccepted) {
+        accptReturn.innerHTML = 'Seller accepts returns'
+    }
+    else {
+        accptReturn.innerHTML = 'Seller does not accept returns'
+    }
+
+    let shipType = div.getElementsByClassName('shipType')[0]
+    let shippingServiceCost = searchResult.item[0].shippingInfo[0].shippingServiceCost[0].__value__
+    if (shippingServiceCost == 0.0) {
+        shipType.innerHTML = 'Free Shipping'
+    }
+    else {
+        shipType.innerHTML = 'No Free Shipping'
+    }
+
+    let priceTag = div.getElementsByClassName('price')[0]
+    let priceValue = parseInt(searchResult.item[0].sellingStatus[0].convertedCurrentPrice[0].__value__)
+    let shipFrom = searchResult.item[i].location[0]
+    if (shippingServiceCost > 0) {
+        priceTag.innerHTML = 'Price: $' + priceValue + ' (+ $' + shippingServiceCost + ' for shipping)'
+    }
+    else {
+        priceTag.innerHTML = 'Price: $' + priceValue
+    }
+}
+
 
 
 function updateSummary() {
