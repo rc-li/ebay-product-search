@@ -39,9 +39,18 @@ function setData(i) {
     catagory.innerHTML = 'Category: ' + searchResult.item[i].primaryCategory[0].categoryName[0]
 
     let redirectIMGLink = div.getElementsByClassName('redirectIMGLink')[0]
+    redirectIMGLink.href = searchResult.item[i].viewItemURL[0]
 
     let condition = div.getElementsByClassName('condition')[0]
     condition.innerHTML = 'Condition: ' + searchResult.item[i].condition[0].conditionDisplayName[0]
+    let topRatedIMG = div.getElementsByClassName('topRatedIMG')[0]
+    let isTopRated = searchResult.item[i].topRatedListing[0]
+    if (isTopRated == 'true') {
+        topRatedIMG.style.visibility = 'visible'
+    }
+    else {
+        topRatedIMG.style.visibility = 'hidden'
+    }
 
     let accptReturn = div.getElementsByClassName('accptReturn')[0]
     let isAccepted = searchResult.item[i].returnsAccepted[0]
