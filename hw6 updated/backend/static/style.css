@@ -38,6 +38,12 @@
     font-weight: bold;
 }
 
+#summary {
+    text-align: center;
+    font-weight: bold;
+    margin: 30px;
+}
+
 #cards {
     width: 700px;
     height: 500px;
