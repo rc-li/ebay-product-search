@@ -22,7 +22,8 @@ function callFetch() {
     num_entries = obj.findItemsAdvancedResponse[0].paginationOutput[0].totalEntries[0]
     searchResult = obj.findItemsAdvancedResponse[0].searchResult[0];
     updateSummary();
-    setData(0)
+    // setData(0)
+    setAllData();
 }
 
 function setData(i) {
@@ -75,7 +76,11 @@ function setData(i) {
 
 }
 
-
+function setAllData() {
+    for (var i = 0; i < 3; i++) {
+        setData(i);
+    }
+}
 
 function updateSummary() {
     document.getElementById('summary').innerHTML = 'Found ' + num_entries + ' entries'
