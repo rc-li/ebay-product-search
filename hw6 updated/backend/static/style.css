@@ -48,13 +48,13 @@
     display: flex;
 }
 
-.card img {
+.cardIMG {
     padding: 70px;
     width: 100px;
     height: 80px;
 }
 
-.priceTag {
+.horizontalFlex {
     display: flex;
 }
 
@@ -68,4 +68,14 @@
 
 .paragraph p {
     margin: 10px;
+}
+
+.redirectIMG {
+    height: 20px;
+    width: 20px;
+}
+
+.topRatedIMG {
+    height: 30px;
+    width: 30px;
 }

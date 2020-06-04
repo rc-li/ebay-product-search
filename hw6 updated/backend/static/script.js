@@ -32,9 +32,12 @@ function setData(i) {
     let div = doc.getElementsByTagName('div')[0]
     let a = div.getElementsByTagName('a')[0]
     a.innerHTML = searchResult.item[i].title
+    a.href = searchResult.item[i].viewItemURL[0]
 
     let catagory = div.getElementsByClassName('category')[0]
     catagory.innerHTML = 'Category: ' + searchResult.item[i].primaryCategory[0].categoryName[0]
+
+    let redirectIMGLink = div.getElementsByClassName('redirectIMGLink')[0]
 
     let condition = div.getElementsByClassName('condition')[0]
     condition.innerHTML = 'Condition: ' + searchResult.item[i].condition[0].conditionDisplayName[0]
@@ -68,9 +71,7 @@ function setData(i) {
     }
 
     let locTag = div.getElementsByClassName('priceTag_loc')[0]
-    console.log(locTag.innerHTML)
     locTag.innerHTML = '<i>From ' + shipFrom + '</i>'
-    console.log(locTag.innerHTML)
 
 }
 
