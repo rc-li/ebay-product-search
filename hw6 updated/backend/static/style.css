@@ -41,23 +41,31 @@
 #summary {
     text-align: center;
     font-weight: bold;
+    font-size: 25px;
     margin: 30px;
+    display: none;
 }
 
 #cards {
     width: 700px;
     height: 500px;
     margin: auto;
+    display: none;
 }
 
 .card {
     display: flex;
+    background-color: rgb(241, 241, 241);
+    border: 2px solid gray;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 20px;
 }
 
 .cardIMG {
-    padding: 70px;
-    width: 100px;
-    height: 80px;
+    padding: 30px;
+    width: 170px;
+    height: 130px;
 }
 
 .horizontalFlex {
