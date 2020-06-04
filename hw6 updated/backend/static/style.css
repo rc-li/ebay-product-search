@@ -37,3 +37,19 @@
 .rowHead {
     font-weight: bold;
 }
+
+#cards {
+    width: 700px;
+    height: 500px;
+    margin: auto;
+}
+
+.card {
+    display: flex;
+}
+
+.card img {
+    padding: 70px;
+    width: 100px;
+    height: 80px;
+}
