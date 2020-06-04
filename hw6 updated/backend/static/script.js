@@ -66,6 +66,12 @@ function setData(i) {
     else {
         priceTag.innerHTML = 'Price: $' + priceValue
     }
+
+    let locTag = div.getElementsByClassName('priceTag_loc')[0]
+    console.log(locTag.innerHTML)
+    locTag.innerHTML = '<i>From ' + shipFrom + '</i>'
+    console.log(locTag.innerHTML)
+
 }
 
 
