@@ -16,18 +16,20 @@
         <p>Shopping</p>
     </div>
     <form id="form" onsubmit="event.preventDefault()">
-        
+
         <div class="row">
             <label for="keyword" class="rowHead">Key Words: </label>
             <input type="text" id="keyword" name="keyword" required>
         </div>
-        
+
         <div class="row">
-            <label for="priceRange" class="rowHead">Prince Range: <span>From</span>
-                <input type="number" name="lowPrice"><span> to </span><input type="number" name="highPrice">
-            </label>
+            <label for="priceRange" class="rowHead">Prince Range: </label>
+            <span>From</span>
+            <input type="number" name="lowPrice" id="lowPrice">
+            <span> to </span>
+            <input type="number" name="highPrice" id="highPrice">
         </div>
-        
+
         <div class="row">
             <label for="" class="rowHead">Condition: </label>
             <input type="checkbox" name="isNew">
@@ -55,7 +57,7 @@
             <input type="checkbox" name="isExpdtd">
             <label for="">Expedited</label>
         </div>
-        
+
         <div class="row">
             <label for="sortBy" class="rowHead">Sort by: </label>
             <select name="Sort by: " id="sortBy">
@@ -70,14 +72,14 @@
             <input type="reset" value="Clear" class="button">
             <input type="submit" value="Search" onclick="callFetch()" class="button">
         </div>
-        
+
     </form>
-    
+
     <div id="summary">
-        No results found for 
+        No results found for
         <hr>
     </div>
-    
+
     <div id="cards">
         <div class="card" id=0>
             <img src="ebay_default.jpg" alt="" class="cardIMG">
@@ -158,7 +160,7 @@
             </div>
         </div>
     </div>
-    
+
 </body>
 
 </html>

@@ -3,21 +3,38 @@ var num_entries;
 var params;
 var searchResult;
 var obj;
-function callFetch() {
-    const formData = new FormData(form);
-    params = new URLSearchParams(formData);
-    console.log(params.toString());
 
-    req = new XMLHttpRequest();
-    req.open("GET", "/q?" + params, false);
-    // req.onreadystatechange = myCode();
-    req.send();
-    res = req.responseText
-    obj = JSON.parse(res)
-    num_entries = obj.findItemsAdvancedResponse[0].paginationOutput[0].totalEntries[0]
-    searchResult = obj.findItemsAdvancedResponse[0].searchResult[0];
-    updateSummary();
-    setAllData();
+function valueCheck() {
+    let lowPrice = document.getElementById('lowPrice').value
+    let highPrice = document.getElementById('highPrice').value
+    if (lowPrice < 0) {
+        alert("Price Range values cannot be negative! Please try a value greater than or equal to 0.0")
+        return false
+    }
+    else if (lowPrice > highPrice) {
+        alert("Oops! Lower price limit cannot be greater than upper price limit! Please try again.")
+        return false
+    }
+    else return true
+}
+
+function callFetch() {
+    if (valueCheck()){
+        const formData = new FormData(form);
+        params = new URLSearchParams(formData);
+        console.log(params.toString());
+    
+        req = new XMLHttpRequest();
+        req.open("GET", "/q?" + params, false);
+        req.send();
+        res = req.responseText
+        obj = JSON.parse(res)
+        num_entries = obj.findItemsAdvancedResponse[0].paginationOutput[0].totalEntries[0]
+        searchResult = obj.findItemsAdvancedResponse[0].searchResult[0];
+    
+        updateSummary();
+        setAllData();
+    }
 }
 
 function setData(cardNum, itemNum) {
