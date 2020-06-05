@@ -81,7 +81,7 @@ function setData(cardNum, itemNum) {
 
     // set price
     let priceTag = div.getElementsByClassName('price')[0]
-    let priceValue = parseInt(searchResult.item[0].sellingStatus[0].convertedCurrentPrice[0].__value__)
+    let priceValue = parseFloat(searchResult.item[itemNum].sellingStatus[0].convertedCurrentPrice[0].__value__)
     let shipFrom = searchResult.item[itemNum].location[0]
     if (shippingServiceCost > 0) {
         priceTag.innerHTML = 'Price: $' + priceValue + ' (+ $' + shippingServiceCost + ' for shipping)'
