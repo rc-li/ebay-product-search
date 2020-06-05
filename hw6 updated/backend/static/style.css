@@ -62,12 +62,12 @@
 
 #cards {
     width: 700px;
-    height: 500px;
     margin: auto;
     display: none;
 }
 
 .card {
+    height: 230px;
     display: flex;
     background-color: rgb(241, 241, 241);
     border: 2px solid gray;
@@ -77,9 +77,10 @@
 }
 
 .cardIMG {
-    padding: 30px;
-    width: 170px;
-    height: 130px;
+    padding: 20px;
+    width: 25%;
+    height: auto;
+    object-fit: contain;
 }
 
 .horizontalFlex {
