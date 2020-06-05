@@ -1,11 +1,3 @@
-var ele = document.getElementById("form");
-if (ele.addEventListener) {
-    ele.addEventListener("submit", callFetch, false); //Modern browsers
-} else if (ele.attachEvent) {
-    ele.attachEvent('onsubmit', callFetch); //Old IE
-}
-
-
 var result;
 var num_entries;
 var params;

@@ -15,7 +15,7 @@
         </a>
         <p>Shopping</p>
     </div>
-    <form id="form" action="http://localhost:5000" method="GET">
+    <form id="form" onsubmit="event.preventDefault()">
         
         <div class="row">
             <label for="keyword" class="rowHead">Key Words: </label>
@@ -68,7 +68,7 @@
 
         <div class="row">
             <input type="reset" value="Clear" class="button">
-            <input type="button" value="Search" onclick="callFetch()" class="button">
+            <input type="submit" value="Search" onclick="callFetch()" class="button">
         </div>
         
     </form>
