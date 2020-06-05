@@ -12,15 +12,9 @@ app = Flask(__name__, static_url_path="")
 # 4. send back to client
 
 
-@app.route('/searchPage')
+@app.route('/')
 def hello():
-    # print('the light is my strength')
     return app.send_static_file('index.html')
-
-
-@app.route('/test/<string>/<int>/<int2>/<string2>')
-def test(string, int, int2, string2):
-    return "routing successful"
 
 
 @app.route('/q')
@@ -42,7 +36,6 @@ def toEbay():
 
     sortOrder = request.args.get('Sort by: ')
 
-    # urlHead = 'https://svcs.eBay.com/services/FindingService/v1?'+'OPERATION-NAME=findItemsAdvanced'+'&SERVICE-VERSION'
     url = 'https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=RayLi-exp-PRD-d2eb6beb6-1a4f60ed&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&'
 
     print(lowPrice, highPrice)
@@ -113,36 +106,9 @@ def toEbay():
 
     r = requests.get(url)
     r= r.json()
-    # print(r)
 
     return r
 
-    # filters = []
-    # if lowPrice is not None and highPrice is not None:
-    #     ele = {'name': 'MinPrice', 'value': lowPrice,
-    #            'paramName': 'Currency', 'paramValue': 'USD'}
-    #     filters = filters + ele
-
 
 if __name__ == '__main__':
-    app.run(debug=True)
-
-    # resp = requests.get('http://svcs.ebay.com/services/search/FindingService/v1?'
-    # 'OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0'
-    # '&SECURITY-APPNAME=RayLi-exp-PRD-d2eb6beb6-1a4f60ed&RESPONSE-DATA-FORMAT=JSON'
-    # '&keywords=harry%20potter&sortOrder=PricePlusShippingLowest')
-
-    # resp = requests.get('https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=RayLi-exp-PRD-d2eb6beb6-1a4f60ed&RESPONSE-DATA-FORMAT=JSON&keywords=harry%20potter')
-
-    # resp = requests.get('https://google.com')
-    # return resp.content
-    # ret = str(resp)
-    # return ret
-
-    # resp = requests.get('https://todolist.example.com/tasks/')
-    # if resp.status_code != 200:
-    #     # This means something went wrong.
-    #     raise ApiError('GET /tasks/ {}'.format(resp.status_code))
-    # for todo_item in resp.json():
-    #     print('{} {}'.format(todo_item['id'], todo_item['summary']))
-    # return "busteria"
+    app.run(port=8080)
