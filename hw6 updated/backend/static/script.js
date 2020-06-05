@@ -9,6 +9,8 @@ if (ele.addEventListener) {
 var result;
 var num_entries;
 var params;
+var searchResult;
+var obj;
 function callFetch() {
     const formData = new FormData(form);
     params = new URLSearchParams(formData);
@@ -26,30 +28,30 @@ function callFetch() {
     setAllData();
 }
 
-function setData(i) {
+function setData(cardNum, itemNum) {
     // set card image
-    let doc = document.getElementById(i);
-    doc.getElementsByTagName("img")[0].src = searchResult.item[i].galleryURL
+    let doc = document.getElementById(cardNum);
+    doc.getElementsByTagName("img")[0].src = searchResult.item[itemNum].galleryURL
 
     // set the product link
     let div = doc.getElementsByTagName('div')[0]
     let a = div.getElementsByTagName('a')[0]
-    a.innerHTML = searchResult.item[i].title
-    a.href = searchResult.item[i].viewItemURL[0]
+    a.innerHTML = searchResult.item[itemNum].title
+    a.href = searchResult.item[itemNum].viewItemURL[0]
 
     // set the category
     let catagory = div.getElementsByClassName('category')[0]
-    catagory.innerHTML = 'Category: ' + searchResult.item[i].primaryCategory[0].categoryName[0]
+    catagory.innerHTML = 'Category: ' + searchResult.item[itemNum].primaryCategory[0].categoryName[0]
 
     // set the redirect image link
     let redirectIMGLink = div.getElementsByClassName('redirectIMGLink')[0]
-    redirectIMGLink.href = searchResult.item[i].viewItemURL[0]
+    redirectIMGLink.href = searchResult.item[itemNum].viewItemURL[0]
 
     // set the product condition and top rated image visibility
     let condition = div.getElementsByClassName('condition')[0]
-    condition.innerHTML = 'Condition: ' + searchResult.item[i].condition[0].conditionDisplayName[0]
+    condition.innerHTML = 'Condition: ' + searchResult.item[itemNum].condition[0].conditionDisplayName[0]
     let topRatedIMG = div.getElementsByClassName('topRatedIMG')[0]
-    let isTopRated = searchResult.item[i].topRatedListing[0]
+    let isTopRated = searchResult.item[itemNum].topRatedListing[0]
     if (isTopRated == 'true') {
         topRatedIMG.style.visibility = 'visible'
     }
@@ -59,7 +61,7 @@ function setData(i) {
 
     // set if return is accepted
     let accptReturn = div.getElementsByClassName('accptReturn')[0]
-    let isAccepted = searchResult.item[i].returnsAccepted[0]
+    let isAccepted = searchResult.item[itemNum].returnsAccepted[0]
     if (isAccepted) {
         accptReturn.innerHTML = 'Seller accepts returns'
     }
@@ -80,7 +82,7 @@ function setData(i) {
     // set price
     let priceTag = div.getElementsByClassName('price')[0]
     let priceValue = parseInt(searchResult.item[0].sellingStatus[0].convertedCurrentPrice[0].__value__)
-    let shipFrom = searchResult.item[i].location[0]
+    let shipFrom = searchResult.item[itemNum].location[0]
     if (shippingServiceCost > 0) {
         priceTag.innerHTML = 'Price: $' + priceValue + ' (+ $' + shippingServiceCost + ' for shipping)'
     }
@@ -94,13 +96,39 @@ function setData(i) {
 
 }
 
+function checkEmpty(itemNum) {
+    try {
+        if (!(typeof searchResult.item[itemNum].galleryURL != 'undefined')) return false;
+        else if (!(typeof searchResult.item[itemNum].title != 'undefined')) return false;
+        else if (!(typeof searchResult.item[itemNum].viewItemURL[0] != 'undefined')) return false;
+        else if (!(typeof searchResult.item[itemNum].primaryCategory[0].categoryName[0] != 'undefined')) return false;
+        else if (!(typeof searchResult.item[itemNum].condition[0].conditionDisplayName[0] != 'undefined')) return false;
+        else if (!(typeof searchResult.item[itemNum].topRatedListing[0] != 'undefined')) return false;
+        else if (!(typeof searchResult.item[itemNum].returnsAccepted[0] != 'undefined')) return false;
+        else if (!(typeof searchResult.item[itemNum].shippingInfo[0].shippingServiceCost[0].__value__ != 'undefined')) return false;
+        else if (!(typeof searchResult.item[itemNum].sellingStatus[0].convertedCurrentPrice[0].__value__ != 'undefined')) return false;
+        else if (!(typeof searchResult.item[itemNum].location[0] != 'undefined')) return false;
+        else return true;
+        
+    } catch (error) {
+        return false
+    }
+
+}
+
 function setAllData() {
     let summary = document.getElementById('summary')
     summary.style.display = 'block'
     let card = document.getElementById('cards')
     card.style.display = 'block'
-    for (var i = 0; i < 3; i++) {
-        setData(i);
+    let cardNum = 0
+    let itemNum = 0
+    while (cardNum < 3) {
+        if (checkEmpty(itemNum)) {
+            setData(cardNum,itemNum);
+            cardNum++;
+        }
+        itemNum++;
     }
 }
 
