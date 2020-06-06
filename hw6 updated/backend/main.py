@@ -50,7 +50,7 @@ def toEbay():
         counter = counter + 1
 
     if highPrice is not '':
-        url = url + 'itemFilter(' + str(counter) + ').name=MaxPrices&'
+        url = url + 'itemFilter(' + str(counter) + ').name=MaxPrice&'
         url = url + 'itemFilter(' + str(counter) + ').value=' + str(highPrice) + '&'
         url = url + 'itemFilter(' + str(counter) + ').paramName=Currency&'
         url = url + 'itemFilter(' + str(counter) + ').paramValue=USD&'
