@@ -123,6 +123,10 @@ function setAllData() {
     summary.style.display = 'block'
     // let cards = document.getElementById('cards')
     // cards.style.display = 'block'
+    for (var i = 0; i < 10; i++) {
+        let card = document.getElementById(i)
+        card.style.display = 'none'
+    }
     let itemNum = 0
     for (var cardNum = 0; cardNum < numValidCards; cardNum++){
         let card = document.getElementById(cardNum)
