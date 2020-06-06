@@ -29,8 +29,8 @@ function callFetch() {
         req.send();
         res = req.responseText
         obj = JSON.parse(res)
-        num_entries = obj.findItemsAdvancedResponse[0].paginationOutput[0].totalEntries[0]
-        searchResult = obj.findItemsAdvancedResponse[0].searchResult[0];
+        num_entries = obj.numEntries
+        searchResult = obj.searchResult
     
         updateSummary();
         setAllData();
@@ -116,38 +116,14 @@ function setData(cardNum, itemNum) {
 
 }
 
-function checkEmpty(itemNum) {
-    try {
-        if (!(typeof searchResult.item[itemNum].galleryURL != 'undefined')) return false;
-        else if (!(typeof searchResult.item[itemNum].title != 'undefined')) return false;
-        else if (!(typeof searchResult.item[itemNum].viewItemURL[0] != 'undefined')) return false;
-        else if (!(typeof searchResult.item[itemNum].primaryCategory[0].categoryName[0] != 'undefined')) return false;
-        else if (!(typeof searchResult.item[itemNum].condition[0].conditionDisplayName[0] != 'undefined')) return false;
-        else if (!(typeof searchResult.item[itemNum].topRatedListing[0] != 'undefined')) return false;
-        else if (!(typeof searchResult.item[itemNum].returnsAccepted[0] != 'undefined')) return false;
-        else if (!(typeof searchResult.item[itemNum].shippingInfo[0].shippingServiceCost[0].__value__ != 'undefined')) return false;
-        else if (!(typeof searchResult.item[itemNum].sellingStatus[0].convertedCurrentPrice[0].__value__ != 'undefined')) return false;
-        else if (!(typeof searchResult.item[itemNum].location[0] != 'undefined')) return false;
-        else return true;
-        
-    } catch (error) {
-        return false
-    }
-
-}
-
 function setAllData() {
     let summary = document.getElementById('summary')
     summary.style.display = 'block'
     let card = document.getElementById('cards')
     card.style.display = 'block'
-    let cardNum = 0
     let itemNum = 0
-    while (cardNum < 3) {
-        if (checkEmpty(itemNum)) {
-            setData(cardNum,itemNum);
-            cardNum++;
-        }
+    for (var cardNum = 0; cardNum < 3; cardNum++){
+        setData(cardNum,itemNum);
         itemNum++;
     }
 }
