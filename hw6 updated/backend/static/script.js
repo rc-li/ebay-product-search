@@ -80,12 +80,17 @@ function setData(cardNum, itemNum) {
 
     // set shipping type
     let shipType = div.getElementsByClassName('shipType')[0]
-    let shippingServiceCost = searchResult.item[0].shippingInfo[0].shippingServiceCost[0].__value__
+    let shippingServiceCost = searchResult.item[itemNum].shippingInfo[0].shippingServiceCost[0].__value__
     if (shippingServiceCost == 0.0) {
         shipType.innerHTML = 'Free Shipping'
     }
     else {
         shipType.innerHTML = 'No Free Shipping'
+    }
+
+    let expedited = searchResult.item[0].shippingInfo[0].expeditedShipping[0]
+    if (expedited == "true") {
+        shipType.innerHTML += " -- Expedited Shipping available"
     }
 
     // set price
