@@ -122,7 +122,7 @@ function setAllData() {
     let card = document.getElementById('cards')
     card.style.display = 'block'
     let itemNum = 0
-    for (var cardNum = 0; cardNum < 3; cardNum++){
+    for (var cardNum = 0; cardNum < 10; cardNum++){
         setData(cardNum,itemNum);
         itemNum++;
     }

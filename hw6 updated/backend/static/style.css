@@ -123,3 +123,8 @@ select { width: 200px; text-align-last:center; }
     height: 30px;
     width: 30px;
 }
+
+.bottom {
+    display: block;
+    margin: auto;
+}
