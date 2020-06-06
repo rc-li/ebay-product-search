@@ -69,12 +69,11 @@ select { width: 200px; text-align-last:center; }
 #cards {
     width: 700px;
     margin: auto;
-    display: none;
 }
 
 .card {
     height: 230px;
-    display: flex;
+    display: none;
     background-color: rgb(241, 241, 241);
     border: 2px solid gray;
     border-radius: 5px;

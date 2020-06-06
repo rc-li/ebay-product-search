@@ -3,6 +3,7 @@ var num_entries;
 var params;
 var searchResult;
 var obj;
+var numValidCards
 
 function valueCheck() {
     let lowPrice = parseInt(document.getElementById('lowPrice').value)
@@ -31,6 +32,7 @@ function callFetch() {
         obj = JSON.parse(res)
         num_entries = obj.numEntries
         searchResult = obj.searchResult
+        numValidCards = obj.validCards
     
         updateSummary();
         setAllData();
@@ -119,10 +121,12 @@ function setData(cardNum, itemNum) {
 function setAllData() {
     let summary = document.getElementById('summary')
     summary.style.display = 'block'
-    let card = document.getElementById('cards')
-    card.style.display = 'block'
+    // let cards = document.getElementById('cards')
+    // cards.style.display = 'block'
     let itemNum = 0
-    for (var cardNum = 0; cardNum < 10; cardNum++){
+    for (var cardNum = 0; cardNum < numValidCards; cardNum++){
+        let card = document.getElementById(cardNum)
+        card.style.display = 'flex'
         setData(cardNum,itemNum);
         itemNum++;
     }
