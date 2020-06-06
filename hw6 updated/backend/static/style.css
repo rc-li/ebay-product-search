@@ -76,11 +76,20 @@
     padding: 20px;
 }
 
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
 .cardIMG {
-    padding: 20px;
+    padding: 40px;
     width: 25%;
     height: auto;
     object-fit: contain;
+    transition: transform .5s;
+}
+
+.cardIMG:hover {
+    transform: scale(1.5);
 }
 
 .horizontalFlex {
