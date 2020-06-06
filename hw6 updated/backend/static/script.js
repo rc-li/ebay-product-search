@@ -39,11 +39,17 @@ function callFetch() {
 
 function setData(cardNum, itemNum) {
     // set card image
-    let doc = document.getElementById(cardNum);
-    doc.getElementsByTagName("img")[0].src = searchResult.item[itemNum].galleryURL
+    let card = document.getElementById(cardNum);
+
+    if (searchResult.item[itemNum].galleryURL == "https://thumbs1.ebaystatic.com/pict/04040_0.jpg") {
+        card.getElementsByTagName("img")[0].src = 'ebay_default.jpg'
+    }
+    else {
+        card.getElementsByTagName("img")[0].src = searchResult.item[itemNum].galleryURL
+    }
 
     // set the product link
-    let div = doc.getElementsByTagName('div')[0]
+    let div = card.getElementsByTagName('div')[0]
     let a = div.getElementsByTagName('a')[0]
     a.innerHTML = searchResult.item[itemNum].title
     a.href = searchResult.item[itemNum].viewItemURL[0]
