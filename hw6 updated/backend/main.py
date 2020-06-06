@@ -116,12 +116,12 @@ def toEbay():
             searchResult["item"][itemNum]["galleryURL"][0]
             searchResult["item"][itemNum]["title"][0]
             searchResult["item"][itemNum]["viewItemURL"][0]
-            searchResult["item"][itemNum]["primaryCategory"][0]
-            searchResult["item"][itemNum]["condition"][0]
+            searchResult["item"][itemNum]["primaryCategory"][0]['categoryName'][0]
+            searchResult["item"][itemNum]["condition"][0]['conditionDisplayName'][0]
             searchResult["item"][itemNum]["topRatedListing"][0]
             searchResult["item"][itemNum]["returnsAccepted"][0]
-            searchResult["item"][itemNum]["shippingInfo"][0]
-            searchResult["item"][itemNum]["sellingStatus"][0]
+            searchResult["item"][itemNum]["shippingInfo"][0]['shippingServiceCost'][0]['__value__']
+            searchResult["item"][itemNum]["sellingStatus"][0]['convertedCurrentPrice'][0]['__value__']
             searchResult["item"][itemNum]["location"][0]
             return True
         except:

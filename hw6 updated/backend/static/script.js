@@ -47,13 +47,13 @@ function setData(cardNum, itemNum) {
         card.getElementsByTagName("img")[0].src = 'ebay_default.jpg'
     }
     else {
-        card.getElementsByTagName("img")[0].src = searchResult.item[itemNum].galleryURL
+        card.getElementsByTagName("img")[0].src = searchResult.item[itemNum].galleryURL[0]
     }
 
     // set the product link
     let div = card.getElementsByTagName('div')[0]
     let a = div.getElementsByTagName('a')[0]
-    a.innerHTML = searchResult.item[itemNum].title
+    a.innerHTML = searchResult.item[itemNum].title[0]
     a.href = searchResult.item[itemNum].viewItemURL[0]
 
     // set the category
