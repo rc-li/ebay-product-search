@@ -41,7 +41,7 @@ function setData(cardNum, itemNum) {
     // set card image
     let card = document.getElementById(cardNum);
 
-    if (searchResult.item[itemNum].galleryURL == "https://thumbs1.ebaystatic.com/pict/04040_0.jpg") {
+    if (searchResult.item[itemNum].galleryURL[0] == "https://thumbs1.ebaystatic.com/pict/04040_0.jpg") {
         card.getElementsByTagName("img")[0].src = 'ebay_default.jpg'
     }
     else {
