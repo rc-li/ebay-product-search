@@ -91,15 +91,15 @@ def toEbay():
         url = url + 'itemFilter(' + str(counter) + ').value=Expedited&'
         counter = counter + 1
 
-    url = url + 'itemFilter(' + str(counter) + ').name=SortOrderType&'
+    
     if sortOrder == 'bestMatch':
-        url = url + 'itemFilter(' + str(counter) + ').value=BestMatch&'
+        url = url + 'sortOrder=BestMatch&'
     elif sortOrder == 'highestFirst':
-        url = url + 'itemFilter(' + str(counter) + ').value=CurrentPriceHighest&'
+        url = url + 'sortOrder=CurrentPriceHighest&'
     elif sortOrder == 'pPlusS_h':
-        url = url + 'itemFilter(' + str(counter) + ').value=PricePlusShippingHighest&'
+        url = url + 'sortOrder=PricePlusShippingHighest&'
     elif sortOrder == 'pPlusS_l':
-        url = url + 'itemFilter(' + str(counter) + ').value=PricePlusShippingLowest&'
+        url = url + 'sortOrder=PricePlusShippingLowest&'
 
     url = url + 'keywords=' + urllib.parse.quote_plus(keyword)
     print(url)
