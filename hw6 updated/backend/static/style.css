@@ -8,7 +8,7 @@
 
 .logo > p {
     font-size: 30px;
-/*     padding-top: 30px; */
+    font-weight: 700;
 }
 
 .logo > a {
@@ -37,6 +37,12 @@
 .rowHead {
     font-weight: bold;
 }
+
+#sortBy {
+    text-align: center;
+}
+
+select { width: 200px; text-align-last:center; }
 
 .button {
     border-radius: 5px;

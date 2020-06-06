@@ -78,10 +78,10 @@ function setData(cardNum, itemNum) {
     let accptReturn = div.getElementsByClassName('accptReturn')[0]
     let isAccepted = searchResult.item[itemNum].returnsAccepted[0]
     if (isAccepted) {
-        accptReturn.innerHTML = 'Seller accepts returns'
+        accptReturn.innerHTML = 'Seller <b>accepts</b> returns'
     }
     else {
-        accptReturn.innerHTML = 'Seller does not accept returns'
+        accptReturn.innerHTML = 'Seller <b>does not accept</b> returns'
     }
 
     // set shipping type
@@ -104,10 +104,10 @@ function setData(cardNum, itemNum) {
     let priceValue = parseFloat(searchResult.item[itemNum].sellingStatus[0].convertedCurrentPrice[0].__value__)
     let shipFrom = searchResult.item[itemNum].location[0]
     if (shippingServiceCost > 0) {
-        priceTag.innerHTML = 'Price: $' + priceValue + ' (+ $' + shippingServiceCost + ' for shipping)'
+        priceTag.innerHTML = '<b>Price: $' + priceValue + '</b>' + ' (+ $' + shippingServiceCost + ' for shipping)'
     }
     else {
-        priceTag.innerHTML = 'Price: $' + priceValue
+        priceTag.innerHTML = '<b>Price: $' + priceValue + '</b>'
     }
 
     // set ship from
