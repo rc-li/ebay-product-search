@@ -5,8 +5,8 @@ var searchResult;
 var obj;
 
 function valueCheck() {
-    let lowPrice = document.getElementById('lowPrice').value
-    let highPrice = document.getElementById('highPrice').value
+    let lowPrice = parseInt(document.getElementById('lowPrice').value)
+    let highPrice = parseInt(document.getElementById('highPrice').value)
     if (lowPrice < 0) {
         alert("Price Range values cannot be negative! Please try a value greater than or equal to 0.0")
         return false
