@@ -62,8 +62,10 @@ select { width: 200px; text-align-last:center; }
     text-align: center;
     font-weight: bold;
     font-size: 25px;
-    margin: 30px;
+    margin: auto;
+    padding-top: 20px;
     display: none;
+    width: 710px;
 }
 
 #cards {
