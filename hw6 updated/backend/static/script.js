@@ -179,10 +179,9 @@ function expandCard(cardNum) {
     for (var i = 0; i < arr.length; i++){
         arr[i].style.display = 'block'
     }
-    let titleArr = document.getElementsByClassName('titleText')
+    let titleArr = document.getElementById(cardNum).getElementsByClassName('titleText')
     for (var i = 0; i < titleArr.length; i++) {
-        titleArr[i].style.width = ''
-        titleArr[i].style.overflow = ''
+        titleArr[i].className = 'somethingElse'
     }
 }
 
@@ -190,6 +189,10 @@ function closeButton(cardNum) {
     let arr = document.getElementById(cardNum).getElementsByClassName('canHide')
     for (var i = 0; i < arr.length; i++){
         arr[i].style.display = 'none'
+    }
+    let titleArr = document.getElementById(cardNum).getElementsByClassName('somethingElse')
+    for (var i = 0; i < titleArr.length; i++) {
+        titleArr[i].className = 'titleText'
     }
 }
 
