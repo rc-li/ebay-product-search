@@ -3,7 +3,6 @@
     display: flex;
     flex-direction: row;
     margin: auto;
-    /* border: 1px solid orange; */
 }
 
 .logo > p {
@@ -39,10 +38,17 @@
 }
 
 #sortBy {
-    text-align: center;
+    width: 200px;
+    text-align-last: center;
 }
 
-select { width: 200px; text-align-last:center; }
+#lowPrice {
+    width: 70px;
+}
+
+#highPrice {
+    width: 70px;
+}
 
 .button {
     border-radius: 5px;
@@ -65,7 +71,7 @@ select { width: 200px; text-align-last:center; }
     margin: auto;
     padding-top: 20px;
     display: none;
-    width: 710px;
+    width: 700px;
 }
 
 #cards {
@@ -124,6 +130,7 @@ select { width: 200px; text-align-last:center; }
 .topRatedIMG {
     height: 30px;
     width: 30px;
+    object-fit: contain;
 }
 
 .bottom {

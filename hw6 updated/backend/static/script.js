@@ -187,3 +187,8 @@ function closeButton(cardNum) {
         arr[i].style.display = 'none'
     }
 }
+
+function clearAll() {
+    document.getElementById('summary').style.display = 'none'
+    document.getElementById('cards').style.display = 'none'
+}
