@@ -74,7 +74,7 @@ select { width: 200px; text-align-last:center; }
 }
 
 .card {
-    height: 230px;
+    /* height: 230px; */
     display: none;
     background-color: rgb(241, 241, 241);
     border: 2px solid gray;
@@ -88,8 +88,8 @@ select { width: 200px; text-align-last:center; }
 }
 
 .cardIMG {
-    padding: 40px;
-    width: 25%;
+    padding: 25px;
+    width: 15%;
     height: auto;
     object-fit: contain;
     transition: transform .5s;
@@ -108,11 +108,11 @@ select { width: 200px; text-align-last:center; }
 }
 
 .paragraph a {
-    margin: 10px;
+    margin: 15px;
 }
 
 .paragraph p {
-    margin: 10px;
+    margin: 15px;
 }
 
 .redirectIMG {
@@ -128,4 +128,8 @@ select { width: 200px; text-align-last:center; }
 .bottom {
     display: none;
     margin: auto;
+}
+
+.canHide {
+    display: none;
 }
