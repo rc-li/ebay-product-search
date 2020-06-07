@@ -76,11 +76,12 @@ select { width: 200px; text-align-last:center; }
 .card {
     /* height: 230px; */
     display: none;
+    flex-direction: row;
+    justify-content: space-between;
     background-color: rgb(241, 241, 241);
     border: 2px solid gray;
     border-radius: 5px;
     margin: 5px;
-    padding: 20px;
 }
 
 .card:hover {
@@ -132,4 +133,19 @@ select { width: 200px; text-align-last:center; }
 
 .canHide {
     display: none;
+}
+
+#collapse {
+    display: block;
+    height: 23px;
+    width: 23px;
+    /* right: 0px; */
+    /* float: right; */
+    /* margin-left: 100px; */
+    border: none;
+}
+
+.cardText {
+    padding-top: 20px;
+    flex: 1;
 }
