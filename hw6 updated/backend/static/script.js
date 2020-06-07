@@ -3,7 +3,7 @@ var num_entries;
 var params;
 var searchResult;
 var obj;
-var numValidCards
+var numValidCards = 0
 
 function valueCheck() {
     let lowPrice = parseInt(document.getElementById('lowPrice').value)
@@ -121,14 +121,23 @@ function setData(cardNum, itemNum) {
 function setAllData() {
     let summary = document.getElementById('summary')
     summary.style.display = 'block'
-    // let cards = document.getElementById('cards')
-    // cards.style.display = 'block'
+    let cardToShow;
+    document.getElementById('ShowMore').style.display = 'none'
+    document.getElementById('ShowLess').style.display = 'none'
+
+    if (numValidCards > 3) {
+        document.getElementById('ShowMore').style.display = 'block'
+        cardToShow = 3
+    }
+    else {
+        cardToShow = numValidCards
+    }
     for (var i = 0; i < 10; i++) {
         let card = document.getElementById(i)
         card.style.display = 'none'
     }
     let itemNum = 0
-    for (var cardNum = 0; cardNum < numValidCards; cardNum++){
+    for (var cardNum = 0; cardNum < cardToShow; cardNum++){
         let card = document.getElementById(cardNum)
         card.style.display = 'flex'
         setData(cardNum,itemNum);

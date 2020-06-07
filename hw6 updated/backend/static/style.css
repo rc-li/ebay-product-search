@@ -124,6 +124,6 @@ select { width: 200px; text-align-last:center; }
 }
 
 .bottom {
-    display: block;
+    display: none;
     margin: auto;
 }
