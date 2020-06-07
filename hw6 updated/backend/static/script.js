@@ -179,11 +179,15 @@ function expandCard(cardNum) {
     for (var i = 0; i < arr.length; i++){
         arr[i].style.display = 'block'
     }
+    let titleArr = document.getElementsByClassName('titleText')
+    for (var i = 0; i < titleArr.length; i++) {
+        titleArr[i].style.width = ''
+        titleArr[i].style.overflow = ''
+    }
 }
 
 function closeButton(cardNum) {
     let arr = document.getElementById(cardNum).getElementsByClassName('canHide')
-    console.log('button pressed')
     for (var i = 0; i < arr.length; i++){
         arr[i].style.display = 'none'
     }
