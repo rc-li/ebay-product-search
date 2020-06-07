@@ -155,6 +155,7 @@ function showMore() {
         setData(cardNum,itemNum)
         itemNum++
     }
+    document.getElementById('ShowLess').scrollIntoView({behavior: "smooth"})
 }
 
 function showLess() {
@@ -164,6 +165,7 @@ function showLess() {
         let card = document.getElementById(cardNum)
         card.style.display = 'none'
     }
+    document.getElementsByClassName('logo')[0].scrollIntoView({behavior: "smooth"})
 }
 
 function updateSummary() {
