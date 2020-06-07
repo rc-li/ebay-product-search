@@ -96,7 +96,7 @@ select { width: 200px; text-align-last:center; }
 }
 
 .cardIMG:hover {
-    transform: scale(1.5);
+    transform: scale(2);
 }
 
 .horizontalFlex {

@@ -172,3 +172,10 @@ function updateSummary() {
     let keyword = params.toString().split('&')[0].split('=')[1]
     document.getElementById('summary').innerHTML = num_entries + ' Results found for <i>' + keyword.replace(/\+/g, ' ') + '</i><hr>'
 }
+
+function expandCard(cardNum) {
+    let arr = document.getElementById(cardNum).getElementsByClassName('canHide')
+    for (var i = 0; i < arr.length; i++){
+        arr[i].style.display = 'block'
+    }
+}
