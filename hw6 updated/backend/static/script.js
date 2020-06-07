@@ -145,6 +145,27 @@ function setAllData() {
     }
 }
 
+function showMore() {
+    document.getElementById('ShowMore').style.display = 'none'
+    document.getElementById('ShowLess').style.display = 'block'
+    let itemNum = 0
+    for (var cardNum = 0; cardNum < numValidCards; cardNum++) {
+        let card = document.getElementById(cardNum)
+        card.style.display = 'flex'
+        setData(cardNum,itemNum)
+        itemNum++
+    }
+}
+
+function showLess() {
+    document.getElementById('ShowLess').style.display = 'none'
+    document.getElementById('ShowMore').style.display = 'block'
+    for (var cardNum = 3; cardNum < numValidCards; cardNum++) {
+        let card = document.getElementById(cardNum)
+        card.style.display = 'none'
+    }
+}
+
 function updateSummary() {
     let keyword = params.toString().split('&')[0].split('=')[1]
     document.getElementById('summary').innerHTML = num_entries + ' Results found for <i>' + keyword.replace(/\+/g, ' ') + '</i><hr>'
