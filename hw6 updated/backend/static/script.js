@@ -179,3 +179,11 @@ function expandCard(cardNum) {
         arr[i].style.display = 'block'
     }
 }
+
+function closeButton(cardNum) {
+    let arr = document.getElementById(cardNum).getElementsByClassName('canHide')
+    console.log('button pressed')
+    for (var i = 0; i < arr.length; i++){
+        arr[i].style.display = 'none'
+    }
+}
