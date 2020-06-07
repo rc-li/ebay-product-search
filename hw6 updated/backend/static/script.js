@@ -121,6 +121,7 @@ function setData(cardNum, itemNum) {
 function setAllData() {
     let summary = document.getElementById('summary')
     summary.style.display = 'block'
+    document.getElementById('cards').style.display = 'block'
     let cardToShow;
     document.getElementById('ShowMore').style.display = 'none'
     document.getElementById('ShowLess').style.display = 'none'
