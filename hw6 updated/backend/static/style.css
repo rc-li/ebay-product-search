@@ -156,3 +156,10 @@
     padding-top: 20px;
     flex: 1;
 }
+
+.titleText {
+    width: 500px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

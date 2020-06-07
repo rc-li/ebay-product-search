@@ -53,7 +53,7 @@ function setData(cardNum, itemNum) {
     // set the product link
     let div = card.getElementsByTagName('div')[0]
     let a = div.getElementsByTagName('a')[0]
-    a.innerHTML = searchResult.item[itemNum].title[0]
+    a.innerHTML = "<p class='titleText'>" + searchResult.item[itemNum].title[0] + '</p>'
     a.href = searchResult.item[itemNum].viewItemURL[0]
 
     // set the category
