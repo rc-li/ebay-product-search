@@ -1,5 +1,5 @@
 {
-  "name": "angular",
+  "name": "new-proj",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -12,17 +12,17 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~9.1.11",
+    "@angular/cdk": "^9.2.4",
     "@angular/common": "~9.1.11",
     "@angular/compiler": "~9.1.11",
     "@angular/core": "~9.1.11",
     "@angular/forms": "~9.1.11",
+    "@angular/material": "^9.2.4",
     "@angular/platform-browser": "~9.1.11",
     "@angular/platform-browser-dynamic": "~9.1.11",
     "@angular/router": "~9.1.11",
-    "@ng-bootstrap/ng-bootstrap": "^2.0.0-alpha.0",
     "@ng-bootstrap/schematics": "^2.0.0-alpha.1",
     "express": "^4.17.1",
-    "jquery": "^3.5.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
