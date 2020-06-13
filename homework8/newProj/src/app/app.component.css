@@ -6,10 +6,28 @@
     font-weight: 600;
 }
 
-/* #form {
+#form {
     width: 700px;
     margin: auto;
-} */
+}
+
+#ebayLogo {
+    display: block;
+    width: 300px;
+    height: auto;
+    object-fit: contain;
+    margin: auto;
+}
+
+.floatRight {
+    display: block;
+    float: right;
+}
+
+.card {
+    display: block;
+    width: 200px;
+}
 
 :app-root {             
 
