@@ -23,3 +23,11 @@
 .price {
     margin: 0px;
 }
+
+.usr_row {
+    display: flex;
+}
+
+.usr_column {
+    padding: 5px;
+}
