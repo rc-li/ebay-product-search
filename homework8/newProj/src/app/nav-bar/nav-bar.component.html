@@ -1,1 +1,5 @@
-<p>nav-bar works!</p>
+<ul>
+  <li *ngFor="let item of collection | paginate: { itemsPerPage: 5, currentPage: p }"> <app-card></app-card> </li>
+</ul>
+
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
