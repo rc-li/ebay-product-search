@@ -6,11 +6,19 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatSliderModule } from '@angular/material/slider';
+import { CardsComponent } from './cards/cards.component';
+import { CardComponent } from './card/card.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { FormComponent } from './form/form.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CardsComponent,
+    CardComponent,
+    NavBarComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,25 @@
+.card {
+    width: 700px;
+    margin: auto;
+    background-color: rgb(206, 206, 206);
+    border-radius: 0px;
+    display: flex;
+    flex-direction: row;
+}
+
+.cardIMG {
+    width: 15%;
+    height: auto;
+    object-fit: contain;
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.cardText {
+    display: inline;
+}
+
+.price {
+    margin: 0px;
+}
