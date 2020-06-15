@@ -1,10 +1,9 @@
 <div class="module">
+  <button (click)="displayData()"></button>
+  <p class="navBarText">Results for </p>
   <pagination-controls class="navBar" (pageChange)="p = $event"></pagination-controls>
   <ul>
     <li *ngFor="let item of collection | paginate: { itemsPerPage: 5, currentPage: p }"> <app-card></app-card> </li>
   </ul>
 
 </div>
-
-
-

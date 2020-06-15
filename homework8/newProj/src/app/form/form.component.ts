@@ -13,6 +13,7 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  data:any;
 
   valueCheck():boolean {
     let lowPriceStr = (<HTMLInputElement>document.getElementById('lowPrice')).value
@@ -42,13 +43,13 @@ export class FormComponent implements OnInit {
       req.open("GET", "/q?" + params, false)
       req.send();
       let res = req.responseText
-      console.log(res)
       let obj = JSON.parse(res)
       let num_entries = obj.numEntries
       let searchResult = obj.searchResult
       let numValidCards = obj.validCards
 
       this.dataService.setData(obj)
+      this.data = obj
       // updateSummary();
       // setAllData();
     }

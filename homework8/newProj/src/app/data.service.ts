@@ -11,7 +11,7 @@ export class DataService {
   data:any;
 
   setData(data:any): void {
-    console.log("I'm doing something")
+    // console.log("I'm doing something")
     if (data) {
       this.data = data
     }

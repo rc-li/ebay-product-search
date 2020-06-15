@@ -16,3 +16,9 @@ li {
 .navBar {
     float: right;
 }
+
+.navBarText {
+    float: left;
+    font-size: large;
+    font-weight: 550;
+}

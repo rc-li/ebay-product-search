@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from "../data.service";
 
 @Component({
@@ -11,6 +11,12 @@ export class NavBarComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
+  }
+
+  @Input() data: any
+
+  displayData(): void {
+    console.log(this.data)
   }
 
   p: number = 1;
