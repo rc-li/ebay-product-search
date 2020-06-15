@@ -28,6 +28,27 @@ export class FormComponent implements OnInit {
     }
     else return true
   }
+
+  callFetch() {
+    if (this.valueCheck()){
+        const formData = new FormData(form)
+        // str:String = String.toString(formData)
+        let params = new URLSearchParams(formData)
+        console.log(params.toString())
+    
+        let req = new XMLHttpRequest()
+        req.open("GET", "/q?" + params, false)
+        req.send();
+        let res = req.responseText
+        // let obj = JSON.parse(res)
+        // let num_entries = obj.numEntries
+        // let searchResult = obj.searchResult
+        // let numValidCards = obj.validCards
+    
+        // updateSummary();
+        // setAllData();
+    }
+}
 }
 
 
