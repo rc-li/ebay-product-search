@@ -44,9 +44,6 @@ export class FormComponent implements OnInit {
       req.send();
       let res = req.responseText
       let obj = JSON.parse(res)
-      let num_entries = obj.numEntries
-      let searchResult = obj.searchResult
-      let numValidCards = obj.validCards
 
       this.dataService.setData(obj)
       this.data = obj

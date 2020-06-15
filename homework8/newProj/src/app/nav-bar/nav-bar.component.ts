@@ -20,5 +20,6 @@ export class NavBarComponent implements OnInit {
   }
 
   p: number = 1;
-  collection: any[] = ['a','a','a','a','a','a','a','b'];
+  collection: any[] = this.data;
+  // collection: any[] = [1,1,2,3];
 }
