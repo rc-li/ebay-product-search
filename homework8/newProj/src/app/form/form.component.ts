@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from "../data.service";
 
 @Component({
   selector: 'app-form',
@@ -7,12 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
   }
 
-  valueCheck() {
+
+  valueCheck():boolean {
     let lowPriceStr = (<HTMLInputElement>document.getElementById('lowPrice')).value
     let highPriceStr = (<HTMLInputElement>document.getElementById('highPrice')).value
     let lowPrice = parseFloat(lowPriceStr)
@@ -29,7 +31,7 @@ export class FormComponent implements OnInit {
   }
 
 
-  callFetch() {
+  callFetch():void {
     if (this.valueCheck()) {
       // str:String = String.toString(formData)
       const formData = new FormData(form)
@@ -46,6 +48,7 @@ export class FormComponent implements OnInit {
       let searchResult = obj.searchResult
       let numValidCards = obj.validCards
 
+      this.dataService.setData(obj)
       // updateSummary();
       // setAllData();
     }
