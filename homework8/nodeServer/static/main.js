@@ -493,14 +493,17 @@ class FormComponent {
             //@ts-ignore
             let params = new URLSearchParams(formData);
             console.log(params.toString());
-            let req = new XMLHttpRequest();
-            req.open("GET", "/q?" + params, false);
-            req.send();
-            let obj = JSON.parse(req.responseText);
-            // let res = req.responseText
-            // this.dataService.setData(obj)
-            this.data = obj.searchResult.item;
-            this.dataLength = this.data.length;
+            // let req = new XMLHttpRequest()
+            // req.open("GET", "/q?" + params, false)
+            // req.send();
+            // let obj = JSON.parse(req.responseText)
+            fetch("/q?" + params)
+                .then(response => response.json())
+                .then((response) => {
+                this.data = response;
+            });
+            // this.data = obj.searchResult.item
+            // this.dataLength = this.data.length
         }
     }
 }

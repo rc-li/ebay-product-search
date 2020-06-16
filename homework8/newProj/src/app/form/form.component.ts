@@ -29,6 +29,7 @@ export class FormComponent implements OnInit {
     else return true
   }
   
+  response: any;
   data: any;
   dataLength: number;
 
@@ -41,19 +42,18 @@ export class FormComponent implements OnInit {
       //@ts-ignore
       let params = new URLSearchParams(formData)
       console.log(params.toString())
-      // let req = new XMLHttpRequest()
-      // req.open("GET", "/q?" + params, false)
-      // req.send();
-      // let obj = JSON.parse(req.responseText)
 
       fetch("/q?" + params)
         .then(response => response.json())
         .then((response) => {
-          this.data = response
+          this.response = response
+        })
+        .then(() => {
+          this.data = this.response.searchResult.item
+          this.dataLength = this.data.length
         })
 
-      // this.data = obj.searchResult.item
-      // this.dataLength = this.data.length
+      
     }
   }
 }
