@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { DataService } from "../data.service";
+import { URLSearchParams } from '@angular/http';
 
 @Component({
   selector: 'app-form',
@@ -35,10 +36,12 @@ export class FormComponent implements OnInit {
   callFetch():void {
     if (this.valueCheck()) {
       // str:String = String.toString(formData)
-      const formData = new FormData(form)
+      let form = document.getElementsByTagName('form')[0]
+      let formData = new FormData(form)
+      
+      //@ts-ignore
       let params = new URLSearchParams(formData)
       console.log(params.toString())
-
       let req = new XMLHttpRequest()
       req.open("GET", "/q?" + params, false)
       req.send();
