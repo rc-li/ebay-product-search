@@ -1,6 +1,5 @@
 import { Component, OnInit} from '@angular/core';
 import { DataService } from "../data.service";
-import { URLSearchParams } from '@angular/http';
 
 @Component({
   selector: 'app-form',
