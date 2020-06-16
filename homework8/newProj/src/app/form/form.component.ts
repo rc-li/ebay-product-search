@@ -13,8 +13,6 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  data:any;
-
   valueCheck():boolean {
     let lowPriceStr = (<HTMLInputElement>document.getElementById('lowPrice')).value
     let highPriceStr = (<HTMLInputElement>document.getElementById('highPrice')).value
@@ -30,7 +28,9 @@ export class FormComponent implements OnInit {
     }
     else return true
   }
-
+  
+  data: any;
+  dataLength: number;
 
   callFetch():void {
     if (this.valueCheck()) {
@@ -45,8 +45,9 @@ export class FormComponent implements OnInit {
       let res = req.responseText
       let obj = JSON.parse(res)
 
-      this.dataService.setData(obj)
+      // this.dataService.setData(obj)
       this.data = obj.searchResult.item
+      this.dataLength = this.data.length
     }
   }
 }

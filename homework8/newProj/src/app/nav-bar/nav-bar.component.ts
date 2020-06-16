@@ -13,6 +13,7 @@ export class NavBarComponent implements OnInit {
   }
 
   @Input() data: any
+  @Input() dataLength: number
   p: number = 1;
 
   displayData(): void {
