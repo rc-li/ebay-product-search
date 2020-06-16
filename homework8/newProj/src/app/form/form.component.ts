@@ -44,8 +44,8 @@ export class FormComponent implements OnInit {
       let req = new XMLHttpRequest()
       req.open("GET", "/q?" + params, false)
       req.send();
-      let res = req.responseText
-      let obj = JSON.parse(res)
+      let obj = JSON.parse(req.responseText)
+      // let res = req.responseText
 
       // this.dataService.setData(obj)
       this.data = obj.searchResult.item

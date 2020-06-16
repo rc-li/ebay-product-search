@@ -26,8 +26,6 @@ app.get('/q?', function (req, res) {
     requestEbay.open("GET", theURL, false);
     requestEbay.send();
     responseEbay = requestEbay.responseText
-
-
     res.send(responseEbay)
 
 })
