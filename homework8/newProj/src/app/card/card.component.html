@@ -1,35 +1,63 @@
 <div class="card">
-  <img src="../../assets/img/ebayDefault.png" alt="" class="cardIMG">
+  <img src="{{cardData.galleryURL[0]}}" alt="" class="cardIMG">
   <div class="cardText">
     <div class="">
       <a href="" target="_blank">
-        FinalFantasy VLL: Remake - PlayStation4New
+        {{cardData.title[0]}}
       </a>
     </div>
     <div class="">
-      <p class="price">Price: $349.95</p>
-      <p class="priceTag_loc"><i>Sunny Valley </i></p>
+      <p class="price"><b>Price: </b> {{cardData.sellingStatus[0].convertedCurrentPrice[0].__value__}}</p>
+      <p class="priceTag_loc"><i>{{cardData.location[0]}}</i></p>
     </div>
     <mat-tab-group>
       <mat-tab label="Basic Info">
         <div class="usr_row">
           <div class="usr_column">
-            <p>price</p>
-            <p>condition</p>
+            <p>Category Name</p>
+            <p>Condition</p>
           </div>
           <div class="usr_column">
-            <p>30 dollars</p>
-            <p>new</p>
+            <p>{{cardData.primaryCategory[0].categoryName[0]}}</p>
+            <p>{{cardData.condition[0].conditionDisplayName[0]}}</p>
           </div>
         </div>
       </mat-tab>
       <mat-tab label="Shipping Info">
-        <h1>Some more tab content</h1>
-        <p>...</p>
+        <div class="usr_row">
+          <div class="usr_column">
+            <p>ShippingType</p>
+            <p>ShippingCost</p>
+            <p>ShipToLocations</p>
+            <p>ExpeditedShipping</p>
+            <p>OneDayShippingAvailable</p>
+          </div>
+          <div class="usr_column">
+            <p>{{cardData.shippingInfo[0].shippingType[0]}}</p>
+            <p>{{cardData.shippingInfo[0].shippingServiceCost[0].__value__}}</p>
+            <p>{{cardData.shippingInfo[0].shipToLocations[0]}}</p>
+            <p>{{cardData.shippingInfo[0].expeditedShipping[0]}}</p>
+            <p>{{cardData.shippingInfo[0].oneDayShippingAvailable[0]}}</p>
+          </div>
+        </div>
       </mat-tab>
       <mat-tab label="Listing Info">
-        <h1>Some more tab content</h1>
-        <p>...</p>
+        <div class="usr_row">
+          <div class="usr_column">
+            <p>BestOfferEnabled</p>
+            <p>BuyItNowAvailable</p>
+            <p>ListingType</p>
+            <p>Gift</p>
+            <p>WatchCount</p>
+          </div>
+          <div class="usr_column">
+            <p>{{cardData.listingInfo[0].bestOfferEnabled[0]}}</p>
+            <p>{{cardData.listingInfo[0].buyItNowAvailable[0]}}</p>
+            <p>{{cardData.listingInfo[0].listingType[0]}}</p>
+            <p>{{cardData.listingInfo[0].gift[0]}}</p>
+            <p>{{cardData.listingInfo[0].watchCount[0]}}</p>
+          </div>
+        </div>
       </mat-tab>
     </mat-tab-group>
   </div>
