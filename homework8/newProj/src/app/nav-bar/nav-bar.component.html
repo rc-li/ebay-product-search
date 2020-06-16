@@ -3,7 +3,7 @@
   <p class="navBarText">Results for </p>
   <pagination-controls class="navBar" (pageChange)="p = $event"></pagination-controls>
   <ul>
-    <li *ngFor="let item of collection | paginate: { itemsPerPage: 5, currentPage: p }">
+    <li *ngFor="let item of data | paginate: { itemsPerPage: 5, currentPage: p }">
       <app-card></app-card>
     </li>
   </ul>

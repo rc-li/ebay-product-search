@@ -46,9 +46,7 @@ export class FormComponent implements OnInit {
       let obj = JSON.parse(res)
 
       this.dataService.setData(obj)
-      this.data = obj
-      // updateSummary();
-      // setAllData();
+      this.data = obj.searchResult.item
     }
   }
 }
