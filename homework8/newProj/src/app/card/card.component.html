@@ -43,8 +43,13 @@
             <p>{{cardData.shippingInfo[0].shippingType[0]}}</p>
             <p>{{cardData.shippingInfo[0].shippingServiceCost[0].__value__}}</p>
             <p>{{cardData.shippingInfo[0].shipToLocations[0]}}</p>
-            <p>{{cardData.shippingInfo[0].expeditedShipping[0]}}</p>
-            <p>{{cardData.shippingInfo[0].oneDayShippingAvailable[0]}}</p>
+            <ng-template #redCross><p class="material-icons redCross">clear</p></ng-template>
+            <p *ngIf="cardData.shippingInfo[0].expeditedShipping[0] == 'true';else redCross">
+              <span class="material-icons greenTick">done</span>
+            </p>
+            <p *ngIf="cardData.shippingInfo[0].oneDayShippingAvailable[0] == 'true';else redCross">
+              <span class="material-icons greenTick">done</span>
+            </p>
           </div>
         </div>
       </mat-tab>
@@ -57,11 +62,17 @@
             <p>Gift</p>
             <p>WatchCount</p>
           </div>
-          <div class="usr_column">
-            <p>{{cardData.listingInfo[0].bestOfferEnabled[0]}}</p>
-            <p>{{cardData.listingInfo[0].buyItNowAvailable[0]}}</p>
+          <div class="usr_column pAlign">
+            <p *ngIf="cardData.listingInfo[0].bestOfferEnabled[0] == 'true';else redCross">
+              <span class="material-icons greenTick">done</span>
+            </p>
+            <p *ngIf="cardData.listingInfo[0].buyItNowAvailable[0] == 'true';else redCross">
+              <span class="material-icons greenTick">done</span>
+            </p>
             <p>{{cardData.listingInfo[0].listingType[0]}}</p>
-            <p>{{cardData.listingInfo[0].gift[0]}}</p>
+              <p *ngIf="cardData.listingInfo[0].gift[0] == 'true';else redCross">
+                <span class="material-icons greenTick">done</span>
+              </p>
             <p>{{cardData.listingInfo[0].watchCount[0]}}</p>
           </div>
         </div>

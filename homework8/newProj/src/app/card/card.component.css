@@ -39,3 +39,16 @@
     display: inline;
     margin: 10px;
 }
+
+.greenTick {
+    color: green;
+}
+
+.redCross {
+    color: red;
+    display: block;
+}
+
+.pAlign p {
+    margin-bottom: 8px;
+}
