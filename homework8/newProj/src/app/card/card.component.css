@@ -10,12 +10,13 @@
 }
 
 .cardIMG {
-    width: 15%;
-    height: auto;
+    width: 100px;
+    height: initial;
     object-fit: contain;
     margin-top: 5px;
     margin-left: 10px;
     margin-right: 10px;
+    display: block;
 }
 
 .cardText {
@@ -32,4 +33,9 @@
 
 .usr_column {
     padding: 5px;
+}
+
+.btn {
+    display: inline;
+    margin: 10px;
 }

@@ -1,5 +1,7 @@
 <div class="card">
-  <img src="{{cardData.galleryURL[0]}}" alt="" class="cardIMG">
+  <div>
+    <img src="{{cardData.galleryURL[0]}}" alt="" class="cardIMG">
+  </div>
   <div class="cardText">
     <div class="">
       <a href="" target="_blank">
@@ -8,9 +10,10 @@
     </div>
     <div class="">
       <p class="price"><b>Price: </b> {{cardData.sellingStatus[0].convertedCurrentPrice[0].__value__}}</p>
-      <p class="priceTag_loc"><i>{{cardData.location[0]}}</i></p>
+      <span class="priceTag_loc"><i>{{cardData.location[0]}}</i></span>
+      <button type="button" class="btn btn-light" (click)="click()">{{buttonText}}</button>
     </div>
-    <mat-tab-group>
+    <mat-tab-group *ngIf="displayTab">
       <mat-tab label="Basic Info">
         <div class="usr_row">
           <div class="usr_column">

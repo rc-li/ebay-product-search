@@ -15,3 +15,7 @@
     display: block;
     float: right;
 }
+
+.floatRight a {
+    margin: 5px;
+}
