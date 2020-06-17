@@ -1,22 +1,31 @@
 .card {
-    width: 700px;
-    margin: auto;
+    /* width: 700px; */
+    /* margin: auto; */
     margin-top: 10px;
     margin-bottom: 10px;
     background-color: rgb(206, 206, 206);
     border-radius: 0px;
     display: flex;
     flex-direction: row;
+    padding: 5px;
 }
 
 .cardIMG {
-    width: 100px;
+    /* width: 100px; */
     height: initial;
     object-fit: contain;
-    margin-top: 5px;
-    margin-left: 10px;
-    margin-right: 10px;
+    /* margin-top: 5px; */
+    /* margin-left: 10px; */
+    /* margin-right: 10px; */
     display: block;
+}
+
+.productLink {
+    font-size: 17px;
+}
+
+.image {
+    object-fit: contain;
 }
 
 .cardText {

@@ -1,8 +1,8 @@
 .module {
     margin-top: 100px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 700px;
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    /* width: 700px; */
 }
 
 ul {
@@ -14,11 +14,11 @@ li {
 }
 
 .navBar {
-    float: right;
+    /* float: right; */
 }
 
 .navBarText {
-    float: left;
+    /* float: left; */
     font-size: large;
     font-weight: 550;
 }
