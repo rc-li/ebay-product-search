@@ -59,6 +59,10 @@ export class FormComponent implements OnInit {
       
     }
   }
+
+  formReset(): void {
+    document.getElementsByTagName('form')[0].reset()
+  }
 }
 
 
