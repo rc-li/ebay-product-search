@@ -1,10 +1,14 @@
 <div class="card">
   <div>
-    <img src="{{cardData.galleryURL[0]}}" alt="" class="cardIMG">
+    <img *ngIf="cardData.galleryURL[0] != 'https://thumbs1.ebaystatic.com/pict/04040_0.jpg'; else defaultPic"
+    src="{{cardData.galleryURL[0]}}" class="cardIMG">
+    <ng-template #defaultPic>
+      <img src="../../assets/img/ebayDefault.png" class="cardIMG">  
+    </ng-template>
   </div>
   <div class="cardText">
     <div class="">
-      <a href="" target="_blank">
+      <a href="{{cardData.viewItemURL[0]}}" target="_blank">
         {{cardData.title[0]}}
       </a>
     </div>
