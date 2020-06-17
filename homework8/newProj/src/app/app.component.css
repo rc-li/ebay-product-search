@@ -1,7 +1,8 @@
 
 #ebayLogo {
     display: block;
-    width: 300px;
+    padding-top: 20px;
+    /* width: 300px; */
     height: auto;
     object-fit: contain;
     margin: auto;

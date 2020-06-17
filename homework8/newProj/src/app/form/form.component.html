@@ -1,102 +1,109 @@
-<form id="form">
-  <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 col-form-label"><b>Key words<span style="color:red">*</span></b></label>
-    <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail3" placeholder="Enter keywords" name="keyword">
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <form id="form">
+        <div class="form-group row">
+          <label for="inputEmail3" class="col-sm-2 col-form-label"><b>Key words<span style="color:red">*</span></b></label>
+          <div class="col-sm-10">
+            <input type="email" class="form-control" id="inputEmail3" placeholder="Enter keywords" name="keyword">
+          </div>
+        </div>
+      
+        <div class="form-group row">
+          <label for="inputPassword3" class="col-sm-2 col-form-label">Price Range</label>
+          <div class="col">
+            <input type="number" class="form-control" name="lowPrice" id="lowPrice" placeholder="Min Price" name="lowPrice">
+          </div>
+          <div class="col">
+            <input type="number" class="form-control" id="highPrice" placeholder="Max Price" name="highPrice">
+          </div>
+        </div>
+      
+        <fieldset class="form-group">
+          <div class="row">
+            <legend class="col-form-label col-sm-2 pt-0">Condition</legend>
+            <div class="col-sm-10">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="on" name="isNew">
+                <label class="form-check-label" for="inlineCheckbox1">New</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="on" name="isUsed">
+                <label class="form-check-label" for="inlineCheckbox2">Used</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="on" name="isVrGd">
+                <label class="form-check-label" for="inlineCheckbox3">Very Good</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="on" name="isGood">
+                <label class="form-check-label" for="inlineCheckbox4">Good</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="on" name="isAccptb">
+                <label class="form-check-label" for="inlineCheckbox5">Acceptable</label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      
+        <fieldset class="form-group">
+          <div class="row">
+            <legend class="col-form-label col-sm-2 pt-0">Seller</legend>
+            <div class="col-sm-10">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="on" name="isRtAccptd">
+                <label class="form-check-label" for="inlineCheckbox1">Return Accepted</label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      
+        <fieldset class="form-group">
+          <div class="row">
+            <legend class="col-form-label col-sm-2 pt-0">Shipping</legend>
+            <div class="col-sm-10">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="on" name="isFree">
+                <label class="form-check-label" for="inlineCheckbox1">Free</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="on" name="isExpdtd">
+                <label class="form-check-label" for="inlineCheckbox1">Expedited</label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      
+        <fieldset class="form-group">
+          <div class="row">
+            <legend class="col-form-label col-sm-2 pt-0">Sort Order</legend>
+            <div class="col-sm-10">
+              <select class="custom-select" name="Sort by: ">
+                <option value="bestMatch">Best Match</option>
+                <option value="highestFirst">Price: highest first</option>
+                <option value="pPlusS_h">Price + Shipping: highest first</option>
+                <option value="pPlusS_l">Price + Shipping: lowest first</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+      
+        <div class="floatRight">
+          <a href="#" class="btn btn-primary btn-lg active" 
+          role="button" aria-pressed="true" (click)="callFetch()">
+          <span class="material-icons">search</span>Search</a>
+      
+          <a href="#" class="btn btn-secondary btn-lg active" 
+          role="button" aria-pressed="true">
+          <span class="material-icons">clear_all</span>Clear</a>
+        </div>
+      
+      </form>
     </div>
   </div>
+</div>
 
-  <div class="form-group row">
-    <label for="inputPassword3" class="col-sm-2 col-form-label">Price Range</label>
-    <div class="col">
-      <input type="number" class="form-control" name="lowPrice" id="lowPrice" placeholder="Min Price" name="lowPrice">
-    </div>
-    <div class="col">
-      <input type="number" class="form-control" id="highPrice" placeholder="Max Price" name="highPrice">
-    </div>
-  </div>
-
-  <fieldset class="form-group">
-    <div class="row">
-      <legend class="col-form-label col-sm-2 pt-0">Condition</legend>
-      <div class="col-sm-10">
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="on" name="isNew">
-          <label class="form-check-label" for="inlineCheckbox1">New</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="on" name="isUsed">
-          <label class="form-check-label" for="inlineCheckbox2">Used</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="on" name="isVrGd">
-          <label class="form-check-label" for="inlineCheckbox3">Very Good</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="on" name="isGood">
-          <label class="form-check-label" for="inlineCheckbox4">Good</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="on" name="isAccptb">
-          <label class="form-check-label" for="inlineCheckbox5">Acceptable</label>
-        </div>
-      </div>
-    </div>
-  </fieldset>
-
-  <fieldset class="form-group">
-    <div class="row">
-      <legend class="col-form-label col-sm-2 pt-0">Seller</legend>
-      <div class="col-sm-10">
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="on" name="isRtAccptd">
-          <label class="form-check-label" for="inlineCheckbox1">Return Accepted</label>
-        </div>
-      </div>
-    </div>
-  </fieldset>
-
-  <fieldset class="form-group">
-    <div class="row">
-      <legend class="col-form-label col-sm-2 pt-0">Shipping</legend>
-      <div class="col-sm-10">
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="on" name="isFree">
-          <label class="form-check-label" for="inlineCheckbox1">Free</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="on" name="isExpdtd">
-          <label class="form-check-label" for="inlineCheckbox1">Expedited</label>
-        </div>
-      </div>
-    </div>
-  </fieldset>
-
-  <fieldset class="form-group">
-    <div class="row">
-      <legend class="col-form-label col-sm-2 pt-0">Sort Order</legend>
-      <div class="col-sm-10">
-        <select class="custom-select" name="Sort by: ">
-          <option value="bestMatch">Best Match</option>
-          <option value="highestFirst">Price: highest first</option>
-          <option value="pPlusS_h">Price + Shipping: highest first</option>
-          <option value="pPlusS_l">Price + Shipping: lowest first</option>
-        </select>
-      </div>
-    </div>
-  </fieldset>
-
-  <div class="floatRight">
-    <a href="#" class="btn btn-primary btn-lg active" 
-    role="button" aria-pressed="true" (click)="callFetch()">
-    <span class="material-icons">search</span>Search</a>
-
-    <a href="#" class="btn btn-secondary btn-lg active" 
-    role="button" aria-pressed="true">
-    <span class="material-icons">clear_all</span>Clear</a>
-  </div>
-
-</form>
 
 <app-nav-bar [data]="data" [dataLength]="dataLength"></app-nav-bar>
 
