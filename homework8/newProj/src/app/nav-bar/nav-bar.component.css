@@ -14,11 +14,13 @@ li {
 }
 
 .navBar {
-    /* float: right; */
+    float: right;
+    font-size: small;
 }
 
 .navBarText {
     /* float: left; */
     font-size: large;
     font-weight: 550;
+    padding-left: 15px;
 }
