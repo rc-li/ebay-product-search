@@ -10,6 +10,14 @@
     padding: 5px;
 }
 
+@media screen and (max-device-width:600px){
+    .card{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
 .cardIMG {
     /* width: 100px; */
     height: initial;
