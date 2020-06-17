@@ -29,6 +29,7 @@ export class FormComponent implements OnInit {
     else return true
   }
   
+  keyword: string;
   response: any;
   data: any;
   dataLength: number;
@@ -51,6 +52,8 @@ export class FormComponent implements OnInit {
         .then(() => {
           this.data = this.response.searchResult.item
           this.dataLength = this.data.length
+          this.keyword = document.getElementsByTagName('input')[0].value
+          console.log(this.keyword)
         })
 
       

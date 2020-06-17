@@ -14,10 +14,11 @@ export class NavBarComponent implements OnInit {
 
   @Input() data: any
   @Input() dataLength: number
+  @Input() keyword: string
   p: number = 1;
 
   displayData(): void {
-    console.log(this.data)
+    console.log(this.keyword)
   }
 
 }

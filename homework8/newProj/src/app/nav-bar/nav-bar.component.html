@@ -1,7 +1,7 @@
 <div *ngIf="dataLength" class="col-sm-8 offset-sm-2 module">
   <!-- <button class="btn btn-light" (click)="displayData()">display data</button> -->
   <div class="row">
-    <p class="navBarText">Results for </p>
+    <p class="navBarText">Results for {{keyword}} </p>
     <pagination-controls class="navBar col-9" (pageChange)="p = $event"></pagination-controls>
   </div>
   
