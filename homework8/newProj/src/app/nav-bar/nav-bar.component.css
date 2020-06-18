@@ -24,3 +24,21 @@ li {
     font-weight: 550;
     padding-left: 15px;
 }
+
+.pages1{
+    display: flex;
+}
+
+.pages2{
+    display: none;
+}
+
+@media screen and (max-device-width:600px){
+    .pages1{
+        display: none;
+    }
+    
+    .pages2{
+        display: flex;
+    }
+}
