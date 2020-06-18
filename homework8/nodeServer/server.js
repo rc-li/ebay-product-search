@@ -9,8 +9,8 @@ const debug = require('debug')('myapp:server');
 
 const port = process.env.PORT || 3000;
 
-// app.use(express.static('../newProj/dist/newProj'))
-app.use(express.static('./static'))
+app.use(express.static('../newProj/dist/newProj'))
+// app.use(express.static('./static'))
 
 app.listen(port, () => {
     //  console.log('Server is up and running on port ', port);
@@ -50,7 +50,7 @@ app.get('/q?', function (req, res) {
         url = url + 'itemFilter(' + counter + ').paramValue=USD&'
         counter = counter + 1
     }
-    console.log(url)
+    // console.log(url)
 
     if (highPrice != '') {
         url = url + 'itemFilter(' + counter + ').name=MaxPrice&'
@@ -118,8 +118,23 @@ app.get('/q?', function (req, res) {
 
     fetch(url)
         .then(response => response.json())
-        .then((r) => processData(r))
-        .then(data => res.send(data))
+        .then((r) => {
+            console.log("====================before processing =======================")
+            console.log(r)
+            r = processData(r)
+            console.log("===================== after processing ========================")
+            console.log(r)
+            // return processData(r)
+            res.send(r)
+        })
+        // .then((data) => {
+        //     console.log("print the data before sending back to Angular")
+        //     console.log(data)
+        //     res.send({data})
+        // })
+        // .then(()=> {
+        //     console.log("data sent back to Angular")
+        // })
 
 })
 
@@ -130,6 +145,7 @@ function processData(r) {
     let searchResult = r["findItemsAdvancedResponse"][0]["searchResult"][0]
 
     function checkEmpty(itemNum) {
+        // console.log('inside checkEmpty(), item number ' + itemNum)
         try {
             searchResult["item"][itemNum]["galleryURL"][0]
             searchResult["item"][itemNum]["title"][0]
@@ -159,9 +175,11 @@ function processData(r) {
     }
     function prepareData() {
         let data = {}
+        // console.log(data)
         let item = []
         let cardNum = 0
         let itemNum = 0
+        // console.log("preparing data for item " + itemNum)
         while (cardNum < 100 && itemNum < num_entries) {
             if (checkEmpty(itemNum)) {
                 item.push(searchResult["item"][itemNum])
@@ -173,10 +191,12 @@ function processData(r) {
         data = {"searchResult":_item}
         data['numEntries']=num_entries
         data['validCards'] = cardNum
+        // console.log(data)
         return data
     }
 
-    data = prepareData()
-    return data
+    r = prepareData()
+    // console.log(r)
+    return r
 }
 

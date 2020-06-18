@@ -79,24 +79,39 @@ export class FormComponent implements OnInit {
       let params = new URLSearchParams(formData)
       console.log(params.toString())
 
-      fetch("/q?" + params)
-        .then(response => response.json())
-        .then((response) => {
-          this.response = response
-        })
-        .then(() => {
-          this.data = this.response.searchResult.item
-          this.dataLength = this.data.length
-          this.keyword = document.getElementsByTagName('input')[0].value
-          console.log(this.keyword)
+      // fetch("/q?" + params)
+      // .then(response => response.json())
+      // .then(data => console.log(data));
 
-          if (this.data.length == 0) {
-            this.responseEmptyAlert = true
-          }
-          else {
-            this.responseEmptyAlert = false
-          }
-        })
+      fetch("/q?" + params)
+      .then(response => response.json())
+      // .then(function jsonify(response) {
+      //   console.log("this function did get called, right?")
+      //   response.json()
+      //   console.log(response)
+      //   return response
+      // })
+      // .then((data) => {
+      //   console.log(data)
+      //   this.response = data
+      // })
+      .then(data => {
+        console.log(data)
+        this.response = data
+      })
+      .then(() => {
+        this.data = this.response.searchResult.item
+        this.dataLength = this.data.length
+        this.keyword = document.getElementsByTagName('input')[0].value
+        console.log(this.keyword)
+
+        if (this.data.length == 0) {
+          this.responseEmptyAlert = true
+        }
+        else {
+          this.responseEmptyAlert = false
+        }
+      })
     }
   }
 
