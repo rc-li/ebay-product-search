@@ -5,17 +5,9 @@ import urllib
 import json
 app = Flask(__name__, static_url_path="")
 
-# need to
-# 1. parse URL that client sent
-# 2. contruct URL to send to eBay
-# 3. parse eBay response
-# 4. send back to client
-
-
 @app.route('/')
 def hello():
     return app.send_static_file('index.html')
-
 
 @app.route('/q')
 def toEbay():
@@ -123,6 +115,15 @@ def toEbay():
             searchResult["item"][itemNum]["shippingInfo"][0]['shippingServiceCost'][0]['__value__']
             searchResult["item"][itemNum]["sellingStatus"][0]['convertedCurrentPrice'][0]['__value__']
             searchResult["item"][itemNum]["location"][0]
+            searchResult["item"][itemNum]["shippingInfo"][0]["shippingType"][0]
+            searchResult["item"][itemNum]["shippingInfo"][0]["shipToLocations"][0]
+            searchResult["item"][itemNum]["shippingInfo"][0]["expeditedShipping"][0]
+            searchResult["item"][itemNum]["shippingInfo"][0]["oneDayShippingAvailable"][0]
+            searchResult["item"][itemNum]["listingInfo"][0]["bestOfferEnabled"][0]
+            searchResult["item"][itemNum]["listingInfo"][0]["buyItNowAvailable"][0]
+            searchResult["item"][itemNum]["listingInfo"][0]["listingType"][0]
+            searchResult["item"][itemNum]["listingInfo"][0]["gift"][0]
+            searchResult["item"][itemNum]["listingInfo"][0]["watchCount"][0]
             return True
         except:
             return False
