@@ -97,13 +97,14 @@ export class FormComponent implements OnInit {
             this.responseEmptyAlert = false
           }
         })
-
-      
     }
   }
 
   formReset(): void {
     document.getElementsByTagName('form')[0].reset()
+    this.emptyKeywordAlert = false
+    this.minmaxAlert = false
+    this.responseEmptyAlert = false
   }
 }
 
