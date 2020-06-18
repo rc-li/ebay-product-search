@@ -145,7 +145,7 @@ function processData(r) {
     let searchResult = r["findItemsAdvancedResponse"][0]["searchResult"][0]
 
     function checkEmpty(itemNum) {
-        // console.log('inside checkEmpty(), item number ' + itemNum)
+        console.log('inside checkEmpty(), item number ' + itemNum)
         try {
             searchResult["item"][itemNum]["galleryURL"][0]
             searchResult["item"][itemNum]["title"][0]
@@ -180,7 +180,7 @@ function processData(r) {
         let cardNum = 0
         let itemNum = 0
         // console.log("preparing data for item " + itemNum)
-        while (cardNum < 100 && itemNum < num_entries) {
+        while (cardNum < 100 && itemNum < 100) {
             if (checkEmpty(itemNum)) {
                 item.push(searchResult["item"][itemNum])
                 cardNum = cardNum + 1
