@@ -105,6 +105,8 @@ export class FormComponent implements OnInit {
     this.emptyKeywordAlert = false
     this.minmaxAlert = false
     this.responseEmptyAlert = false
+    this.data = null
+    this.dataLength = null
   }
 }
 
