@@ -133,7 +133,7 @@ def toEbay():
         item = []
         cardNum = 0
         itemNum = 0
-        while (cardNum < 100 and itemNum < num_entries):
+        while (cardNum < 10 and itemNum < 100):
             if checkEmpty(itemNum):
                 item.append(searchResult["item"][itemNum])
                 cardNum = cardNum + 1
