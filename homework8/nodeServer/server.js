@@ -9,8 +9,8 @@ const debug = require('debug')('myapp:server');
 
 const port = process.env.PORT || 3000;
 
-// app.use(express.static('../newProj/dist/newProj'))
-app.use(express.static('./static'))
+app.use(express.static('../newProj/dist/newProj'))
+// app.use(express.static('./static'))
 
 app.listen(port, () => {
     //  console.log('Server is up and running on port ', port);
@@ -63,21 +63,26 @@ app.get('/q?', function (req, res) {
     if (isNew == 'on' || isUsed == 'on' || isVrGd == 'on' || isGood == 'on' || isAccptb == 'on') {
         let num_cdt = 0
         url = url + 'itemFilter(' + counter + ').name=Condition&'
-        if (isNew == 'on')
+        if (isNew == 'on') {
             url = url + 'itemFilter(' + counter + ').value(' + num_cdt + ')=New&'
-        num_cdt = num_cdt + 1
-        if (isUsed == 'on')
+            num_cdt = num_cdt + 1
+        } 
+        if (isUsed == 'on') {
             url = url + 'itemFilter(' + counter + ').value(' + num_cdt + ')=Used&'
-        num_cdt = num_cdt + 1
-        if (isVrGd == 'on')
+            num_cdt = num_cdt + 1
+        }
+        if (isVrGd == 'on') {
             url = url + 'itemFilter(' + counter + ').value(' + num_cdt + ')=4000&'
-        num_cdt = num_cdt + 1
-        if (isGood == 'on')
+            num_cdt = num_cdt + 1
+        }
+        if (isGood == 'on') {
             url = url + 'itemFilter(' + counter + ').value(' + num_cdt + ')=5000&'
-        num_cdt = num_cdt + 1
-        if (isAccptb == 'on')
+            num_cdt = num_cdt + 1
+        }
+        if (isAccptb == 'on') {
             url = url + 'itemFilter(' + counter + ').value(' + num_cdt + ')=6000&'
-        num_cdt = num_cdt + 1
+            num_cdt = num_cdt + 1
+        }
         counter = counter + 1
     }
 
