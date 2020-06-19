@@ -622,10 +622,24 @@ class FormComponent {
             //@ts-ignore
             let params = new URLSearchParams(formData);
             console.log(params.toString());
+            // fetch("/q?" + params)
+            // .then(response => response.json())
+            // .then(data => console.log(data));
             fetch("/q?" + params)
                 .then(response => response.json())
-                .then((response) => {
-                this.response = response;
+                // .then(function jsonify(response) {
+                //   console.log("this function did get called, right?")
+                //   response.json()
+                //   console.log(response)
+                //   return response
+                // })
+                // .then((data) => {
+                //   console.log(data)
+                //   this.response = data
+                // })
+                .then(data => {
+                console.log(data);
+                this.response = data;
             })
                 .then(() => {
                 this.data = this.response.searchResult.item;

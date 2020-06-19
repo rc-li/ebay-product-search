@@ -9,8 +9,8 @@ const debug = require('debug')('myapp:server');
 
 const port = process.env.PORT || 3000;
 
-app.use(express.static('../newProj/dist/newProj'))
-// app.use(express.static('./static'))
+// app.use(express.static('../newProj/dist/newProj'))
+app.use(express.static('./static'))
 
 app.listen(port, () => {
     //  console.log('Server is up and running on port ', port);
@@ -62,40 +62,40 @@ app.get('/q?', function (req, res) {
 
     if (isNew == 'on' || isUsed == 'on' || isVrGd == 'on' || isGood == 'on' || isAccptb == 'on') {
         let num_cdt = 0
-        url = url + 'itemFilter(' + str(counter) + ').name=Condition&'
+        url = url + 'itemFilter(' + counter + ').name=Condition&'
         if (isNew == 'on')
-            url = url + 'itemFilter(' + str(counter) + ').value(' + str(num_cdt) + ')=New&'
+            url = url + 'itemFilter(' + counter + ').value(' + num_cdt + ')=New&'
         num_cdt = num_cdt + 1
         if (isUsed == 'on')
-            url = url + 'itemFilter(' + str(counter) + ').value(' + str(num_cdt) + ')=Used&'
+            url = url + 'itemFilter(' + counter + ').value(' + num_cdt + ')=Used&'
         num_cdt = num_cdt + 1
         if (isVrGd == 'on')
-            url = url + 'itemFilter(' + str(counter) + ').value(' + str(num_cdt) + ')=4000&'
+            url = url + 'itemFilter(' + counter + ').value(' + num_cdt + ')=4000&'
         num_cdt = num_cdt + 1
         if (isGood == 'on')
-            url = url + 'itemFilter(' + str(counter) + ').value(' + str(num_cdt) + ')=5000&'
+            url = url + 'itemFilter(' + counter + ').value(' + num_cdt + ')=5000&'
         num_cdt = num_cdt + 1
         if (isAccptb == 'on')
-            url = url + 'itemFilter(' + str(counter) + ').value(' + str(num_cdt) + ')=6000&'
+            url = url + 'itemFilter(' + counter + ').value(' + num_cdt + ')=6000&'
         num_cdt = num_cdt + 1
         counter = counter + 1
     }
 
     if (isRtAccptd == 'on') {
-        url = url + 'itemFilter(' + str(counter) + ').name=ReturnsAcceptedOnly&'
-        url = url + 'itemFilter(' + str(counter) + ').value=true&'
+        url = url + 'itemFilter(' + counter + ').name=ReturnsAcceptedOnly&'
+        url = url + 'itemFilter(' + counter + ').value=true&'
         counter = counter + 1
     }
 
     if (isFree == 'on') {
-        url = url + 'itemFilter(' + str(counter) + ').name=FreeShippingOnly&'
-        url = url + 'itemFilter(' + str(counter) + ').value=true&'
+        url = url + 'itemFilter(' + counter + ').name=FreeShippingOnly&'
+        url = url + 'itemFilter(' + counter + ').value=true&'
         counter = counter + 1
     }
 
     if (isExpdtd == 'on') {
-        url = url + 'itemFilter(' + str(counter) + ').name=ExpeditedShippingType&'
-        url = url + 'itemFilter(' + str(counter) + ').value=Expedited&'
+        url = url + 'itemFilter(' + counter + ').name=ExpeditedShippingType&'
+        url = url + 'itemFilter(' + counter + ').value=Expedited&'
         counter = counter + 1
     }
 
@@ -140,9 +140,45 @@ app.get('/q?', function (req, res) {
 
 
 function processData(r) {
-    let num_entries = r["findItemsAdvancedResponse"][0]["paginationOutput"][0]["totalEntries"][0]
-    num_entries = parseInt(num_entries)
-    let searchResult = r["findItemsAdvancedResponse"][0]["searchResult"][0]
+    try {
+        num_entries = r["findItemsAdvancedResponse"][0]["paginationOutput"][0]["totalEntries"][0]
+        num_entries = parseInt(num_entries)
+        searchResult = r["findItemsAdvancedResponse"][0]["searchResult"][0]
+    } catch (error) {
+        let data = {}
+        let item = []
+        _item = {"item":item}
+        data = {"searchResult":_item}
+        data['numEntries'] = 0
+        data['validCards'] = 0
+        return data
+    }
+
+    r = prepareData()
+    // console.log(r)
+    return r
+
+    function prepareData() {
+        let data = {}
+        // console.log(data)
+        let item = []
+        let cardNum = 0
+        let itemNum = 0
+        // console.log("preparing data for item " + itemNum)
+        while (cardNum < 100 && itemNum < 100) {
+            if (checkEmpty(itemNum)) {
+                item.push(searchResult["item"][itemNum])
+                cardNum = cardNum + 1
+            }
+            itemNum = itemNum + 1
+        }
+        _item = {"item":item}
+        data = {"searchResult":_item}
+        data['numEntries']=num_entries
+        data['validCards'] = cardNum
+        // console.log(data)
+        return data
+    }
 
     function checkEmpty(itemNum) {
         console.log('inside checkEmpty(), item number ' + itemNum)
@@ -173,30 +209,8 @@ function processData(r) {
         }
     
     }
-    function prepareData() {
-        let data = {}
-        // console.log(data)
-        let item = []
-        let cardNum = 0
-        let itemNum = 0
-        // console.log("preparing data for item " + itemNum)
-        while (cardNum < 100 && itemNum < 100) {
-            if (checkEmpty(itemNum)) {
-                item.push(searchResult["item"][itemNum])
-                cardNum = cardNum + 1
-            }
-            itemNum = itemNum + 1
-        }
-        _item = {"item":item}
-        data = {"searchResult":_item}
-        data['numEntries']=num_entries
-        data['validCards'] = cardNum
-        // console.log(data)
-        return data
-    }
+    
 
-    r = prepareData()
-    // console.log(r)
-    return r
+    
 }
 
