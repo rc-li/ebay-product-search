@@ -90,13 +90,16 @@
         </fieldset>
       
         <div class="floatRight">
-          <a href="#" class="btn btn-primary btn-lg active" 
-          role="button" aria-pressed="true" (click)="searchClicked()">
-          <span class="material-icons">search</span>Search</a>
-      
-          <a href="#" class="btn btn-secondary btn-lg active" 
-          role="button" aria-pressed="true" (click)="formReset()">
-          <span class="material-icons">clear_all</span>Clear</a>
+          <button type="button" class="btn btn-primary btn-lg active" data-toggle="button" 
+          aria-pressed="false" autocomplete="off" role="button" (click)="searchClicked()">
+              <span class="material-icons">search</span>Search
+          </button>
+
+          <button type="button" class="btn btn-secondary btn-lg active" data-toggle="button"
+          aria-pressed="false" autocomplete="off" role="button" (click)="formReset()">
+              <span class="material-icons">clear_all</span>Clear
+        </button>
+
         </div>
       
       </form>

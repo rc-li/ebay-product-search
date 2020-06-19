@@ -11,7 +11,7 @@
     float: right;
 }
 
-.floatRight a {
+.floatRight button {
     margin: 5px;
 }
 
@@ -27,4 +27,27 @@
 .alerts p {
     color: black;
     margin: 0px;
+}
+
+.btn-primary {
+    background-color: rgb(30, 121, 163);
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    background-color: rgb(5, 90, 139);
+}
+/* .btn-primary:hover {
+    background-color: rgb(5, 90, 139);
+} */
+
+.btn-secondary {
+    color: white;
+}
+
+.btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active, .btn-secondary.active, .open>.dropdown-toggle.btn-secondary {
+    color: black;
+}
+
+.material-icons {
+    color: white !important;
 }

@@ -54,7 +54,15 @@
 
 .btn {
     display: inline;
-    margin: 10px;
+    /* margin: 10px; */
+    margin-left: 7px;
+}
+
+.btn:hover, .btn:focus, .btn:active, .btn.active, .open>.dropdown-toggle.btn {
+    /* color: #fff; */
+    /* background-color: #00b3db; */
+    border-color: #2298e7; /*set the color you want here*/
+    border-width: 2px;
 }
 
 .greenTick {
