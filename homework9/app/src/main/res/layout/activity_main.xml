@@ -13,6 +13,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:backgroundTint="#2196F3"
+        android:onClick="clearClicked"
         android:shadowColor="#2196F3"
         android:text="@string/clear"
         android:textColor="#FFFFFF"
@@ -20,7 +21,7 @@
         app:layout_constraintTop_toBottomOf="@+id/optionBar" />
 
     <EditText
-        android:id="@+id/editTextNumber2"
+        android:id="@+id/lowPrice"
         android:layout_width="151dp"
         android:layout_height="43dp"
         android:layout_marginStart="40dp"
@@ -67,18 +68,18 @@
         app:layout_constraintTop_toBottomOf="@+id/keywordEdit" />
 
     <CheckBox
-        android:id="@+id/checkBox2"
+        android:id="@+id/isUsed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="9dp"
         android:text="@string/used"
-        app:layout_constraintBaseline_toBaselineOf="@+id/New"
-        app:layout_constraintEnd_toStartOf="@+id/checkBox3"
-        app:layout_constraintStart_toEndOf="@+id/New" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/isNew"
+        app:layout_constraintEnd_toStartOf="@+id/isUnspecified"
+        app:layout_constraintStart_toEndOf="@+id/isNew" />
 
     <CheckBox
-        android:id="@+id/New"
+        android:id="@+id/isNew"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -88,14 +89,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <CheckBox
-        android:id="@+id/checkBox3"
+        android:id="@+id/isUnspecified"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="3dp"
         android:text="@string/unspecified"
-        app:layout_constraintBaseline_toBaselineOf="@+id/checkBox2"
+        app:layout_constraintBaseline_toBaselineOf="@+id/isUsed"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/checkBox2" />
+        app:layout_constraintStart_toEndOf="@+id/isUsed" />
 
     <TextView
         android:id="@+id/textView3"
@@ -106,7 +107,7 @@
         android:text="@string/condition"
         android:textColor="#2196F3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber2" />
+        app:layout_constraintTop_toBottomOf="@+id/lowPrice" />
 
     <Spinner
         android:id="@+id/optionBar"
@@ -126,7 +127,7 @@
         android:text="@string/sort_by"
         android:textColor="#2196F3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/New" />
+        app:layout_constraintTop_toBottomOf="@+id/isNew" />
 
     <Button
         android:id="@+id/search"
@@ -142,7 +143,7 @@
         app:layout_constraintTop_toBottomOf="@+id/optionBar" />
 
     <EditText
-        android:id="@+id/editTextNumber"
+        android:id="@+id/highPrice"
         android:layout_width="151dp"
         android:layout_height="43dp"
         android:layout_marginStart="32dp"
@@ -150,7 +151,7 @@
         android:ems="10"
         android:hint="@string/maximum_price"
         android:inputType="number"
-        app:layout_constraintStart_toEndOf="@+id/editTextNumber2"
+        app:layout_constraintStart_toEndOf="@+id/lowPrice"
         app:layout_constraintTop_toBottomOf="@+id/PriceRange" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
