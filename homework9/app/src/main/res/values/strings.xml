@@ -2,15 +2,17 @@
     <string name="app_name">eBay Catalog Search</string>
     <string name="sort_by">Sort By</string>
     <string name="keyword">Keyword</string>
-    <string name="name">Name</string>
     <string name="used">Used</string>
     <string name="New">New</string>
     <string name="price_range">Price Range</string>
     <string name="unspecified">Unspecified</string>
     <string name="condition">Condition</string>
     <string name="search">SEARCH</string>
-    <string name="button">Button</string>
-    
+    <string name="clear">CLEAR</string>
+    <string name="minimum_price">Minimum Price</string>
+    <string name="maximum_price">Maximum Price</string>
+    <string name="enter_keyword">Enter Keyword</string>
+
     <string-array name="options">
         <item>Best Match</item>
         <item>Price: Highest first</item>

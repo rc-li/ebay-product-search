@@ -7,16 +7,16 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="161dp"
-        android:layout_height="40dp"
+        android:id="@+id/clear"
+        android:layout_width="160dp"
+        android:layout_height="55dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:backgroundTint="#2196F3"
         android:shadowColor="#2196F3"
-        android:text="@string/button"
+        android:text="@string/clear"
         android:textColor="#FFFFFF"
-        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintStart_toEndOf="@+id/search"
         app:layout_constraintTop_toBottomOf="@+id/optionBar" />
 
     <EditText
@@ -26,6 +26,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="10dp"
         android:ems="10"
+        android:hint="@string/minimum_price"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PriceRange" />
@@ -49,8 +50,8 @@
         android:layout_marginTop="10dp"
         android:autofillHints=""
         android:ems="10"
+        android:hint="@string/enter_keyword"
         android:inputType="textPersonName"
-        android:text="@string/name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/keyword" />
 
@@ -128,12 +129,13 @@
         app:layout_constraintTop_toBottomOf="@+id/New" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="161dp"
-        android:layout_height="40dp"
+        android:id="@+id/search"
+        android:layout_width="164dp"
+        android:layout_height="53dp"
         android:layout_marginStart="36dp"
         android:layout_marginTop="20dp"
         android:backgroundTint="#2196F3"
+        android:onClick="searchClicked"
         android:text="@string/search"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
@@ -146,6 +148,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="10dp"
         android:ems="10"
+        android:hint="@string/maximum_price"
         android:inputType="number"
         app:layout_constraintStart_toEndOf="@+id/editTextNumber2"
         app:layout_constraintTop_toBottomOf="@+id/PriceRange" />
