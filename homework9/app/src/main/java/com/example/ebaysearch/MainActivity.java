@@ -3,6 +3,7 @@ package com.example.ebaysearch;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
@@ -11,9 +12,11 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+    String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +30,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
-
-        Button button = findViewById(R.id.search);
-
     }
 
     @Override
@@ -44,6 +44,42 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void searchClicked(View view) {
+        EditText keyEdit = findViewById(R.id.keywordEdit);
+        String keyword = keyEdit.getText().toString();
+        TextView emptyKeyWarning = findViewById(R.id.emptyKeyWarning);
+        if (keyword.equals("")) {
+            emptyKeyWarning.setVisibility(View.VISIBLE);
+        }
+        else {
+            emptyKeyWarning.setVisibility(View.GONE);
+        }
+
+        EditText lowPriceEdit = findViewById(R.id.lowPrice);
+        String lowPriceStr = lowPriceEdit.getText().toString();
+        double lowPrice;
+        try {
+            lowPrice = Double.parseDouble(lowPriceStr);
+        }
+        catch (Exception e) {
+            lowPrice = 0.0;
+        }
+        EditText highPriceEdit = findViewById(R.id.highPrice);
+        String highPriceStr = highPriceEdit.getText().toString();
+        double highPrice;
+        try {
+            highPrice = Double.parseDouble(highPriceStr);
+        }
+        catch (Exception e) {
+            highPrice = 0.0;
+        }
+        Log.d(TAG, "searchClicked: " + "lowPrice is " + lowPrice + "1.23 and highPrice is " + highPrice);
+        TextView priceWarning = findViewById(R.id.priceRangeWarning);
+        if (lowPrice < 0.0 || highPrice < 0.0 || highPrice < lowPrice) {
+            priceWarning.setVisibility(View.VISIBLE);
+        }
+        else {
+            priceWarning.setVisibility(View.GONE);
+        }
 
     }
 

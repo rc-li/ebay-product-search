@@ -6,38 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/clear"
-        android:layout_width="160dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="#2196F3"
-        android:onClick="clearClicked"
-        android:shadowColor="#2196F3"
-        android:text="@string/clear"
-        android:textColor="#FFFFFF"
-        app:layout_constraintStart_toEndOf="@+id/search"
-        app:layout_constraintTop_toBottomOf="@+id/optionBar" />
-
-    <EditText
-        android:id="@+id/lowPrice"
-        android:layout_width="151dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="10dp"
-        android:ems="10"
-        android:hint="@string/minimum_price"
-        android:inputType="number"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PriceRange" />
-
     <TextView
         android:id="@+id/keyword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
         android:text="@string/keyword"
         android:textColor="#2196F3"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,8 +21,8 @@
         android:id="@+id/keywordEdit"
         android:layout_width="329dp"
         android:layout_height="44dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/enter_keyword"
@@ -56,16 +30,54 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/keyword" />
 
+    <EditText
+        android:id="@+id/lowPrice"
+        android:layout_width="151dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="@string/minimum_price"
+        android:inputType="numberSigned|number|numberDecimal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PriceRange" />
+
+    <EditText
+        android:id="@+id/highPrice"
+        android:layout_width="151dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="@string/maximum_price"
+        android:inputType="numberSigned|number|numberDecimal"
+        app:layout_constraintStart_toEndOf="@+id/lowPrice"
+        app:layout_constraintTop_toBottomOf="@+id/PriceRange" />
+
     <TextView
-        android:id="@+id/PriceRange"
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="12dp"
-        android:text="@string/price_range"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="48dp"
+        android:text="@string/condition"
         android:textColor="#2196F3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/keywordEdit" />
+        app:layout_constraintTop_toBottomOf="@+id/lowPrice" />
+
+    <Button
+        android:id="@+id/clear"
+        android:layout_width="160dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="#2196F3"
+        android:onClick="clearClicked"
+        android:shadowColor="#2196F3"
+        android:text="@string/clear"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/search"
+        app:layout_constraintTop_toBottomOf="@+id/optionBar" />
 
     <CheckBox
         android:id="@+id/isUsed"
@@ -78,15 +90,14 @@
         app:layout_constraintEnd_toStartOf="@+id/isUnspecified"
         app:layout_constraintStart_toEndOf="@+id/isNew" />
 
-    <CheckBox
-        android:id="@+id/isNew"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/New"
+    <Spinner
+        android:id="@+id/optionBar"
+        android:layout_width="336dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <CheckBox
         android:id="@+id/isUnspecified"
@@ -98,32 +109,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/isUsed" />
 
-    <TextView
-        android:id="@+id/textView3"
+    <CheckBox
+        android:id="@+id/isNew"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/condition"
-        android:textColor="#2196F3"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/New"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lowPrice" />
-
-    <Spinner
-        android:id="@+id/optionBar"
-        android:layout_width="336dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
         android:text="@string/sort_by"
         android:textColor="#2196F3"
         app:layout_constraintStart_toStartOf="parent"
@@ -133,8 +134,8 @@
         android:id="@+id/search"
         android:layout_width="164dp"
         android:layout_height="53dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
         android:backgroundTint="#2196F3"
         android:onClick="searchClicked"
         android:text="@string/search"
@@ -142,16 +143,43 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/optionBar" />
 
-    <EditText
-        android:id="@+id/highPrice"
-        android:layout_width="151dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="10dp"
-        android:ems="10"
-        android:hint="@string/maximum_price"
-        android:inputType="number"
-        app:layout_constraintStart_toEndOf="@+id/lowPrice"
-        app:layout_constraintTop_toBottomOf="@+id/PriceRange" />
+    <TextView
+        android:id="@+id/PriceRange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/price_range"
+        android:textColor="#2196F3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emptyKeyWarning" />
+
+    <TextView
+        android:id="@+id/emptyKeyWarning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="Please enter mandatory field"
+        android:textColor="#FF0000"
+        android:textStyle="italic"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/keywordEdit"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/priceRangeWarning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="16dp"
+        android:text="Please enter valid price values"
+        android:textColor="#FF0000"
+        android:textStyle="italic"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lowPrice"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
