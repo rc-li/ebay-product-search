@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
         Log.d(TAG, "searchClicked: " + "lowPrice is " + lowPrice + "1.23 and highPrice is " + highPrice);
         TextView priceWarning = findViewById(R.id.priceRangeWarning);
-        if (lowPrice < 0.0 || highPrice < 0.0 || highPrice < lowPrice) {
+        if (highPrice < lowPrice) {
             priceWarning.setVisibility(View.VISIBLE);
         }
         else {
@@ -103,5 +103,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 this, R.array.options, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+
+        TextView keyWordWarning = findViewById(R.id.emptyKeyWarning);
+        keyWordWarning.setVisibility(View.GONE);
+        TextView priceRangeWarning = findViewById(R.id.priceRangeWarning);
+        priceRangeWarning.setVisibility(View.GONE);
     }
 }
