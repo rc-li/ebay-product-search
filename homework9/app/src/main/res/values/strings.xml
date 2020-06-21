@@ -12,6 +12,8 @@
     <string name="minimum_price">Minimum Price</string>
     <string name="maximum_price">Maximum Price</string>
     <string name="enter_keyword">Enter Keyword</string>
+    <string name="please_enter_mandatory_field">Please enter mandatory field</string>
+    <string name="please_enter_valid_price_values">Please enter valid price values</string>
 
     <string-array name="options">
         <item>Best Match</item>
