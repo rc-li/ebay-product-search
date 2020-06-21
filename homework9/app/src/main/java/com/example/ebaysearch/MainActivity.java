@@ -44,11 +44,19 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void searchClicked(View view) {
+        valueCheck();
+
+    }
+
+    public boolean valueCheck() {
+        boolean passValidation = true;
+
         EditText keyEdit = findViewById(R.id.keywordEdit);
         String keyword = keyEdit.getText().toString();
         TextView emptyKeyWarning = findViewById(R.id.emptyKeyWarning);
         if (keyword.equals("")) {
             emptyKeyWarning.setVisibility(View.VISIBLE);
+            passValidation = false;
         }
         else {
             emptyKeyWarning.setVisibility(View.GONE);
@@ -76,11 +84,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         TextView priceWarning = findViewById(R.id.priceRangeWarning);
         if (highPrice < lowPrice) {
             priceWarning.setVisibility(View.VISIBLE);
+            passValidation = false;
         }
         else {
             priceWarning.setVisibility(View.GONE);
         }
 
+        if (!passValidation) {
+            Toast.makeText(this, "Please fix all fields with errors", Toast.LENGTH_SHORT).show();
+        }
+
+        return passValidation;
     }
 
     public void clearClicked(View view) {
