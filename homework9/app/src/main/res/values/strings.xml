@@ -10,4 +10,11 @@
     <string name="condition">Condition</string>
     <string name="search">SEARCH</string>
     <string name="button">Button</string>
+    
+    <string-array name="options">
+        <item>Best Match</item>
+        <item>Price: Highest first</item>
+        <item>Price + Shipping: Highest first</item>
+        <item>Price + Shipping: Lowest first</item>
+    </string-array>
 </resources>
