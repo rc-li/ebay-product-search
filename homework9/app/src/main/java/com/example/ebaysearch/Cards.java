@@ -3,7 +3,9 @@ package com.example.ebaysearch;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 public class Cards extends AppCompatActivity {
 
@@ -17,5 +19,12 @@ public class Cards extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        finish();
+//        Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+//        startActivityForResult(myIntent, 0);
+        return true;
     }
 }
