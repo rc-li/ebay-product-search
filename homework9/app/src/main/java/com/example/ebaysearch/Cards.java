@@ -22,9 +22,16 @@ public class Cards extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
-        finish();
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return false;
+
+//        finish();
+
 //        Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
 //        startActivityForResult(myIntent, 0);
-        return true;
+//        return true;
     }
 }
