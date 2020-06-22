@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public String makeURL() {
-        String url = "";
+        String url = "http://10.0.2.2:3000/q?";
 
         EditText keyEdit = findViewById(R.id.keywordEdit);
         String keyword = keyEdit.getText().toString();
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             highPrice = Double.parseDouble(highPriceStr);
         }
         catch (Exception e) {
-            highPrice = Double.MAX_VALUE;
+            highPrice = 10.0;
         }
 
         CheckBox isNew = findViewById(R.id.isNew);
@@ -109,23 +109,25 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             url += "&isUsed=on";
         if (isUnspecified.isChecked())
             url += "&isUnspecified=on";
-        url+= option;
+        url+= "&Sort+by%3A+=" + option;
 
-        url = "https://ebay-8.wl.r.appspot.com/q?" + encodeValue(url);
+//        url = "https://ebay-8.wl.r.appspot.com/q?" + encodeValue(url);
 //        url = "http://localhost:3000/q?" + encodeValue(url);
+//        url = "http://10.0.2.2:3000/q?" + encodeValue(url);
+
 
         Log.d(TAG, "makeURL: the url is: " + url);
 
         return url;
     }
 
-    private static String encodeValue(String value) {
-        try {
-            return URLEncoder.encode(value, StandardCharsets.UTF_8.toString());
-        } catch (UnsupportedEncodingException ex) {
-            throw new RuntimeException(ex.getCause());
-        }
-    }
+//    private static String encodeValue(String value) {
+//        try {
+//            return URLEncoder.encode(value, StandardCharsets.UTF_8.toString());
+//        } catch (UnsupportedEncodingException ex) {
+//            throw new RuntimeException(ex.getCause());
+////        }
+//    }
 
     public void searchClicked(View view) {
         if (valueCheck()) {
