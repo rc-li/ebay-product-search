@@ -111,7 +111,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             url += "&isUnspecified=on";
         url+= option;
 
-        url = "http://ebay-8.wl.r.appspot.com/q?" + encodeValue(url);
+        url = "https://ebay-8.wl.r.appspot.com/q?" + encodeValue(url);
+//        url = "http://localhost:3000/q?" + encodeValue(url);
 
         Log.d(TAG, "makeURL: the url is: " + url);
 

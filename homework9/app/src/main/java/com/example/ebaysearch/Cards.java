@@ -20,8 +20,8 @@ import org.json.JSONObject;
 
 public class Cards extends AppCompatActivity {
     String TAG = "user Cards";
-    RequestQueue mQueue = Volley.newRequestQueue(this);
-    JSONObject myJSON;
+    private RequestQueue mQueue;
+    private JSONObject myJSON;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,24 +49,19 @@ public class Cards extends AppCompatActivity {
         Log.d(TAG, "onCreate: the url received is: " + url);
 
         JSONObject myJSON = new JSONObject();
-        try {
-            myJSON.put("hello","hi");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        Log.d(TAG, "onCreate: before fetching JSON: " + myJSON);
-        myJSON = getJson(url);
-        Log.d(TAG, "onCreate: after fetching JSON: " + myJSON);
+        mQueue = Volley.newRequestQueue(this);
+
+        getJson(url);
     }
 
-    private JSONObject getJson(String url) {
+    private void getJson(String url) {
 //        final JSONObject[] myJSON = new JSONObject[1];
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        myJSON = response;
+                        Log.d(TAG, "onResponse: got response: " + response);
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -74,7 +69,8 @@ public class Cards extends AppCompatActivity {
                 error.printStackTrace();
             }
         });
-        return myJSON;
+
+        mQueue.add(request);
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
