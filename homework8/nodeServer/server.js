@@ -40,6 +40,8 @@ app.get('/q?', function (req, res) {
 
     var sortOrder = req.query["Sort by: "]
 
+    var isUnspecified = req.query.isUnspecified
+
     var url = 'https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=RayLi-exp-PRD-d2eb6beb6-1a4f60ed&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&'
     var counter = 0
 
@@ -60,7 +62,7 @@ app.get('/q?', function (req, res) {
         counter = counter + 1
     }
 
-    if (isNew == 'on' || isUsed == 'on' || isVrGd == 'on' || isGood == 'on' || isAccptb == 'on') {
+    if (isNew == 'on' || isUsed == 'on' || isVrGd == 'on' || isGood == 'on' || isAccptb == 'on' || isUnspecified == 'on') {
         let num_cdt = 0
         url = url + 'itemFilter(' + counter + ').name=Condition&'
         if (isNew == 'on') {
@@ -81,6 +83,10 @@ app.get('/q?', function (req, res) {
         }
         if (isAccptb == 'on') {
             url = url + 'itemFilter(' + counter + ').value(' + num_cdt + ')=6000&'
+            num_cdt = num_cdt + 1
+        }
+        if (isUnspecified == 'on') {
+            url = url + 'itemFilter(' + counter + ').value(' + num_cdt + ')=Unspecified&'
             num_cdt = num_cdt + 1
         }
         counter = counter + 1

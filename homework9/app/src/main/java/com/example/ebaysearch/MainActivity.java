@@ -16,8 +16,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    String TAG = "MainActivity";
+    String TAG = "user MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
+
 
 //        Button button = findViewById(R.id.search);
 //        button.setOnClickListener(new View.OnClickListener() {
@@ -59,9 +67,70 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
+    public String makeURL() {
+        String url = "";
+
+        EditText keyEdit = findViewById(R.id.keywordEdit);
+        String keyword = keyEdit.getText().toString();
+
+        EditText lowPriceEdit = findViewById(R.id.lowPrice);
+        String lowPriceStr = lowPriceEdit.getText().toString();
+        double lowPrice;
+        try {
+            lowPrice = Double.parseDouble(lowPriceStr);
+        }
+        catch (Exception e) {
+            lowPrice = 0.0;
+        }
+
+        EditText highPriceEdit = findViewById(R.id.highPrice);
+        String highPriceStr = highPriceEdit.getText().toString();
+        double highPrice;
+        try {
+            highPrice = Double.parseDouble(highPriceStr);
+        }
+        catch (Exception e) {
+            highPrice = Double.MAX_VALUE;
+        }
+
+        CheckBox isNew = findViewById(R.id.isNew);
+        CheckBox isUsed = findViewById(R.id.isUsed);
+        CheckBox isUnspecified = findViewById(R.id.isUnspecified);
+
+        Spinner optionBar = findViewById(R.id.optionBar);
+        String option = optionBar.getSelectedItem().toString();
+
+        url += "keyword=" + keyword;
+        url += "&lowPrice=" + lowPrice;
+        url += "&highPrice=" + highPrice;
+        if (isNew.isChecked())
+            url += "&isNew=on";
+        if (isUsed.isChecked())
+            url += "&isUsed=on";
+        if (isUnspecified.isChecked())
+            url += "&isUnspecified=on";
+        url+= option;
+
+        url = "http://ebay-8.wl.r.appspot.com/q?" + encodeValue(url);
+
+        Log.d(TAG, "makeURL: the url is: " + url);
+
+        return url;
+    }
+
+    private static String encodeValue(String value) {
+        try {
+            return URLEncoder.encode(value, StandardCharsets.UTF_8.toString());
+        } catch (UnsupportedEncodingException ex) {
+            throw new RuntimeException(ex.getCause());
+        }
+    }
+
     public void searchClicked(View view) {
         if (valueCheck()) {
+            String url = makeURL();
             Intent intent = new Intent(this, Cards.class);
+            intent.putExtra("url",url);
             startActivity(intent);
         }
 
@@ -97,7 +166,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             highPrice = Double.parseDouble(highPriceStr);
         }
         catch (Exception e) {
-            highPrice = 0.0;
+            highPrice = Double.MAX_VALUE;
         }
         Log.d(TAG, "searchClicked: " + "lowPrice is " + lowPrice + "1.23 and highPrice is " + highPrice);
         TextView priceWarning = findViewById(R.id.priceRangeWarning);
