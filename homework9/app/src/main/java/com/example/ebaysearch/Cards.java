@@ -56,11 +56,13 @@ public class Cards extends AppCompatActivity {
         getJson(url);
 
         ListView list = findViewById(R.id.listView);
-        ArrayList<String> names = new ArrayList<String>();
+        ArrayList<Card> names = new ArrayList<Card>();
         for (int i = 0; i < 50; i++) {
-            names.add("hello");
+            names.add(new Card());
         }
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, names);
+//        ArrayAdapter adapter = new ArrayAdapter(this, R.layout.adapter_view_layout , names);
+//        list.setAdapter(adapter);
+        CardListAdapter adapter = new CardListAdapter(this, R.layout.adapter_view_layout, names);
         list.setAdapter(adapter);
 
     }
