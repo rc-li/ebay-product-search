@@ -6,22 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
-
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     String TAG = "user MainActivity";
@@ -132,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void searchClicked(View view) {
         if (valueCheck()) {
             String url = makeURL();
-            Intent intent = new Intent(this, Cards.class);
+            Intent intent = new Intent(this, CardsActivity.class);
             intent.putExtra("url",url);
             startActivity(intent);
         }

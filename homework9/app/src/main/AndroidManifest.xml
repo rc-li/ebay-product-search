@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Launcher">
         <activity
-            android:name=".Cards"
+            android:name=".CardsActivity"
             android:label="Search Results"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>

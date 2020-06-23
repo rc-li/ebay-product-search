@@ -25,7 +25,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Cards extends AppCompatActivity {
+public class CardsActivity extends AppCompatActivity {
     String TAG = "user Cards";
     private RequestQueue mQueue;
     private JSONObject myJSON;
@@ -55,16 +55,19 @@ public class Cards extends AppCompatActivity {
         mQueue = Volley.newRequestQueue(this);
         getJson(url);
 
-        ListView list = findViewById(R.id.listView);
-        ArrayList<Card> names = new ArrayList<Card>();
-        for (int i = 0; i < 50; i++) {
-            names.add(new Card());
-        }
-//        ArrayAdapter adapter = new ArrayAdapter(this, R.layout.adapter_view_layout , names);
-//        list.setAdapter(adapter);
-        CardListAdapter adapter = new CardListAdapter(this, R.layout.adapter_view_layout, names);
-        list.setAdapter(adapter);
+    }
 
+    private void setCards(ArrayList<Card> cards) {
+        ListView list = findViewById(R.id.listView);
+        ArrayList<DualCard> dualCards = new ArrayList<DualCard>();
+        for (int i = 0; i < cards.size()/2; i++) {
+            dualCards.add(new DualCard(cards.get(2 * i), cards.get(2 * i + 1)));
+        }
+        if (cards.size()%2 == 1) {
+            dualCards.add(new DualCard(cards.get(cards.size()-1),new Card(true)));
+        }
+        CardListAdapter adapter = new CardListAdapter(this, R.layout.adapter_view_layout, dualCards);
+        list.setAdapter(adapter);
     }
 
     private ArrayList<Card> parseJSON(JSONObject myJSON) {
@@ -81,6 +84,7 @@ public class Cards extends AppCompatActivity {
                 String shippingCost = items.getJSONObject(i).getJSONArray("shippingInfo").getJSONObject(0).getJSONArray("shippingServiceCost").getJSONObject(0).getString("__value__");
                 String price = items.getJSONObject(i).getJSONArray("sellingStatus").getJSONObject(0).getJSONArray("convertedCurrentPrice").getString(0);
                 cards.add(new Card(galleryURL,itemTitle,itemCondition,isTopRated,shippingCost,price));
+                setCards(cards);
             }
 
         } catch (JSONException e) {
