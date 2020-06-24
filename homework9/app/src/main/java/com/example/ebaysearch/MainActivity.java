@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             highPrice = Double.parseDouble(highPriceStr);
         }
         catch (Exception e) {
-            highPrice = 10.0;
+            highPrice = Double.MAX_VALUE;
         }
 
         CheckBox isNew = findViewById(R.id.isNew);
