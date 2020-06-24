@@ -62,6 +62,7 @@ public class DetailActivity extends AppCompatActivity {
         return false;
     }
 
+    //todo call it on server side
     private String makeURL(String cardID) {
         String url = "";
         url += "http://open.api.ebay.com/shopping?callname=GetSingleItem&responseencoding=JSON" +

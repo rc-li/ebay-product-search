@@ -14,5 +14,46 @@
         android:layout_marginStart="185dp"
         android:layout_marginBottom="374dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="gone" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager2"
+        android:layout_width="407dp"
+        android:layout_height="614dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:layout_width="408dp"
+        android:layout_height="77dp"
+        app:layout_constraintBottom_toTopOf="@+id/viewPager2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tabIconTint="#3F51B5"
+        app:tabIndicatorColor="#9C27B0"
+        app:tabTextColor="#3F51B5">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/productTab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/information_variant_selected"
+            android:text="PRODUCT" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/sellerInfoTab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_seller"
+            android:text="SELLER INFO" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/shippingTab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/truck_delivery_selected"
+            android:text="SHIPPING" />
+    </com.google.android.material.tabs.TabLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,7 +14,7 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".DetailActivity"
-            android:label="Product Detail"></activity>
+            android:label="Product Detail" />
         <activity
             android:name=".CardsActivity"
             android:label="Search Results" />
