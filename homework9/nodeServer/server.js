@@ -112,16 +112,16 @@ app.get('/q?', function (req, res) {
         counter = counter + 1
     }
 
-    if (sortOrder == 'bestMatch') {
+    if (sortOrder == 'Best Match') {
         url = url + 'sortOrder=BestMatch&'
     }
-    else if (sortOrder == 'highestFirst') {
+    else if (sortOrder == 'Price: Highest first') {
         url = url + 'sortOrder=CurrentPriceHighest&'
     }
-    else if (sortOrder == 'pPlusS_h') {
+    else if (sortOrder == 'Price   Shipping: Highest first') {
         url = url + 'sortOrder=PricePlusShippingHighest&'
     }
-    else if (sortOrder == 'pPlusS_l') {
+    else if (sortOrder == 'Price   Shipping: Lowest first') {
         url = url + 'sortOrder=PricePlusShippingLowest&'
     }
 
