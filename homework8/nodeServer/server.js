@@ -23,6 +23,8 @@ app.get('/', function (req, res) {
 
 // q?keyword=mask&lowPrice=30&highPrice=50&isNew=on&isExpdtd=on&Sort+by%3A+=pPlusS_h
 app.get('/q?', function (req, res) {
+    console.log("========= got url from android ==========")
+    console.log(req.query)
     var keyword = req.query.keyword;
     var lowPrice = req.query.lowPrice
     var highPrice = req.query.highPrice
