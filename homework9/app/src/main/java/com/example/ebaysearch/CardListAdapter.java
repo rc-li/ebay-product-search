@@ -6,14 +6,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class CardListAdapter extends ArrayAdapter<DualCard> {
     private static final String TAG = "CardListAdapter";
@@ -32,23 +33,58 @@ public class CardListAdapter extends ArrayAdapter<DualCard> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        //get the card information
-        String imgURL = getItem(position).card1.getItemImgURL();
-        String itemTitle = getItem(position).card1.getItemTitle();
-        String itemCondition = getItem(position).card1.getItemCondition();
-        String isTopRated = getItem(position).card1.getIsTopRated();
-        String shippingCost = getItem(position).card1.getShippingCost();
-        String price = getItem(position).card1.getPrice();
-
-        //Create the card object with the information
-        // todo
+        //get the card 1 information
+        String imgURL1 = getItem(position).card1.getItemImgURL();
+        String itemTitle1 = getItem(position).card1.getItemTitle();
+        String itemCondition1 = getItem(position).card1.getItemCondition();
+        String isTopRated1 = getItem(position).card1.getIsTopRated();
+        String shippingCost1 = getItem(position).card1.getShippingCost();
+        String price1 = getItem(position).card1.getPrice();
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
 
-        ImageView imageView1 = convertView.findViewById(R.id.productImg1);
-        Picasso.get().load(imgURL).into(imageView1);
+        ImageView imageView1 = convertView.findViewById(R.id.productImgView1);
+        Picasso.get().load(imgURL1).into(imageView1);
+        TextView title1 = convertView.findViewById(R.id.productTitleView1);
+        title1.setText(itemTitle1);
+        TextView shipCost1 = convertView.findViewById(R.id.shipCostView1);
+        if (isTopRated1.equals("false"))
+            shipCost1.setText("Ships for $" + shippingCost1);
+        else
+            shipCost1.setText("Ships for $" + shippingCost1 + "/nTop Rated Listing");
+        TextView priceView1 = convertView.findViewById(R.id.priceView1);
+        priceView1.setText(price1);
+        TextView conditionView1 = convertView.findViewById(R.id.conditionView1);
+        conditionView1.setText(itemCondition1);
 
+        // setting card 2
+        if (getItem(position).card2.isEmpty) {
+            CardView cardView = convertView.findViewById(R.id.card2);
+            cardView.setVisibility(View.GONE);
+        }
+        else {
+            String imgURL2 = getItem(position).card2.getItemImgURL();
+            String itemTitle2 = getItem(position).card2.getItemTitle();
+            String itemCondition2 = getItem(position).card2.getItemCondition();
+            String isTopRated2 = getItem(position).card2.getIsTopRated();
+            String shippingCost2 = getItem(position).card2.getShippingCost();
+            String price2 = getItem(position).card2.getPrice();
+
+            ImageView imageView2 = convertView.findViewById(R.id.productImgView2);
+            Picasso.get().load(imgURL2).into(imageView2);
+            TextView title2 = convertView.findViewById(R.id.productTitleView2);
+            title2.setText(itemTitle2);
+            TextView shipCost2 = convertView.findViewById(R.id.shipCostView2);
+            if (isTopRated2.equals("false"))
+                shipCost2.setText("Ships for $" + shippingCost2);
+            else
+                shipCost2.setText("Ships for $" + shippingCost2 + "/nTop Rated Listing");
+            TextView priceView2 = convertView.findViewById(R.id.priceView2);
+            priceView2.setText(price2);
+            TextView conditionView2 = convertView.findViewById(R.id.conditionView2);
+            conditionView2.setText(itemCondition2);
+        }
 
         return convertView;
 

@@ -7,6 +7,7 @@
     android:orientation="horizontal">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/card1"
         android:layout_width="206dp"
         android:layout_height="360dp"
         android:layout_weight="1"
@@ -18,37 +19,59 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/productImg1"
+                android:id="@+id/productImgView1"
                 android:layout_width="164dp"
                 android:layout_height="133dp"
                 android:layout_weight="1"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
-                android:id="@+id/productTitle1"
+                android:id="@+id/productTitleView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:text="DE LCD SCRREEN SEPERATOR REPAIR PHONE PLATE GLASS" />
 
             <TextView
-                android:id="@+id/productDiscription1"
+                android:id="@+id/shipCostView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:text="Ships for $1000.0" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="25dp"
                 android:layout_weight="1"
-                android:orientation="horizontal"></androidx.constraintlayout.widget.ConstraintLayout>
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/conditionView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="condition"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/priceView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="$45.23"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/card2"
         android:layout_width="206dp"
         android:layout_height="360dp"
         android:layout_weight="1"
@@ -60,31 +83,52 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/productImg2"
+                android:id="@+id/productImgView2"
                 android:layout_width="164dp"
                 android:layout_height="133dp"
                 android:layout_weight="1"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
-                android:id="@+id/productTitle2"
+                android:id="@+id/productTitleView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:text="MINI POWER BANK 5000MAH DUAL USB EXTERNAL BATTERY" />
 
             <TextView
-                android:id="@+id/productDiscription2"
+                android:id="@+id/shipCostView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:text="Ships for $1000.0" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="25dp"
                 android:layout_weight="1"
-                android:orientation="horizontal"></androidx.constraintlayout.widget.ConstraintLayout>
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/conditionView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="19dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="condition"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/priceView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="$19.57"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
 

@@ -7,7 +7,7 @@ public class Card {
     private String isTopRated;
     private String shippingCost;
     private String price;
-    private boolean isEmpty;
+    public boolean isEmpty;
 
     public Card(boolean isEmpty) {
         this.isEmpty = isEmpty;
