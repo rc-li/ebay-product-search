@@ -28,7 +28,6 @@ import java.util.ArrayList;
 public class CardsActivity extends AppCompatActivity {
     String TAG = "user Cards";
     private RequestQueue mQueue;
-    private JSONObject myJSON;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +49,8 @@ public class CardsActivity extends AppCompatActivity {
         } else {
             url = (String) savedInstanceState.getSerializable("url");
         }
-
         Log.d(TAG, "onCreate: the url received is: " + url);
+
         mQueue = Volley.newRequestQueue(this);
         getJson(url);
 
@@ -83,7 +82,9 @@ public class CardsActivity extends AppCompatActivity {
                 String isTopRated = items.getJSONObject(i).getJSONArray("topRatedListing").getString(0);
                 String shippingCost = items.getJSONObject(i).getJSONArray("shippingInfo").getJSONObject(0).getJSONArray("shippingServiceCost").getJSONObject(0).getString("__value__");
                 String price = items.getJSONObject(i).getJSONArray("sellingStatus").getJSONObject(0).getJSONArray("convertedCurrentPrice").getJSONObject(0).getString("__value__");
-                cards.add(new Card(galleryURL,itemTitle,itemCondition,isTopRated,shippingCost,price));
+                String itemID = items.getJSONObject(i).getJSONArray("itemId").getString(0);
+//                Log.d(TAG, "parseJSON: itemID is " + itemID);
+                cards.add(new Card(galleryURL,itemTitle,itemCondition,isTopRated,shippingCost,price, itemID));
                 setCards(cards);
             }
 

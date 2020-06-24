@@ -2,6 +2,7 @@ package com.example.ebaysearch;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -92,7 +93,7 @@ public class CardListAdapter extends ArrayAdapter<DualCard> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, DetailActivity.class);
-//                intent.putExtra("url",url);
+                intent.putExtra("cardID", getItem(position).card1.getItemID());
                 mContext.startActivity(intent);
             }
         });
@@ -102,7 +103,7 @@ public class CardListAdapter extends ArrayAdapter<DualCard> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, DetailActivity.class);
-//                intent.putExtra("url",url);
+                intent.putExtra("cardID", getItem(position).card2.getItemID());
                 mContext.startActivity(intent);
             }
         });
