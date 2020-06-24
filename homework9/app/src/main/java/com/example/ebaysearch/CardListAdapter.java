@@ -1,6 +1,7 @@
 package com.example.ebaysearch;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +33,7 @@ public class CardListAdapter extends ArrayAdapter<DualCard> {
 
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         //get the card 1 information
         String imgURL1 = getItem(position).card1.getItemImgURL();
         String itemTitle1 = getItem(position).card1.getItemTitle();
@@ -85,6 +86,26 @@ public class CardListAdapter extends ArrayAdapter<DualCard> {
             TextView conditionView2 = convertView.findViewById(R.id.conditionView2);
             conditionView2.setText(itemCondition2);
         }
+
+        final CardView card1 = convertView.findViewById(R.id.card1);
+        card1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, DetailActivity.class);
+//                intent.putExtra("url",url);
+                mContext.startActivity(intent);
+            }
+        });
+
+        final CardView card2 = convertView.findViewById(R.id.card2);
+        card2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, DetailActivity.class);
+//                intent.putExtra("url",url);
+                mContext.startActivity(intent);
+            }
+        });
 
         return convertView;
 
