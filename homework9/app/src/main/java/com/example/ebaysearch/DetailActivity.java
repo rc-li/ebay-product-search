@@ -2,11 +2,15 @@ package com.example.ebaysearch;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewParent;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
@@ -16,6 +20,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.tabs.TabItem;
+import com.google.android.material.tabs.TabLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,6 +32,14 @@ import java.util.ArrayList;
 public class DetailActivity extends AppCompatActivity {
     private static final String TAG = "DetailActivity";
     private RequestQueue mQueue;
+    private ActionBar actionBar;
+
+    TabLayout tabLayout;
+    ViewPager viewPager;
+    PagerAdapter pagerAdapter;
+    TabItem productTab;
+    TabItem sellerInfoTab;
+    TabItem shippingTab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +47,37 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        ActionBar actionBar = getSupportActionBar();
+        actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setTitle("i can set this");
+
+        tabLayout = findViewById(R.id.tabLayout);
+        productTab = findViewById(R.id.productTab);
+        sellerInfoTab = findViewById(R.id.sellerInfoTab);
+        shippingTab = findViewById(R.id.shippingTab);
+        viewPager = findViewById(R.id.viewPager);
+
+        pagerAdapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        viewPager.setAdapter(pagerAdapter);
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
         String cardID;
         if (savedInstanceState == null) {
