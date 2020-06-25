@@ -30,6 +30,7 @@ public class DetailActivity extends AppCompatActivity {
     private RequestQueue mQueue;
     private ActionBar actionBar;
     public JSONObject data;
+    private String cardID;
 
     TabLayout tabLayout;
     ViewPager viewPager;
@@ -62,16 +63,10 @@ public class DetailActivity extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
             }
-
             @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
+            public void onTabUnselected(TabLayout.Tab tab) { }
             @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
+            public void onTabReselected(TabLayout.Tab tab) { }
         });
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -89,9 +84,10 @@ public class DetailActivity extends AppCompatActivity {
         }
         Log.d(TAG, "onCreate: the cardID received is: " + cardID);
 
-        String url = makeURL(cardID);
+        this.cardID = cardID;
         mQueue = Volley.newRequestQueue(this);
-        getJson(url);
+//        String url = makeURL();
+//        getJson(url);
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -103,7 +99,7 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     //todo call it on server side
-    private String makeURL(String cardID) {
+    public String makeURL() {
         String url = "";
         url += "http://open.api.ebay.com/shopping?callname=GetSingleItem&responseencoding=JSON" +
                 "&appid=RayLi-exp-PRD-d2eb6beb6-1a4f60ed&siteid=0&version=967" +
@@ -112,7 +108,7 @@ public class DetailActivity extends AppCompatActivity {
         return url;
     }
 
-    private void getJson(String url) {
+    public void getJson(String url) {
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
@@ -136,7 +132,7 @@ public class DetailActivity extends AppCompatActivity {
         mQueue.add(request);
     }
 
-    private ArrayList<Card> parseJSON(JSONObject myJSON) {
+    public ArrayList<Card> parseJSON(JSONObject myJSON) {
         ArrayList<Card> cards = new ArrayList<Card>();
         Log.d(TAG, "onCreate: Started making tabs");
         Log.d(TAG, "parseJSON: JSON data: \n" + myJSON);

@@ -5,10 +5,19 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -51,8 +60,10 @@ public class SellerInfoFrag extends android.app.Fragment {
         return fragment;
     }
 
+    RequestQueue mQueue;
     JSONObject data;
     View view;
+    private static final String TAG = "SellerInfoFrag";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,6 +72,8 @@ public class SellerInfoFrag extends android.app.Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        mQueue = Volley.newRequestQueue(this.getContext());
     }
 
     @Override
@@ -69,25 +82,49 @@ public class SellerInfoFrag extends android.app.Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_seller_info, container, false);
         this.view = view;
+        DetailActivity activity = (DetailActivity) getActivity();
+        String url = activity.makeURL();
+        getJson(url);
         return view;
     }
 
-    public void setData(JSONObject data) {
+    public void getJson(String url) {
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d(TAG, "onResponse: got response: " + response);
+                        ProgressBar progressBar = view.findViewById(R.id.progressBar);
+                        progressBar.setVisibility(View.GONE);
+                        try {
+                            setData(response);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+
+        mQueue.add(request);
+    }
+
+    public void setData(JSONObject data) throws JSONException {
         DetailActivity activity = (DetailActivity) getActivity();
         TextView sellerInfoStr = view.findViewById(R.id.sellerInfoStr);
-        try {
-            sellerInfoStr.setText(Html.fromHtml(
-                    " <ul style=\"margin: 0px;\">\n" +
-                            "        <b><p style=\"text-indent: 10px;\">&#8226 Feedback Score: </p></b><br>\n" + this.data.getJSONObject("Seller") +
-                            "        <b><p style=\"text-indent: 10px;\">&#8226 User I D: </p></b><br>\n" +
-                            "        <b><p style=\"text-indent: 10px;\">&#8226 Positive Feedback Percent: </p></b><br>\n" +
-                            "        <b><p style=\"text-indent: 10px;\">&#8226 Feedback Rating Star: </p></b><br><br>\n" +
-                            "    </ul>\n" +
-                            "    <hr>"
-                    , Html.FROM_HTML_MODE_COMPACT));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        this.data = data;
+        Log.d(TAG, "setData: the feedback score is: " + data.getJSONObject("Item").getJSONObject("Seller").getString("FeedbackScore"));
+        sellerInfoStr.setText(Html.fromHtml(
+                " <ul style=\"margin: 0px;\">\n" +
+                        "        <b><p style=\"text-indent: 10px;\">&#8226 Feedback Score: " + data.getJSONObject("Item").getJSONObject("Seller").getString("FeedbackScore") + "</p></b>\n" +
+                        "        <b><p style=\"text-indent: 10px;\">&#8226 User I D: </p></b><br>\n" +
+                        "        <b><p style=\"text-indent: 10px;\">&#8226 Positive Feedback Percent: </p></b><br>\n" +
+                        "        <b><p style=\"text-indent: 10px;\">&#8226 Feedback Rating Star: </p></b><br><br>\n" +
+                        "    </ul>\n" +
+                        "    <hr>"
+                , Html.FROM_HTML_MODE_COMPACT));
     }
 }
