@@ -1,9 +1,12 @@
 package com.example.ebaysearch;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.legacy.app.FragmentPagerAdapter;
+//import androidx.fragment.app.Fragment;
+//import androidx.fragment.app.FragmentManager;
+//import androidx.fragment.app.FragmentPagerAdapter;
+import android.app.Fragment;
+import android.app.FragmentManager;
 
 public class PageAdapter extends FragmentPagerAdapter {
 
@@ -19,11 +22,11 @@ public class PageAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new productFrag();
+                return new ProductFrag();
             case 1:
-                return new sellerInfoFrag();
+                return new SellerInfoFrag();
             case 2:
-                return new shippingFrag();
+                return new ShippingFrag();
             default:
                 return null;
         }

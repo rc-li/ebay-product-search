@@ -4,14 +4,12 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.widget.ViewPager2;
 
+import android.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewParent;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.android.volley.Request;
@@ -23,8 +21,6 @@ import com.android.volley.toolbox.Volley;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -33,6 +29,7 @@ public class DetailActivity extends AppCompatActivity {
     private static final String TAG = "DetailActivity";
     private RequestQueue mQueue;
     private ActionBar actionBar;
+    public JSONObject data;
 
     TabLayout tabLayout;
     ViewPager viewPager;
@@ -57,7 +54,7 @@ public class DetailActivity extends AppCompatActivity {
         shippingTab = findViewById(R.id.shippingTab);
         viewPager = findViewById(R.id.viewPager);
 
-        pagerAdapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        pagerAdapter = new PageAdapter(getFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(pagerAdapter);
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -88,7 +85,7 @@ public class DetailActivity extends AppCompatActivity {
                 cardID = extras.getString("cardID");
             }
         } else {
-            cardID = (String) savedInstanceState.getSerializable("url");
+            cardID = (String) savedInstanceState.getSerializable("cardID");
         }
         Log.d(TAG, "onCreate: the cardID received is: " + cardID);
 
@@ -124,7 +121,10 @@ public class DetailActivity extends AppCompatActivity {
                         Log.d(TAG, "onResponse: got response: " + response);
                         ProgressBar progressBar = findViewById(R.id.progressBar);
                         progressBar.setVisibility(View.GONE);
-                        parseJSON(response);
+                        SellerInfoFrag sellerInfoFrag = (SellerInfoFrag) getFragmentManager().findFragmentById(R.id.SellerInfoFrag);
+                        Log.d(TAG, "onResponse: sellerInfoFrag is" + sellerInfoFrag);
+//                        sellerInfoFrag.setData(response);
+//                        parseJSON(response);
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -161,4 +161,9 @@ public class DetailActivity extends AppCompatActivity {
 //        }
         return cards;
     }
+
+    public JSONObject getData() {
+        return this.data;
+    }
+
 }
