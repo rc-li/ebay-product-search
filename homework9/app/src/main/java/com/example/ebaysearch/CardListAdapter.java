@@ -47,7 +47,12 @@ public class CardListAdapter extends ArrayAdapter<DualCard> {
         convertView = inflater.inflate(mResource, parent, false);
 
         ImageView imageView1 = convertView.findViewById(R.id.productImgView1);
-        Picasso.get().load(imgURL1).into(imageView1);
+        if (!imgURL1.equals("https://thumbs1.ebaystatic.com/pict/04040_0.jpg")) {
+            Picasso.get().load(imgURL1).into(imageView1);
+        }
+        else {
+            imageView1.setImageDrawable(convertView.getResources().getDrawable(R.drawable.ebay_default));
+        }
         TextView title1 = convertView.findViewById(R.id.productTitleView1);
         title1.setText(itemTitle1);
         TextView shipCost1 = convertView.findViewById(R.id.shipCostView1);
@@ -74,7 +79,12 @@ public class CardListAdapter extends ArrayAdapter<DualCard> {
             String price2 = getItem(position).card2.getPrice();
 
             ImageView imageView2 = convertView.findViewById(R.id.productImgView2);
-            Picasso.get().load(imgURL2).into(imageView2);
+            if (!imgURL2.equals("https://thumbs1.ebaystatic.com/pict/04040_0.jpg")) {
+                Picasso.get().load(imgURL2).into(imageView2);
+            }
+            else {
+                imageView2.setImageDrawable(convertView.getResources().getDrawable(R.drawable.ebay_default));
+            }
             TextView title2 = convertView.findViewById(R.id.productTitleView2);
             title2.setText(itemTitle2);
             TextView shipCost2 = convertView.findViewById(R.id.shipCostView2);
