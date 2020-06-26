@@ -4,9 +4,27 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.squareup.picasso.Picasso;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -46,6 +64,11 @@ public class ProductFrag extends android.app.Fragment {
         return fragment;
     }
 
+    RequestQueue mQueue;
+    JSONObject data;
+    View view;
+    private static final String TAG = "ProductFrag";
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,12 +76,62 @@ public class ProductFrag extends android.app.Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        mQueue = Volley.newRequestQueue(this.getContext());
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_product, container, false);
+        View view = inflater.inflate(R.layout.fragment_product, container, false);
+        this.view = view;
+        DetailActivity activity = (DetailActivity) getActivity();
+        String url = activity.makeURL();
+        Log.d(TAG, "onCreateView: URL is: " + url);
+        getJson(url);
+        return view;
+    }
+
+    public void getJson(String url) {
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d(TAG, "onResponse: got response: " + response);
+                        ProgressBar progressBar = view.findViewById(R.id.progressBar);
+                        progressBar.setVisibility(View.GONE);
+                        try {
+                            setData(response);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+
+        mQueue.add(request);
+    }
+
+    public void setData(JSONObject data) throws JSONException {
+        LinearLayout galleryLayout = (LinearLayout) view.findViewById(R.id.galleryLayout);
+        JSONArray pictureURLs = data.getJSONObject("Item").getJSONArray("PictureURL");
+        for (int i = 0; i < pictureURLs.length(); i++) {
+            ImageView image = new ImageView(getContext());
+            image.setScaleType(ImageView.ScaleType.FIT_XY);
+            image.setMinimumHeight(312);
+            image.setAdjustViewBounds(true);
+            image.setPadding(0,0,50,50);
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            image.setLayoutParams(layoutParams);
+            Picasso.get().load(pictureURLs.getString(i)).into(image);
+//            image.getLayoutParams().height = 312;
+            galleryLayout.addView(image);
+        }
     }
 }

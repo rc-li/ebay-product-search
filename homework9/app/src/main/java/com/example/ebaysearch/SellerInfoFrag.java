@@ -84,6 +84,7 @@ public class SellerInfoFrag extends android.app.Fragment {
         this.view = view;
         DetailActivity activity = (DetailActivity) getActivity();
         String url = activity.makeURL();
+//        Log.d(TAG, "onCreateView: URL is: " + url);
         getJson(url);
         return view;
     }
