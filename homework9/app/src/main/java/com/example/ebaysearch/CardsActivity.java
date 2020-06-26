@@ -83,8 +83,10 @@ public class CardsActivity extends AppCompatActivity {
                 String shippingCost = items.getJSONObject(i).getJSONArray("shippingInfo").getJSONObject(0).getJSONArray("shippingServiceCost").getJSONObject(0).getString("__value__");
                 String price = items.getJSONObject(i).getJSONArray("sellingStatus").getJSONObject(0).getJSONArray("convertedCurrentPrice").getJSONObject(0).getString("__value__");
                 String itemID = items.getJSONObject(i).getJSONArray("itemId").getString(0);
-//                Log.d(TAG, "parseJSON: itemID is " + itemID);
-                cards.add(new Card(galleryURL,itemTitle,itemCondition,isTopRated,shippingCost,price, itemID));
+                Card card = new Card(galleryURL,itemTitle,itemCondition,isTopRated,shippingCost,price, itemID);
+                JSONObject item = items.getJSONObject(i);
+                card.setItem(item.toString());
+                cards.add(card);
                 setCards(cards);
             }
 

@@ -6,6 +6,7 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -31,6 +32,7 @@ public class DetailActivity extends AppCompatActivity {
     private ActionBar actionBar;
     public JSONObject data;
     private String cardID;
+    private Card card;
 
     TabLayout tabLayout;
     ViewPager viewPager;
@@ -84,10 +86,18 @@ public class DetailActivity extends AppCompatActivity {
         }
         Log.d(TAG, "onCreate: the cardID received is: " + cardID);
 
+        Intent i = getIntent();
+        Card card = (Card) i.getSerializableExtra("card");
+        this.card = card;
         this.cardID = cardID;
+
         mQueue = Volley.newRequestQueue(this);
 //        String url = makeURL();
 //        getJson(url);
+    }
+
+    public Card getCard() {
+        return card;
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {

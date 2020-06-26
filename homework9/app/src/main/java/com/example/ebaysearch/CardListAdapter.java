@@ -94,6 +94,7 @@ public class CardListAdapter extends ArrayAdapter<DualCard> {
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, DetailActivity.class);
                 intent.putExtra("cardID", getItem(position).card1.getItemID());
+                intent.putExtra("card", getItem(position).card1);
                 mContext.startActivity(intent);
             }
         });
@@ -104,6 +105,7 @@ public class CardListAdapter extends ArrayAdapter<DualCard> {
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, DetailActivity.class);
                 intent.putExtra("cardID", getItem(position).card2.getItemID());
+                intent.putExtra("card", getItem(position).card2);
                 mContext.startActivity(intent);
             }
         });

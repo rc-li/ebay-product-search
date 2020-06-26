@@ -63,6 +63,7 @@ public class ShippingFrag extends android.app.Fragment {
     RequestQueue mQueue;
     JSONObject data;
     View view;
+    String item;
     private static final String TAG = "ShippingFrag";
 
     @Override
@@ -82,8 +83,23 @@ public class ShippingFrag extends android.app.Fragment {
         View view = inflater.inflate(R.layout.fragment_shipping, container, false);
         this.view = view;
         DetailActivity activity = (DetailActivity) getActivity();
-        String url = activity.makeURL();
-        getJson(url);
+//        String url = activity.makeURL();
+//        getJson(url);
+        Card card = activity.getCard();
+        this.item = card.getItem();
+        JSONObject item = null;
+        try {
+            item = new JSONObject(this.item);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        ProgressBar progressBar = view.findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.GONE);
+        try {
+            setData(item);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         return view;
     }
 
@@ -112,19 +128,37 @@ public class ShippingFrag extends android.app.Fragment {
         mQueue.add(request);
     }
 
-    public void setData(JSONObject data) throws JSONException {
+    public void setData(JSONObject item) throws JSONException {
         TextView shipInfoStr = view.findViewById(R.id.shipInfoStr);
+        String isOneDayAvailable = item.getJSONArray("shippingInfo").getJSONObject(0).getJSONArray("oneDayShippingAvailable").getString(0);
+        if (isOneDayAvailable.equals("true")) {
+            isOneDayAvailable = "Yes";
+        }
+        else {
+            isOneDayAvailable = "No";
+        }
+        String isExpeditedShippingAvailable = item.getJSONArray("shippingInfo").getJSONObject(0).getJSONArray("expeditedShipping").getString(0);
+        if (isExpeditedShippingAvailable.equals("true")) {
+            isExpeditedShippingAvailable = "Yes";
+        }
+        else {
+            isExpeditedShippingAvailable = "No";
+        }
         shipInfoStr.setText(Html.fromHtml(
             " <ul style=\"margin: 0px;\">\n" +
-                    "        <b><p style=\"text-indent: 10px;\">&#8226 Feedback Score: "
-                    + data.getJSONObject("Item").getJSONObject("Seller").getString("FeedbackScore") + "</p></b><br>\n" +
-                    "        <b><p style=\"text-indent: 10px;\">&#8226 User I D: "
-                    + data.getJSONObject("Item").getJSONObject("Seller").getString("UserID") + "</p></b><br>\n" +
-                    "        <b><p style=\"text-indent: 10px;\">&#8226 Positive Feedback Percent: " +
-                    data.getJSONObject("Item").getJSONObject("Seller").getString("PositiveFeedbackPercent") + "</p></b><br>\n" +
-                    "        <b><p style=\"text-indent: 10px;\">&#8226 Feedback Rating Star: " +
-                    data.getJSONObject("Item").getJSONObject("Seller").getString("FeedbackRatingStar") + "</p></b><br><br>\n" +
-                    "    </ul>\n" +
+                    "        <b><p style=\"text-indent: 10px;\">&#8226 Handling Time: "
+                    + item.getJSONArray("shippingInfo").getJSONObject(0).getJSONArray("handlingTime").getString(0) + "</p></b><br>\n" +
+                    "        <b><p style=\"text-indent: 10px;\">&#8226 One Day Shipping Available: "
+                    + isOneDayAvailable + "</p></b><br>\n" +
+                    "        <b><p style=\"text-indent: 10px;\">&#8226 Shipping Type: " +
+                    item.getJSONArray("shippingInfo").getJSONObject(0).getJSONArray("shippingType").getString(0) + "</p></b><br>\n" +
+                    "        <b><p style=\"text-indent: 10px;\">&#8226 Shipping From: " +
+                    item.getJSONArray("country").getString(0) + "</p></b><br>\n" +
+                    "        <b><p style=\"text-indent: 10px;\">&#8226 Ship To Locations: " +
+                    item.getJSONArray("shippingInfo").getJSONObject(0).getJSONArray("shipToLocations").getString(0) + "</p></b><br>\n" +
+                    "        <b><p style=\"text-indent: 10px;\">&#8226 Expedited Shipping: " +
+                    isExpeditedShippingAvailable + "</p></b><br><br>\n" +
+//                    "    </ul>\n" +
                     "    <hr>"
             , Html.FROM_HTML_MODE_COMPACT));
     }

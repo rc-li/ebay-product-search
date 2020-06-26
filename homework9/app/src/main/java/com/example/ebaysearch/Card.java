@@ -3,7 +3,11 @@ package com.example.ebaysearch;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Card implements Parcelable {
+import org.json.JSONObject;
+
+import java.io.Serializable;
+
+public class Card implements Serializable {
     private String itemImgURL;
     private String itemTitle;
     private String itemCondition;
@@ -11,6 +15,7 @@ public class Card implements Parcelable {
     private String shippingCost;
     private String price;
     private String itemID;
+    private String item;
     public boolean isEmpty;
 
     public Card(boolean isEmpty) {
@@ -29,28 +34,13 @@ public class Card implements Parcelable {
         this.itemID = itemID;
     }
 
-    protected Card(Parcel in) {
-        itemImgURL = in.readString();
-        itemTitle = in.readString();
-        itemCondition = in.readString();
-        isTopRated = in.readString();
-        shippingCost = in.readString();
-        price = in.readString();
-        itemID = in.readString();
-        isEmpty = in.readByte() != 0;
+    public String getItem() {
+        return item;
     }
 
-    public static final Creator<Card> CREATOR = new Creator<Card>() {
-        @Override
-        public Card createFromParcel(Parcel in) {
-            return new Card(in);
-        }
-
-        @Override
-        public Card[] newArray(int size) {
-            return new Card[size];
-        }
-    };
+    public void setItem(String item) {
+        this.item = item;
+    }
 
     public String getItemID() {
         return itemID;
@@ -108,20 +98,5 @@ public class Card implements Parcelable {
         this.price = price;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(itemImgURL);
-        dest.writeString(itemTitle);
-        dest.writeString(itemCondition);
-        dest.writeString(isTopRated);
-        dest.writeString(shippingCost);
-        dest.writeString(price);
-        dest.writeString(itemID);
-        dest.writeByte((byte) (isEmpty ? 1 : 0));
-    }
 }
