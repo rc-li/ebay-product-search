@@ -119,6 +119,7 @@ public class ProductFrag extends android.app.Fragment {
     }
 
     public void setData(JSONObject data) throws JSONException {
+        // set the gallery images
         LinearLayout galleryLayout = (LinearLayout) view.findViewById(R.id.galleryLayout);
         JSONArray pictureURLs = data.getJSONObject("Item").getJSONArray("PictureURL");
         for (int i = 0; i < pictureURLs.length(); i++) {
@@ -126,12 +127,29 @@ public class ProductFrag extends android.app.Fragment {
             image.setScaleType(ImageView.ScaleType.FIT_XY);
             image.setMinimumHeight(312);
             image.setAdjustViewBounds(true);
-            image.setPadding(0,0,50,50);
+            image.setPadding(0, 0, 50, 50);
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             image.setLayoutParams(layoutParams);
             Picasso.get().load(pictureURLs.getString(i)).into(image);
 //            image.getLayoutParams().height = 312;
             galleryLayout.addView(image);
         }
+
+        DetailActivity activity = (DetailActivity) getActivity();
+        Card card = activity.getCard();
+
+        // set the title, price and shipping information
+        TextView productTitleView = view.findViewById(R.id.productTitleView);
+        productTitleView.setText(card.getItemTitle());
+        TextView priceView = view.findViewById(R.id.priceView);
+        priceView.setText(card.getPrice());
+        TextView shipCostView = view.findViewById(R.id.shipPriceView);
+        shipCostView.setText("Ships for $" + card.getShippingCost());
+
+        TextView subtitleView = view.findViewById(R.id.subtitleView);
+        subtitleView.setText(data.getJSONObject("Item").getString("Subtitle"));
+        TextView brandView = view.findViewById(R.id.brandView);
+        brandView.setText(data.getJSONObject("Item").getJSONObject("ItemSpecifics").getJSONArray("NameValueList").getJSONObject(0).getJSONArray("Value").getString(0));
+
     }
 }

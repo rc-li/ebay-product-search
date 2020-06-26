@@ -114,7 +114,7 @@ public class DetailActivity extends AppCompatActivity {
         url += "http://open.api.ebay.com/shopping?callname=GetSingleItem&responseencoding=JSON" +
                 "&appid=RayLi-exp-PRD-d2eb6beb6-1a4f60ed&siteid=0&version=967" +
                 "&ItemID=" + cardID +
-                "&IncludeSelector=Description,Details,ItemSpeciGics";
+                "&IncludeSelector=Description,Details,ItemSpecifics";
         return url;
     }
 
