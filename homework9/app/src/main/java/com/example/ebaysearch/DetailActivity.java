@@ -49,7 +49,6 @@ public class DetailActivity extends AppCompatActivity {
 
         actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setTitle("i can set this");
 
         tabLayout = findViewById(R.id.tabLayout);
         productTab = findViewById(R.id.productTab);
@@ -90,6 +89,7 @@ public class DetailActivity extends AppCompatActivity {
         Card card = (Card) i.getSerializableExtra("card");
         this.card = card;
         this.cardID = cardID;
+        actionBar.setTitle(card.getItemTitle());
 
         mQueue = Volley.newRequestQueue(this);
 //        String url = makeURL();
