@@ -115,6 +115,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/subtitleLayout"
                 android:layout_width="match_parent"
                 android:layout_height="34dp"
                 android:orientation="horizontal">
@@ -187,6 +188,16 @@
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/specsView"
+                android:layout_width="match_parent"
+                android:layout_height="125dp"
+                android:includeFontPadding="false"
+                android:paddingLeft="38dp"
+                android:paddingTop="15dp"
+                android:text=". apple A10 Fusion"
+                android:textColor="@android:color/darker_gray" />
 
         </LinearLayout>
     </ScrollView>

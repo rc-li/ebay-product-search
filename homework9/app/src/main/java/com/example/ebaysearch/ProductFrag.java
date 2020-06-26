@@ -25,6 +25,7 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -147,9 +148,29 @@ public class ProductFrag extends android.app.Fragment {
         shipCostView.setText("Ships for $" + card.getShippingCost());
 
         TextView subtitleView = view.findViewById(R.id.subtitleView);
-        subtitleView.setText(data.getJSONObject("Item").getString("Subtitle"));
+        try {
+            subtitleView.setText(data.getJSONObject("Item").getString("Subtitle"));
+        }
+        catch (JSONException e){
+            LinearLayout subtitleLayout = view.findViewById(R.id.subtitleLayout);
+            subtitleLayout.setVisibility(View.GONE);
+        }
         TextView brandView = view.findViewById(R.id.brandView);
         brandView.setText(data.getJSONObject("Item").getJSONObject("ItemSpecifics").getJSONArray("NameValueList").getJSONObject(0).getJSONArray("Value").getString(0));
 
+        JSONArray NameValueList = data.getJSONObject("Item").getJSONObject("ItemSpecifics").getJSONArray("NameValueList");
+        int numSpecs = 0;
+        int i = 0;
+        String html = "";
+        while (numSpecs < 5 && i < NameValueList.length()) {
+            if (!NameValueList.getJSONObject(i).equals("Brand")) {
+                html += "        <b><p style=\"padding: 0px;\">&#8226 "
+                        + NameValueList.getJSONObject(i).getJSONArray("Value").getString(0) + "</p></b>\n";
+                numSpecs++;
+            }
+            i++;
+        }
+        TextView specsView = view.findViewById(R.id.specsView);
+        specsView.setText(Html.fromHtml(html));
     }
 }
