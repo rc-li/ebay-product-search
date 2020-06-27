@@ -35,14 +35,22 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textStyle="bold"
+                android:ellipsize="end"
+                android:maxLines="3"
                 android:text="DE LCD SCRREEN SEPERATOR REPAIR PHONE PLATE GLASS" />
 
             <TextView
                 android:id="@+id/shipCostView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="Ships for $1000.0" />
+
+            <TextView
+                android:id="@+id/isTopRatedView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="top rated" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -52,10 +60,11 @@
 
                 <TextView
                     android:id="@+id/conditionView1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
+                    android:ellipsize="end"
                     android:text="condition"
                     android:textStyle="bold|italic"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -107,14 +116,22 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textStyle="bold"
+                android:ellipsize="end"
+                android:maxLines="3"
                 android:text="MINI POWER BANK 5000MAH DUAL USB EXTERNAL BATTERY" />
 
             <TextView
                 android:id="@+id/shipCostView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="Ships for $1000.0" />
+
+            <TextView
+                android:id="@+id/isTopRatedView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="top rated" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -124,10 +141,11 @@
 
                 <TextView
                     android:id="@+id/conditionView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="19dp"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
+                    android:ellipsize="end"
                     android:text="condition"
                     android:textStyle="bold|italic"
                     app:layout_constraintBottom_toBottomOf="parent"

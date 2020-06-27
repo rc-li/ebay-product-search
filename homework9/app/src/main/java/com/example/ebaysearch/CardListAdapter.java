@@ -56,10 +56,15 @@ public class CardListAdapter extends ArrayAdapter<DualCard> {
         TextView title1 = convertView.findViewById(R.id.productTitleView1);
         title1.setText(itemTitle1);
         TextView shipCost1 = convertView.findViewById(R.id.shipCostView1);
-        if (isTopRated1.equals("false"))
+        TextView isTopRatedView1 = convertView.findViewById(R.id.isTopRatedView1);
+        if (isTopRated1.equals("false")){
+            isTopRatedView1.setVisibility(View.INVISIBLE);
             shipCost1.setText("Ships for $" + shippingCost1);
-        else
-            shipCost1.setText("Ships for $" + shippingCost1 + "/nTop Rated Listing");
+        }
+        else {
+            shipCost1.setText("Ships for $" + shippingCost1);
+            isTopRatedView1.setText("Top Rated Listing");
+        }
         TextView priceView1 = convertView.findViewById(R.id.priceView1);
         priceView1.setText("$" + price1);
         TextView conditionView1 = convertView.findViewById(R.id.conditionView1);
@@ -81,17 +86,21 @@ public class CardListAdapter extends ArrayAdapter<DualCard> {
             ImageView imageView2 = convertView.findViewById(R.id.productImgView2);
             if (!imgURL2.equals("https://thumbs1.ebaystatic.com/pict/04040_0.jpg")) {
                 Picasso.get().load(imgURL2).into(imageView2);
-            }
-            else {
+            } else {
                 imageView2.setImageDrawable(convertView.getResources().getDrawable(R.drawable.ebay_default));
             }
             TextView title2 = convertView.findViewById(R.id.productTitleView2);
             title2.setText(itemTitle2);
             TextView shipCost2 = convertView.findViewById(R.id.shipCostView2);
-            if (isTopRated2.equals("false"))
+            TextView isTopRatedView2 = convertView.findViewById(R.id.isTopRatedView2);
+            if (isTopRated2.equals("false")){
+                isTopRatedView2.setVisibility(View.INVISIBLE);
                 shipCost2.setText("Ships for $" + shippingCost2);
-            else
-                shipCost2.setText("Ships for $" + shippingCost2 + "/nTop Rated Listing");
+            }
+            else {
+                shipCost2.setText("Ships for $" + shippingCost2);
+                isTopRatedView2.setText("Top Rated Listing");
+            }
             TextView priceView2 = convertView.findViewById(R.id.priceView2);
             priceView2.setText("$" + price2);
             TextView conditionView2 = convertView.findViewById(R.id.conditionView2);
