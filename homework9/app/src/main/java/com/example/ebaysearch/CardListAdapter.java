@@ -3,6 +3,8 @@ package com.example.ebaysearch;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
+import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,13 +58,18 @@ public class CardListAdapter extends ArrayAdapter<DualCard> {
         TextView title1 = convertView.findViewById(R.id.productTitleView1);
         title1.setText(itemTitle1);
         TextView shipCost1 = convertView.findViewById(R.id.shipCostView1);
+        if (!shippingCost1.equals("0.0")) {
+            shipCost1.setText("Ships for $" + shippingCost1);
+            Log.d(TAG, "getView: ====== shipcost1   " + shipCost1);
+        }
+        else {
+            shipCost1.setText(Html.fromHtml("<b>FREE</b> Shipping"));
+        }
         TextView isTopRatedView1 = convertView.findViewById(R.id.isTopRatedView1);
         if (isTopRated1.equals("false")){
             isTopRatedView1.setVisibility(View.INVISIBLE);
-            shipCost1.setText("Ships for $" + shippingCost1);
         }
         else {
-            shipCost1.setText("Ships for $" + shippingCost1);
             isTopRatedView1.setText("Top Rated Listing");
         }
         TextView priceView1 = convertView.findViewById(R.id.priceView1);
@@ -92,13 +99,18 @@ public class CardListAdapter extends ArrayAdapter<DualCard> {
             TextView title2 = convertView.findViewById(R.id.productTitleView2);
             title2.setText(itemTitle2);
             TextView shipCost2 = convertView.findViewById(R.id.shipCostView2);
+            if (!shippingCost2.equals("0.0")) {
+                shipCost2.setText("Ships for $" + shippingCost2);
+                Log.d(TAG, "getView: ====== shipcost2   " + shipCost2);
+            }
+            else {
+                shipCost2.setText(Html.fromHtml("<b>FREE</b> Shipping"));
+            }
             TextView isTopRatedView2 = convertView.findViewById(R.id.isTopRatedView2);
             if (isTopRated2.equals("false")){
                 isTopRatedView2.setVisibility(View.INVISIBLE);
-                shipCost2.setText("Ships for $" + shippingCost2);
             }
             else {
-                shipCost2.setText("Ships for $" + shippingCost2);
                 isTopRatedView2.setText("Top Rated Listing");
             }
             TextView priceView2 = convertView.findViewById(R.id.priceView2);
