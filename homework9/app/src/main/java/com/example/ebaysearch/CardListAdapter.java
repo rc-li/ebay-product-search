@@ -61,7 +61,7 @@ public class CardListAdapter extends ArrayAdapter<DualCard> {
         else
             shipCost1.setText("Ships for $" + shippingCost1 + "/nTop Rated Listing");
         TextView priceView1 = convertView.findViewById(R.id.priceView1);
-        priceView1.setText(price1);
+        priceView1.setText("$" + price1);
         TextView conditionView1 = convertView.findViewById(R.id.conditionView1);
         conditionView1.setText(itemCondition1);
 
@@ -93,7 +93,7 @@ public class CardListAdapter extends ArrayAdapter<DualCard> {
             else
                 shipCost2.setText("Ships for $" + shippingCost2 + "/nTop Rated Listing");
             TextView priceView2 = convertView.findViewById(R.id.priceView2);
-            priceView2.setText(price2);
+            priceView2.setText("$" + price2);
             TextView conditionView2 = convertView.findViewById(R.id.conditionView2);
             conditionView2.setText(itemCondition2);
         }

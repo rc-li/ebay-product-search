@@ -149,6 +149,7 @@ public class CardsActivity extends AppCompatActivity {
                         progressBar.setVisibility(View.GONE);
                         findViewById(R.id.progressBarText).setVisibility(View.GONE);
                         findViewById(R.id.searchResultNumBar).setVisibility(View.VISIBLE);
+                        findViewById(R.id.vertiLine).setVisibility(View.VISIBLE);
                         try {
                             parseJSON(response);
                         } catch (JSONException e) {

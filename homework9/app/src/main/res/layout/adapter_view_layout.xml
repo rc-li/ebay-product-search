@@ -8,9 +8,13 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card1"
-        android:layout_width="206dp"
-        android:layout_height="360dp"
-        android:layout_weight="1"
+        android:layout_width="195dp"
+        android:layout_height="320dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
+        android:elevation="100dp"
+        android:fadingEdgeLength="10dp"
+        app:cardCornerRadius="13dp"
         app:contentPadding="10dp">
 
         <LinearLayout
@@ -20,7 +24,7 @@
 
             <ImageView
                 android:id="@+id/productImgView1"
-                android:layout_width="164dp"
+                android:layout_width="match_parent"
                 android:layout_height="133dp"
                 android:layout_weight="1"
                 tools:srcCompat="@tools:sample/avatars" />
@@ -30,6 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textStyle="bold"
                 android:text="DE LCD SCRREEN SEPERATOR REPAIR PHONE PLATE GLASS" />
 
             <TextView
@@ -49,9 +54,10 @@
                     android:id="@+id/conditionView1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginBottom="5dp"
                     android:text="condition"
+                    android:textStyle="bold|italic"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
@@ -59,9 +65,11 @@
                     android:id="@+id/priceView1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
                     android:text="$45.23"
+                    android:textColor="#8BC34A"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -72,9 +80,13 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card2"
-        android:layout_width="206dp"
-        android:layout_height="360dp"
-        android:layout_weight="1"
+        android:layout_width="195dp"
+        android:layout_height="320dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="5dp"
+        android:elevation="100dp"
+        android:fadingEdgeLength="10dp"
+        app:cardCornerRadius="13dp"
         app:contentPadding="10dp">
 
         <LinearLayout
@@ -84,7 +96,7 @@
 
             <ImageView
                 android:id="@+id/productImgView2"
-                android:layout_width="164dp"
+                android:layout_width="match_parent"
                 android:layout_height="133dp"
                 android:layout_weight="1"
                 tools:srcCompat="@tools:sample/avatars" />
@@ -94,6 +106,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textStyle="bold"
                 android:text="MINI POWER BANK 5000MAH DUAL USB EXTERNAL BATTERY" />
 
             <TextView
@@ -113,9 +126,10 @@
                     android:id="@+id/conditionView2"
                     android:layout_width="wrap_content"
                     android:layout_height="19dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginBottom="5dp"
                     android:text="condition"
+                    android:textStyle="bold|italic"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
@@ -123,9 +137,11 @@
                     android:id="@+id/priceView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
                     android:text="$19.57"
+                    android:textColor="#8BC34A"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
