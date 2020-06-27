@@ -21,6 +21,22 @@ app.get('/', function (req, res) {
     res.send()
 })
 
+app.get('/single-q?', function(req, res) {
+    let cardID = req.query.cardID
+    let url = "" 
+    url += "http://open.api.ebay.com/shopping?callname=GetSingleItem&responseencoding=JSON" +
+                "&appid=RayLi-exp-PRD-d2eb6beb6-1a4f60ed&siteid=0&version=967" +
+                "&ItemID=" + cardID +
+                "&IncludeSelector=Description,Details,ItemSpecifics";
+    console.log("got single item query, cardID is: " + cardID)
+    fetch(url)
+        .then(response => response.json())
+        .then((r) => {
+            res.send(r)
+            console.log("single item response sent")
+        })
+})
+
 // q?keyword=mask&lowPrice=30&highPrice=50&isNew=on&isExpdtd=on&Sort+by%3A+=pPlusS_h
 app.get('/q?', function (req, res) {
     console.log("========= got url from android ==========")

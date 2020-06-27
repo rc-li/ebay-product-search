@@ -128,10 +128,8 @@ public class DetailActivity extends AppCompatActivity {
     //todo call it on server side
     public String makeURL() {
         String url = "";
-        url += "http://open.api.ebay.com/shopping?callname=GetSingleItem&responseencoding=JSON" +
-                "&appid=RayLi-exp-PRD-d2eb6beb6-1a4f60ed&siteid=0&version=967" +
-                "&ItemID=" + cardID +
-                "&IncludeSelector=Description,Details,ItemSpecifics";
+        url += "http://10.0.2.2:3000/single-q?cardID=" + cardID;
+//        url += "http://ebay-8.wl.r.appspot.com/" + cardID;
         return url;
     }
 
