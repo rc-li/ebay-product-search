@@ -34,16 +34,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textStyle="bold"
                 android:ellipsize="end"
                 android:maxLines="3"
-                android:text="DE LCD SCRREEN SEPERATOR REPAIR PHONE PLATE GLASS" />
+                android:textStyle="bold"
+                tools:text="DE LCD SCRREEN SEPERATOR REPAIR PHONE PLATE GLASS" />
 
             <TextView
                 android:id="@+id/shipCostView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ships for $1000.0" />
+                tools:text="Ships for $1000.0" />
 
             <TextView
                 android:id="@+id/isTopRatedView1"
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textStyle="bold"
-                android:text="top rated" />
+                tools:text="top rated" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -63,13 +63,13 @@
                     android:id="@+id/conditionView1"
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginBottom="4dp"
                     android:ellipsize="end"
-                    android:text="condition"
                     android:textStyle="bold|italic"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:text="condition" />
 
                 <TextView
                     android:id="@+id/priceView1"
@@ -77,11 +77,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
                     android:layout_marginBottom="5dp"
-                    android:text="$45.23"
                     android:textColor="#8BC34A"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="$45.23" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
@@ -116,16 +116,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textStyle="bold"
                 android:ellipsize="end"
                 android:maxLines="3"
-                android:text="MINI POWER BANK 5000MAH DUAL USB EXTERNAL BATTERY" />
+                android:textStyle="bold"
+                tools:text="MINI POWER BANK 5000MAH DUAL USB EXTERNAL BATTERY" />
 
             <TextView
                 android:id="@+id/shipCostView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ships for $1000.0" />
+                tools:text="Ships for $1000.0" />
 
             <TextView
                 android:id="@+id/isTopRatedView2"
@@ -133,7 +133,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textStyle="bold"
-                android:text="top rated" />
+                tools:text="top rated" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -148,10 +148,10 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
                     android:ellipsize="end"
-                    android:text="condition"
                     android:textStyle="bold|italic"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:text="condition" />
 
                 <TextView
                     android:id="@+id/priceView2"
@@ -159,11 +159,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
                     android:layout_marginBottom="5dp"
-                    android:text="$19.57"
                     android:textColor="#8BC34A"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="$19.57" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>

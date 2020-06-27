@@ -55,9 +55,9 @@
                 android:paddingTop="10dp"
                 android:paddingRight="20dp"
                 android:paddingBottom="10dp"
+                android:textColor="#000000"
                 android:textStyle="bold"
-                android:text="Mini Power Bank 5000mAh Dual USB External Battery Charger For IPhone Samsung C4"
-                android:textColor="#000000" />
+                tools:text="Mini Power Bank 5000mAh Dual USB External Battery Charger For IPhone Samsung C4" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -69,12 +69,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="15dp"
-                    android:text="$19.57"
                     android:textAppearance="@style/GreenText"
                     android:textColor="#8BC34A"
                     android:textFontWeight="700"
                     android:textStyle="bold"
-                    />
+                    tools:text="$19.57" />
 
                 <TextView
                     android:id="@+id/shipPriceView"
@@ -82,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="10dp"
                     android:textStyle="bold"
-                    android:text="Ships for $1000.0" />
+                    tools:text="Ships for $1000.0" />
 
             </LinearLayout>
 
@@ -136,7 +135,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:text="FREE 2 DAY SHIPPING ** 90 DAY WARRANTY!!!!" />
+                    tools:text="FREE 2 DAY SHIPPING ** 90 DAY WARRANTY!!!!" />
 
             </LinearLayout>
 
@@ -159,7 +158,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:text="Unbranded/Generic" />
+                    tools:text="Unbranded/Generic" />
             </LinearLayout>
 
             <View
@@ -199,8 +198,8 @@
                 android:includeFontPadding="false"
                 android:paddingLeft="38dp"
                 android:paddingTop="15dp"
-                android:text=". apple A10 Fusion"
-                android:textColor="@android:color/darker_gray" />
+                android:textColor="@android:color/darker_gray"
+                tools:text=". apple A10 Fusion" />
 
         </LinearLayout>
     </ScrollView>
