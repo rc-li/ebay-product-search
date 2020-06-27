@@ -178,7 +178,7 @@ function processData(r) {
         let cardNum = 0
         let itemNum = 0
         // console.log("preparing data for item " + itemNum)
-        while (cardNum < 100 && itemNum < 100) {
+        while (cardNum < 50 && itemNum < 100) {
             if (checkEmpty(itemNum)) {
                 item.push(searchResult["item"][itemNum])
                 cardNum = cardNum + 1
