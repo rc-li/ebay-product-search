@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     String TAG = "user MainActivity";
+    private String keyword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String text = parent.getItemAtPosition(position).toString();
-//        Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         EditText keyEdit = findViewById(R.id.keywordEdit);
         String keyword = keyEdit.getText().toString();
+        this.keyword = keyword;
 
         EditText lowPriceEdit = findViewById(R.id.lowPrice);
         String lowPriceStr = lowPriceEdit.getText().toString();
@@ -112,6 +113,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             String url = makeURL();
             Intent intent = new Intent(this, CardsActivity.class);
             intent.putExtra("url",url);
+            intent.putExtra("keyword", this.keyword);
             startActivity(intent);
         }
 

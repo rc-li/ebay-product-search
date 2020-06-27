@@ -33,6 +33,7 @@ public class CardsActivity extends AppCompatActivity {
     String TAG = "user Cards";
     private RequestQueue mQueue;
     private SwipeRefreshLayout mSwipeRefreshLayout;
+    private String keyword;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -76,6 +77,7 @@ public class CardsActivity extends AppCompatActivity {
                 url = null;
             } else {
                 url = extras.getString("url");
+                this.keyword = extras.getString("keyword");
             }
         } else {
             url = (String) savedInstanceState.getSerializable("url");
@@ -110,6 +112,11 @@ public class CardsActivity extends AppCompatActivity {
             findViewById(R.id.noRecordsView).setVisibility(View.INVISIBLE);
         }
 
+        TextView numCardsTextView = findViewById(R.id.numCardsTextView);
+        numCardsTextView.setText(myJSON.getString("validCards"));
+        TextView productNameText = findViewById(R.id.productNameText);
+        productNameText.setText(this.keyword);
+
         JSONArray items = myJSON.getJSONObject("searchResult").getJSONArray("item");
         for (int i = 0; i < items.length(); i++) {
             String galleryURL = items.getJSONObject(i).getJSONArray("galleryURL").getString(0);
@@ -141,6 +148,7 @@ public class CardsActivity extends AppCompatActivity {
                         ProgressBar progressBar = findViewById(R.id.progressBar);
                         progressBar.setVisibility(View.GONE);
                         findViewById(R.id.progressBarText).setVisibility(View.GONE);
+                        findViewById(R.id.searchResultNumBar).setVisibility(View.VISIBLE);
                         try {
                             parseJSON(response);
                         } catch (JSONException e) {
