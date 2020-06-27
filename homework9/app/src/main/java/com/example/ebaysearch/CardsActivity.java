@@ -2,9 +2,11 @@ package com.example.ebaysearch;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,9 +30,10 @@ import java.util.ArrayList;
 public class CardsActivity extends AppCompatActivity {
     String TAG = "user Cards";
     private RequestQueue mQueue;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cards);
@@ -38,6 +41,32 @@ public class CardsActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        fetchData(savedInstanceState);
+
+        mSwipeRefreshLayout = findViewById(R.id.swiperefresh_items);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to make your refresh action
+                // CallYourRefreshingMethod();
+                fetchData(savedInstanceState);
+
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(mSwipeRefreshLayout.isRefreshing()) {
+                            mSwipeRefreshLayout.setRefreshing(false);
+                        }
+                    }
+                }, 500);
+            }
+        });
+    }
+
+    public void fetchData(Bundle savedInstanceState) {
+        ListView listView = findViewById(R.id.listView);
+        listView.setVisibility(View.GONE);
         String url;
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
@@ -53,17 +82,17 @@ public class CardsActivity extends AppCompatActivity {
 
         mQueue = Volley.newRequestQueue(this);
         getJson(url);
-
+        listView.setVisibility(View.VISIBLE);
     }
 
     private void setCards(ArrayList<Card> cards) {
         ListView list = findViewById(R.id.listView);
         ArrayList<DualCard> dualCards = new ArrayList<DualCard>();
-        for (int i = 0; i < cards.size()/2; i++) {
+        for (int i = 0; i < cards.size() / 2; i++) {
             dualCards.add(new DualCard(cards.get(2 * i), cards.get(2 * i + 1)));
         }
-        if (cards.size()%2 == 1) {
-            dualCards.add(new DualCard(cards.get(cards.size()-1),new Card(true)));
+        if (cards.size() % 2 == 1) {
+            dualCards.add(new DualCard(cards.get(cards.size() - 1), new Card(true)));
         }
         CardListAdapter adapter = new CardListAdapter(this, R.layout.adapter_view_layout, dualCards);
         list.setAdapter(adapter);
@@ -84,7 +113,7 @@ public class CardsActivity extends AppCompatActivity {
                 String price = items.getJSONObject(i).getJSONArray("sellingStatus").getJSONObject(0).getJSONArray("convertedCurrentPrice").getJSONObject(0).getString("__value__");
                 String itemID = items.getJSONObject(i).getJSONArray("itemId").getString(0);
                 String viewItemURL = items.getJSONObject(i).getJSONArray("viewItemURL").getString(0);
-                Card card = new Card(galleryURL,itemTitle,itemCondition,isTopRated,shippingCost,price, itemID);
+                Card card = new Card(galleryURL, itemTitle, itemCondition, isTopRated, shippingCost, price, itemID);
                 JSONObject item = items.getJSONObject(i);
                 card.setItem(item.toString());
                 card.setViewItemURL(viewItemURL);
