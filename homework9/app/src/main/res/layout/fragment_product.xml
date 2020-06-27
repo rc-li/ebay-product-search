@@ -55,6 +55,7 @@
                 android:paddingTop="10dp"
                 android:paddingRight="20dp"
                 android:paddingBottom="10dp"
+                android:textStyle="bold"
                 android:text="Mini Power Bank 5000mAh Dual USB External Battery Charger For IPhone Samsung C4"
                 android:textColor="#000000" />
 
@@ -80,15 +81,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="10dp"
+                    android:textStyle="bold"
                     android:text="Ships for $1000.0" />
 
             </LinearLayout>
 
             <View
                 android:id="@+id/divider2"
-                android:layout_width="match_parent"
+                android:layout_width="380dp"
                 android:layout_height="1dp"
-                android:layout_weight="1"
+                android:layout_marginLeft="30dp"
                 android:background="?android:attr/listDivider" />
 
             <LinearLayout
@@ -162,8 +164,9 @@
 
             <View
                 android:id="@+id/divider3"
-                android:layout_width="match_parent"
+                android:layout_width="380dp"
                 android:layout_height="1dp"
+                android:layout_marginLeft="30dp"
                 android:background="?android:attr/listDivider" />
 
             <LinearLayout

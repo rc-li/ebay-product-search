@@ -118,14 +118,14 @@ public class SellerInfoFrag extends android.app.Fragment {
         TextView sellerInfoStr = view.findViewById(R.id.sellerInfoStr);
         sellerInfoStr.setText(Html.fromHtml(
             " <ul style=\"margin: 0px;\">\n" +
-                    "        <b><p style=\"text-indent: 10px;\">&#8226 Feedback Score: "
-                    + data.getJSONObject("Item").getJSONObject("Seller").getString("FeedbackScore") + "</p></b><br>\n" +
-                    "        <b><p style=\"text-indent: 10px;\">&#8226 User I D: "
-                    + data.getJSONObject("Item").getJSONObject("Seller").getString("UserID") + "</p></b><br>\n" +
-                    "        <b><p style=\"text-indent: 10px;\">&#8226 Positive Feedback Percent: " +
-                    data.getJSONObject("Item").getJSONObject("Seller").getString("PositiveFeedbackPercent") + "</p></b><br>\n" +
-                    "        <b><p style=\"text-indent: 10px;\">&#8226 Feedback Rating Star: " +
-                    data.getJSONObject("Item").getJSONObject("Seller").getString("FeedbackRatingStar") + "</p></b><br><br>\n" +
+                    "        <b><p style=\"text-indent: 10px;\">&#8226 Feedback Score: </b>"
+                    + data.getJSONObject("Item").getJSONObject("Seller").getString("FeedbackScore") + "</p><br>\n" +
+                    "        <b><p style=\"text-indent: 10px;\">&#8226 User I D: </b>"
+                    + data.getJSONObject("Item").getJSONObject("Seller").getString("UserID") + "</p><br>\n" +
+                    "        <b><p style=\"text-indent: 10px;\">&#8226 Positive Feedback Percent: </b>" +
+                    data.getJSONObject("Item").getJSONObject("Seller").getString("PositiveFeedbackPercent") + "</p><br>\n" +
+                    "        <b><p style=\"text-indent: 10px;\">&#8226 Feedback Rating Star: </b>" +
+                    data.getJSONObject("Item").getJSONObject("Seller").getString("FeedbackRatingStar") + "</p><br><br>\n" +
                     "    </ul>\n" +
                     "    <hr>"
             , Html.FROM_HTML_MODE_COMPACT));
@@ -134,14 +134,14 @@ public class SellerInfoFrag extends android.app.Fragment {
         TextView returnPoliciesStr = view.findViewById(R.id.returnPoliciesStr);
         returnPoliciesStr.setText(Html.fromHtml(
                 " <ul style=\"margin: 0px;\">\n" +
-                        "        <b><p style=\"text-indent: 10px;\">&#8226 Refund: "
-                        + data.getJSONObject("Item").getJSONObject("ReturnPolicy").getString("Refund") + "</p></b><br>\n" +
-                        "        <b><p style=\"text-indent: 10px;\">&#8226 Returns Within: "
-                        + data.getJSONObject("Item").getJSONObject("ReturnPolicy").getString("ReturnsWithin") + "</p></b><br>\n" +
-                        "        <b><p style=\"text-indent: 10px;\">&#8226 Shipping Cost Paid By: " +
-                        data.getJSONObject("Item").getJSONObject("ReturnPolicy").getString("ShippingCostPaidBy") + "</p></b><br>\n" +
-                        "        <b><p style=\"text-indent: 10px;\">&#8226 Returns Accepted: " +
-                        data.getJSONObject("Item").getJSONObject("ReturnPolicy").getString("ReturnsAccepted") + "</p></b><br><br>\n" +
+                        "        <b><p style=\"text-indent: 10px;\">&#8226 Refund: </b>"
+                        + data.getJSONObject("Item").getJSONObject("ReturnPolicy").getString("Refund") + "</p><br>\n" +
+                        "        <b><p style=\"text-indent: 10px;\">&#8226 Returns Within: </b>"
+                        + data.getJSONObject("Item").getJSONObject("ReturnPolicy").getString("ReturnsWithin") + "</p><br>\n" +
+                        "        <b><p style=\"text-indent: 10px;\">&#8226 Shipping Cost Paid By: </b>" +
+                        data.getJSONObject("Item").getJSONObject("ReturnPolicy").getString("ShippingCostPaidBy") + "</p><br>\n" +
+                        "        <b><p style=\"text-indent: 10px;\">&#8226 Returns Accepted: </b>" +
+                        data.getJSONObject("Item").getJSONObject("ReturnPolicy").getString("ReturnsAccepted") + "</p><br><br>\n" +
                         "    </ul>\n" +
                         "    <hr>"
                 , Html.FROM_HTML_MODE_COMPACT));

@@ -215,7 +215,7 @@ function processData(r) {
             searchResult["item"][itemNum]["galleryURL"][0]
             searchResult["item"][itemNum]["title"][0]
             searchResult["item"][itemNum]["viewItemURL"][0]
-            searchResult["item"][itemNum]["primaryCategory"][0]['categoryName'][0]
+            // searchResult["item"][itemNum]["primaryCategory"][0]['categoryName'][0]
             searchResult["item"][itemNum]["condition"][0]['conditionDisplayName'][0]
             searchResult["item"][itemNum]["topRatedListing"][0]
             searchResult["item"][itemNum]["returnsAccepted"][0]
@@ -226,11 +226,11 @@ function processData(r) {
             searchResult["item"][itemNum]["shippingInfo"][0]["shipToLocations"][0]
             searchResult["item"][itemNum]["shippingInfo"][0]["expeditedShipping"][0]
             searchResult["item"][itemNum]["shippingInfo"][0]["oneDayShippingAvailable"][0]
-            searchResult["item"][itemNum]["listingInfo"][0]["bestOfferEnabled"][0]
-            searchResult["item"][itemNum]["listingInfo"][0]["buyItNowAvailable"][0]
-            searchResult["item"][itemNum]["listingInfo"][0]["listingType"][0]
-            searchResult["item"][itemNum]["listingInfo"][0]["gift"][0]
-            searchResult["item"][itemNum]["listingInfo"][0]["watchCount"][0]
+            // searchResult["item"][itemNum]["listingInfo"][0]["bestOfferEnabled"][0]
+            // searchResult["item"][itemNum]["listingInfo"][0]["buyItNowAvailable"][0]
+            // searchResult["item"][itemNum]["listingInfo"][0]["listingType"][0]
+            // searchResult["item"][itemNum]["listingInfo"][0]["gift"][0]
+            // searchResult["item"][itemNum]["listingInfo"][0]["watchCount"][0]
             return true
         }
         catch(err) {

@@ -146,18 +146,18 @@ public class ShippingFrag extends android.app.Fragment {
         }
         shipInfoStr.setText(Html.fromHtml(
             " <ul style=\"margin: 0px;\">\n" +
-                    "        <b><p style=\"text-indent: 10px;\">&#8226 Handling Time: "
-                    + item.getJSONArray("shippingInfo").getJSONObject(0).getJSONArray("handlingTime").getString(0) + "</p></b><br>\n" +
-                    "        <b><p style=\"text-indent: 10px;\">&#8226 One Day Shipping Available: "
-                    + isOneDayAvailable + "</p></b><br>\n" +
-                    "        <b><p style=\"text-indent: 10px;\">&#8226 Shipping Type: " +
-                    item.getJSONArray("shippingInfo").getJSONObject(0).getJSONArray("shippingType").getString(0) + "</p></b><br>\n" +
-                    "        <b><p style=\"text-indent: 10px;\">&#8226 Shipping From: " +
-                    item.getJSONArray("country").getString(0) + "</p></b><br>\n" +
-                    "        <b><p style=\"text-indent: 10px;\">&#8226 Ship To Locations: " +
-                    item.getJSONArray("shippingInfo").getJSONObject(0).getJSONArray("shipToLocations").getString(0) + "</p></b><br>\n" +
-                    "        <b><p style=\"text-indent: 10px;\">&#8226 Expedited Shipping: " +
-                    isExpeditedShippingAvailable + "</p></b><br><br>\n" +
+                    "        <b><p style=\"text-indent: 10px;\">&#8226 Handling Time: </b>"
+                    + item.getJSONArray("shippingInfo").getJSONObject(0).getJSONArray("handlingTime").getString(0) + "</p><br>\n" +
+                    "        <b><p style=\"text-indent: 10px;\">&#8226 One Day Shipping Available: </b>"
+                    + isOneDayAvailable + "</p><br>\n" +
+                    "        <b><p style=\"text-indent: 10px;\">&#8226 Shipping Type: </b>" +
+                    item.getJSONArray("shippingInfo").getJSONObject(0).getJSONArray("shippingType").getString(0) + "</p><br>\n" +
+                    "        <b><p style=\"text-indent: 10px;\">&#8226 Shipping From: </b>" +
+                    item.getJSONArray("country").getString(0) + "</p><br>\n" +
+                    "        <b><p style=\"text-indent: 10px;\">&#8226 Ship To Locations: </b>" +
+                    item.getJSONArray("shippingInfo").getJSONObject(0).getJSONArray("shipToLocations").getString(0) + "</p><br>\n" +
+                    "        <b><p style=\"text-indent: 10px;\">&#8226 Expedited Shipping: </b>" +
+                    isExpeditedShippingAvailable + "</p><br><br>\n" +
 //                    "    </ul>\n" +
                     "    <hr>"
             , Html.FROM_HTML_MODE_COMPACT));

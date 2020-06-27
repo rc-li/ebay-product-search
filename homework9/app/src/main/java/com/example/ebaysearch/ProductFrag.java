@@ -143,9 +143,12 @@ public class ProductFrag extends android.app.Fragment {
         TextView productTitleView = view.findViewById(R.id.productTitleView);
         productTitleView.setText(card.getItemTitle());
         TextView priceView = view.findViewById(R.id.priceView);
-        priceView.setText(card.getPrice());
+        priceView.setText("$" + card.getPrice());
         TextView shipCostView = view.findViewById(R.id.shipPriceView);
-        shipCostView.setText("Ships for $" + card.getShippingCost());
+        if (!card.getShippingCost().equals("0.0"))
+            shipCostView.setText("Ships for $" + card.getShippingCost());
+        else
+            shipCostView.setText(Html.fromHtml("<b>FREE</b> Shipping"));
 
         TextView subtitleView = view.findViewById(R.id.subtitleView);
         try {

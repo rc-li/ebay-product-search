@@ -129,7 +129,7 @@ public class DetailActivity extends AppCompatActivity {
     public String makeURL() {
         String url = "";
         url += "http://10.0.2.2:3000/single-q?cardID=" + cardID;
-//        url += "http://ebay-8.wl.r.appspot.com/" + cardID;
+//        url += "http://ebay-8.wl.r.appspot.com/single-q?cardID=" + cardID;
         return url;
     }
 
