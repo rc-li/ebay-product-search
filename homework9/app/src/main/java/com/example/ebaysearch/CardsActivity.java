@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -98,32 +100,34 @@ public class CardsActivity extends AppCompatActivity {
         list.setAdapter(adapter);
     }
 
-    private ArrayList<Card> parseJSON(JSONObject myJSON) {
+    private ArrayList<Card> parseJSON(JSONObject myJSON) throws JSONException {
         ArrayList<Card> cards = new ArrayList<Card>();
-        Log.d(TAG, "onCreate: Started making cards");
-        ListView mListView = findViewById(R.id.listView);
-        try {
-            JSONArray items = myJSON.getJSONObject("searchResult").getJSONArray("item");
-            for (int i = 0; i < items.length(); i++) {
-                String galleryURL = items.getJSONObject(i).getJSONArray("galleryURL").getString(0);
-                String itemTitle = items.getJSONObject(i).getJSONArray("title").getString(0);
-                String itemCondition = items.getJSONObject(i).getJSONArray("condition").getJSONObject(0).getJSONArray("conditionDisplayName").getString(0);
-                String isTopRated = items.getJSONObject(i).getJSONArray("topRatedListing").getString(0);
-                String shippingCost = items.getJSONObject(i).getJSONArray("shippingInfo").getJSONObject(0).getJSONArray("shippingServiceCost").getJSONObject(0).getString("__value__");
-                String price = items.getJSONObject(i).getJSONArray("sellingStatus").getJSONObject(0).getJSONArray("convertedCurrentPrice").getJSONObject(0).getString("__value__");
-                String itemID = items.getJSONObject(i).getJSONArray("itemId").getString(0);
-                String viewItemURL = items.getJSONObject(i).getJSONArray("viewItemURL").getString(0);
-                Card card = new Card(galleryURL, itemTitle, itemCondition, isTopRated, shippingCost, price, itemID);
-                JSONObject item = items.getJSONObject(i);
-                card.setItem(item.toString());
-                card.setViewItemURL(viewItemURL);
-                cards.add(card);
-                setCards(cards);
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
+        if (myJSON.getString("validCards").equals("0")) {
+            findViewById(R.id.noRecordsView).setVisibility(View.VISIBLE);
+            Toast.makeText(this, "No Records", Toast.LENGTH_SHORT).show();
         }
+        else {
+            findViewById(R.id.noRecordsView).setVisibility(View.INVISIBLE);
+        }
+
+        JSONArray items = myJSON.getJSONObject("searchResult").getJSONArray("item");
+        for (int i = 0; i < items.length(); i++) {
+            String galleryURL = items.getJSONObject(i).getJSONArray("galleryURL").getString(0);
+            String itemTitle = items.getJSONObject(i).getJSONArray("title").getString(0);
+            String itemCondition = items.getJSONObject(i).getJSONArray("condition").getJSONObject(0).getJSONArray("conditionDisplayName").getString(0);
+            String isTopRated = items.getJSONObject(i).getJSONArray("topRatedListing").getString(0);
+            String shippingCost = items.getJSONObject(i).getJSONArray("shippingInfo").getJSONObject(0).getJSONArray("shippingServiceCost").getJSONObject(0).getString("__value__");
+            String price = items.getJSONObject(i).getJSONArray("sellingStatus").getJSONObject(0).getJSONArray("convertedCurrentPrice").getJSONObject(0).getString("__value__");
+            String itemID = items.getJSONObject(i).getJSONArray("itemId").getString(0);
+            String viewItemURL = items.getJSONObject(i).getJSONArray("viewItemURL").getString(0);
+            Card card = new Card(galleryURL, itemTitle, itemCondition, isTopRated, shippingCost, price, itemID);
+            JSONObject item = items.getJSONObject(i);
+            card.setItem(item.toString());
+            card.setViewItemURL(viewItemURL);
+            cards.add(card);
+            setCards(cards);
+        }
+
         return cards;
     }
 
@@ -136,7 +140,12 @@ public class CardsActivity extends AppCompatActivity {
                         Log.d(TAG, "onResponse: got response: " + response);
                         ProgressBar progressBar = findViewById(R.id.progressBar);
                         progressBar.setVisibility(View.GONE);
-                        parseJSON(response);
+                        findViewById(R.id.progressBarText).setVisibility(View.GONE);
+                        try {
+                            parseJSON(response);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }, new Response.ErrorListener() {
             @Override
