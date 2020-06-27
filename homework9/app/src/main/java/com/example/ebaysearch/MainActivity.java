@@ -30,22 +30,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
-
-//        Button button = findViewById(R.id.search);
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                openCards();
-//            }
-//        });
-
-//        NavController controller = Navigation.findNavController();
     }
 
-//    public void openCards() {
-//        Intent intent = new Intent(this, Cards.class);
-//        startActivity(intent);
-//    }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

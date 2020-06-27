@@ -7,8 +7,10 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -22,6 +24,7 @@ import com.android.volley.toolbox.Volley;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -100,12 +103,26 @@ public class DetailActivity extends AppCompatActivity {
         return card;
     }
 
+    // create an action bar button
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // R.menu.mymenu is a reference to an xml file named mymenu.xml which should be inside your res/menu directory.
+        // If you don't have res/menu, just create a directory named "menu" inside res
+        getMenuInflater().inflate(R.menu.mymenu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
             onBackPressed();
-            return true;
         }
-        return false;
+        if (id == R.id.mybutton) {
+            Intent browserIntent = null;
+            browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(card.getViewItemURL()));
+            startActivity(browserIntent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     //todo call it on server side

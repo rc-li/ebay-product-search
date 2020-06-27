@@ -16,6 +16,7 @@ public class Card implements Serializable {
     private String price;
     private String itemID;
     private String item;
+    private String viewItemURL;
     public boolean isEmpty;
 
     public Card(boolean isEmpty) {
@@ -32,6 +33,14 @@ public class Card implements Serializable {
         this.shippingCost = shippingCost;
         this.price = price;
         this.itemID = itemID;
+    }
+
+    public String getViewItemURL() {
+        return viewItemURL;
+    }
+
+    public void setViewItemURL(String viewItemURL) {
+        this.viewItemURL = viewItemURL;
     }
 
     public String getItem() {
