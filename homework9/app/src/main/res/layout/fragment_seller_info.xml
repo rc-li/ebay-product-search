@@ -8,7 +8,7 @@
     tools:context=".SellerInfoFrag">
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/sellerInfoHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -29,7 +29,7 @@
         android:layout_marginTop="13dp"
         android:text="sellerInfoStr"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/sellerInfoHeading" />
 
     <ProgressBar
         android:id="@+id/progressBar"

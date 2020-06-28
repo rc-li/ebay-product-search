@@ -84,7 +84,6 @@ public class SellerInfoFrag extends android.app.Fragment {
         this.view = view;
         DetailActivity activity = (DetailActivity) getActivity();
         String url = activity.makeURL();
-//        Log.d(TAG, "onCreateView: URL is: " + url);
         getJson(url);
         return view;
     }
@@ -115,51 +114,47 @@ public class SellerInfoFrag extends android.app.Fragment {
     }
 
     public void setData(JSONObject data) throws JSONException {
-        TextView sellerInfoStr = view.findViewById(R.id.sellerInfoStr);
-        sellerInfoStr.setText(Html.fromHtml(
-            " <ul style=\"margin: 0px;\">\n" +
-                    "        <b><p style=\"text-indent: 10px;\">&#8226 Feedback Score: </b>"
-                    + data.getJSONObject("Item").getJSONObject("Seller").getString("FeedbackScore") + "</p><br>\n" +
-                    "        <b><p style=\"text-indent: 10px;\">&#8226 User I D: </b>"
-                    + data.getJSONObject("Item").getJSONObject("Seller").getString("UserID") + "</p><br>\n" +
-                    "        <b><p style=\"text-indent: 10px;\">&#8226 Positive Feedback Percent: </b>" +
-                    data.getJSONObject("Item").getJSONObject("Seller").getString("PositiveFeedbackPercent") + "</p><br>\n" +
-                    "        <b><p style=\"text-indent: 10px;\">&#8226 Feedback Rating Star: </b>" +
-                    data.getJSONObject("Item").getJSONObject("Seller").getString("FeedbackRatingStar") + "</p><br><br>\n" +
-                    "    </ul>\n" +
-                    "    <hr>"
-            , Html.FROM_HTML_MODE_COMPACT));
-
-
-//        returnPoliciesStr.setText(Html.fromHtml(
-//                " <ul style=\"margin: 0px;\">\n" +
-//                        "        <b><p style=\"text-indent: 10px;\">&#8226 Refund: </b>"
-//                        + data.getJSONObject("Item").getJSONObject("ReturnPolicy").getString("Refund") + "</p><br>\n" +
-//                        "        <b><p style=\"text-indent: 10px;\">&#8226 Returns Within: </b>"
-//                        + data.getJSONObject("Item").getJSONObject("ReturnPolicy").getString("ReturnsWithin") + "</p><br>\n" +
-//                        "        <b><p style=\"text-indent: 10px;\">&#8226 Shipping Cost Paid By: </b>" +
-//                        data.getJSONObject("Item").getJSONObject("ReturnPolicy").getString("ShippingCostPaidBy") + "</p><br>\n" +
-//                        "        <b><p style=\"text-indent: 10px;\">&#8226 Returns Accepted: </b>" +
-//                        data.getJSONObject("Item").getJSONObject("ReturnPolicy").getString("ReturnsAccepted") + "</p><br><br>\n" +
-//                        "    </ul>\n" +
-//                        "    <hr>"
-//                , Html.FROM_HTML_MODE_COMPACT));
-
         JSONObject item = data.getJSONObject("Item");
+        if (item.has("Seller")) {
+            String returnStr = "";
+            JSONObject seller = item.getJSONObject("Seller");
+            if (seller.has("FeedbackScore")) {
+                returnStr += "<p><b> &#8226 FeedbackScore: </b>" + seller.getString("FeedbackScore") + "</p>";
+            }
+            if (seller.has("UserID")) {
+                returnStr += "<p><b> &#8226 UserID: </b>" + seller.getString("UserID") + "</p>";
+            }
+            if (seller.has("PositiveFeedbackPercent")) {
+                returnStr += "<p><b> &#8226 PositiveFeedbackPercent: </b>" + seller.getString("PositiveFeedbackPercent") + "</p>";
+            }
+            if (seller.has("FeedbackRatingStar")) {
+                returnStr += "<p><b> &#8226 FeedbackRatingStar: </b>" + seller.getString("FeedbackRatingStar") + "</p>";
+            }
+            TextView sellerInfoStr = view.findViewById(R.id.sellerInfoStr);
+            sellerInfoStr.setText(Html.fromHtml(returnStr));
+        }
+        else {
+            TextView sellerInfoHeading = view.findViewById(R.id.sellerInfoHeading);
+            TextView sellerInfoStr = view.findViewById(R.id.sellerInfoStr);
+            sellerInfoHeading.setVisibility(View.GONE);
+            sellerInfoStr.setVisibility(View.GONE);
+        }
+
+
         if (item.has("ReturnPolicy")) {
             String returnStr = "";
             JSONObject returnPolicy = item.getJSONObject("ReturnPolicy");
             if (returnPolicy.has("Refund")) {
-                returnStr += "<b> &#8226 Refund: </b>" + returnPolicy.getString("Refund") + "<br>";
+                returnStr += "<p><b> &#8226 Refund: </b>" + returnPolicy.getString("Refund") + "</P>";
             }
             if (returnPolicy.has("ReturnsWithin")) {
-                returnStr += "<b> &#8226 ReturnsWithin: </b>" + returnPolicy.getString("ReturnsWithin") + "<br>";
+                returnStr += "<p><b> &#8226 ReturnsWithin: </b>" + returnPolicy.getString("ReturnsWithin") + "</P>";
             }
             if (returnPolicy.has("ShippingCostPaidBy")) {
-                returnStr += "<b> &#8226 ShippingCostPaidBy: </b>" + returnPolicy.getString("ShippingCostPaidBy") + "<br>";
+                returnStr += "<p><b> &#8226 ShippingCostPaidBy: </b>" + returnPolicy.getString("ShippingCostPaidBy") + "</P>";
             }
             if (returnPolicy.has("ReturnsAccepted")) {
-                returnStr += "<b> &#8226 ReturnsAccepted: </b>" + returnPolicy.getString("ReturnsAccepted") + "<br>";
+                returnStr += "<p><b> &#8226 ReturnsAccepted: </b>" + returnPolicy.getString("ReturnsAccepted") + "</P>";
             }
             TextView returnPoliciesStr = view.findViewById(R.id.returnPoliciesStr);
             returnPoliciesStr.setText(Html.fromHtml(returnStr));
@@ -167,8 +162,8 @@ public class SellerInfoFrag extends android.app.Fragment {
         else {
             TextView returnPoliciesStr = view.findViewById(R.id.returnPoliciesStr);
             TextView returnPolicyHeading = view.findViewById(R.id.returnPolicyHeading);
-            returnPolicyHeading.setVisibility(View.INVISIBLE);
-            returnPoliciesStr.setVisibility(View.INVISIBLE);
+            returnPolicyHeading.setVisibility(View.GONE);
+            returnPoliciesStr.setVisibility(View.GONE);
         }
     }
 }

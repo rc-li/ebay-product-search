@@ -129,37 +129,70 @@ public class ShippingFrag extends android.app.Fragment {
     }
 
     public void setData(JSONObject item) throws JSONException {
-        TextView shipInfoStr = view.findViewById(R.id.shipInfoStr);
-        String isOneDayAvailable = item.getJSONArray("shippingInfo").getJSONObject(0).getJSONArray("oneDayShippingAvailable").getString(0);
-        if (isOneDayAvailable.equals("true")) {
-            isOneDayAvailable = "Yes";
+        if (item.has("shippingInfo")) {
+            String returnStr = "";
+            JSONObject shippingInfo = item.getJSONArray("shippingInfo").getJSONObject(0);
+
+            if (shippingInfo.has("handlingTime")) {
+                returnStr += "<p><b> &#8226 handling Time: </b>" + shippingInfo.getJSONArray("handlingTime").getString(0) + "</p>";
+            }
+            if (shippingInfo.has("oneDayShippingAvailable")) {
+                String isOneDayAvailable = shippingInfo.getJSONArray("oneDayShippingAvailable").getString(0);
+                if (isOneDayAvailable.equals("true")) {
+                    isOneDayAvailable = "Yes";
+                }
+                else {
+                    isOneDayAvailable = "No";
+                }
+                returnStr += "<p><b> &#8226 one Day Shipping Available: </b>" + isOneDayAvailable + "</p>";
+            }
+            if (shippingInfo.has("shippingType")) {
+                returnStr += "<p><b> &#8226 shipping Type: </b>" + shippingInfo.getJSONArray("shippingType").getString(0) + "</p>";
+            }
+            if (item.has("country")) {
+                returnStr += "<p><b> &#8226 Shipping From: </b>" + item.getJSONArray("country").getString(0) + "</p>";
+            }
+            if (shippingInfo.has("shipToLocations")) {
+                returnStr += "<p><b> &#8226 ship To Locations: </b>" + shippingInfo.getJSONArray("shipToLocations").getString(0) + "</p>";
+            }
+            if (shippingInfo.has("expeditedShipping")) {
+                String isExpeditedShippingAvailable = shippingInfo.getJSONArray("expeditedShipping").getString(0);
+                if (isExpeditedShippingAvailable.equals("true")) {
+                    isExpeditedShippingAvailable = "Yes";
+                }
+                else {
+                    isExpeditedShippingAvailable = "No";
+                }
+                returnStr += "<p><b> &#8226 FeedbackRatingStar: </b>" + isExpeditedShippingAvailable + "</p>";
+            }
+            TextView shipInfoStr = view.findViewById(R.id.shipInfoStr);
+            shipInfoStr.setText(Html.fromHtml(returnStr));
         }
         else {
-            isOneDayAvailable = "No";
+            TextView shipInfoHeading = view.findViewById(R.id.shipInfoHeading);
+            TextView shipInfoStr = view.findViewById(R.id.shipInfoStr);
+            shipInfoHeading.setVisibility(View.GONE);
+            shipInfoStr.setVisibility(View.GONE);
         }
-        String isExpeditedShippingAvailable = item.getJSONArray("shippingInfo").getJSONObject(0).getJSONArray("expeditedShipping").getString(0);
-        if (isExpeditedShippingAvailable.equals("true")) {
-            isExpeditedShippingAvailable = "Yes";
-        }
-        else {
-            isExpeditedShippingAvailable = "No";
-        }
-        shipInfoStr.setText(Html.fromHtml(
-            " <ul style=\"margin: 0px;\">\n" +
-                    "        <b><p style=\"text-indent: 10px;\">&#8226 Handling Time: </b>"
-                    + item.getJSONArray("shippingInfo").getJSONObject(0).getJSONArray("handlingTime").getString(0) + "</p><br>\n" +
-                    "        <b><p style=\"text-indent: 10px;\">&#8226 One Day Shipping Available: </b>"
-                    + isOneDayAvailable + "</p><br>\n" +
-                    "        <b><p style=\"text-indent: 10px;\">&#8226 Shipping Type: </b>" +
-                    item.getJSONArray("shippingInfo").getJSONObject(0).getJSONArray("shippingType").getString(0) + "</p><br>\n" +
-                    "        <b><p style=\"text-indent: 10px;\">&#8226 Shipping From: </b>" +
-                    item.getJSONArray("country").getString(0) + "</p><br>\n" +
-                    "        <b><p style=\"text-indent: 10px;\">&#8226 Ship To Locations: </b>" +
-                    item.getJSONArray("shippingInfo").getJSONObject(0).getJSONArray("shipToLocations").getString(0) + "</p><br>\n" +
-                    "        <b><p style=\"text-indent: 10px;\">&#8226 Expedited Shipping: </b>" +
-                    isExpeditedShippingAvailable + "</p><br><br>\n" +
-//                    "    </ul>\n" +
-                    "    <hr>"
-            , Html.FROM_HTML_MODE_COMPACT));
+
+//        shipInfoStr.setText(Html.fromHtml(
+//            " <ul style=\"margin: 0px;\">\n" +
+//                    "        <b><p style=\"text-indent: 10px;\">&#8226 Handling Time: </b>"
+//                    + item.getJSONArray("shippingInfo").getJSONObject(0).getJSONArray("handlingTime").getString(0) + "</p><br>\n" +
+//                    "        <b><p style=\"text-indent: 10px;\">&#8226 One Day Shipping Available: </b>"
+//                    + isOneDayAvailable + "</p><br>\n" +
+//                    "        <b><p style=\"text-indent: 10px;\">&#8226 Shipping Type: </b>" +
+//                    item.getJSONArray("shippingInfo").getJSONObject(0).getJSONArray("shippingType").getString(0) + "</p><br>\n" +
+//                    "        <b><p style=\"text-indent: 10px;\">&#8226 Shipping From: </b>" +
+//                    item.getJSONArray("country").getString(0) + "</p><br>\n" +
+//                    "        <b><p style=\"text-indent: 10px;\">&#8226 Ship To Locations: </b>" +
+//                    item.getJSONArray("shippingInfo").getJSONObject(0).getJSONArray("shipToLocations").getString(0) + "</p><br>\n" +
+//                    "        <b><p style=\"text-indent: 10px;\">&#8226 Expedited Shipping: </b>" +
+//                    isExpeditedShippingAvailable + "</p><br><br>\n" +
+////                    "    </ul>\n" +
+//                    "    <hr>"
+//            , Html.FROM_HTML_MODE_COMPACT));
+
+
     }
 }
