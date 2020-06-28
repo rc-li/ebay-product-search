@@ -131,19 +131,44 @@ public class SellerInfoFrag extends android.app.Fragment {
             , Html.FROM_HTML_MODE_COMPACT));
 
 
-        TextView returnPoliciesStr = view.findViewById(R.id.returnPoliciesStr);
-        returnPoliciesStr.setText(Html.fromHtml(
-                " <ul style=\"margin: 0px;\">\n" +
-                        "        <b><p style=\"text-indent: 10px;\">&#8226 Refund: </b>"
-                        + data.getJSONObject("Item").getJSONObject("ReturnPolicy").getString("Refund") + "</p><br>\n" +
-                        "        <b><p style=\"text-indent: 10px;\">&#8226 Returns Within: </b>"
-                        + data.getJSONObject("Item").getJSONObject("ReturnPolicy").getString("ReturnsWithin") + "</p><br>\n" +
-                        "        <b><p style=\"text-indent: 10px;\">&#8226 Shipping Cost Paid By: </b>" +
-                        data.getJSONObject("Item").getJSONObject("ReturnPolicy").getString("ShippingCostPaidBy") + "</p><br>\n" +
-                        "        <b><p style=\"text-indent: 10px;\">&#8226 Returns Accepted: </b>" +
-                        data.getJSONObject("Item").getJSONObject("ReturnPolicy").getString("ReturnsAccepted") + "</p><br><br>\n" +
-                        "    </ul>\n" +
-                        "    <hr>"
-                , Html.FROM_HTML_MODE_COMPACT));
+//        returnPoliciesStr.setText(Html.fromHtml(
+//                " <ul style=\"margin: 0px;\">\n" +
+//                        "        <b><p style=\"text-indent: 10px;\">&#8226 Refund: </b>"
+//                        + data.getJSONObject("Item").getJSONObject("ReturnPolicy").getString("Refund") + "</p><br>\n" +
+//                        "        <b><p style=\"text-indent: 10px;\">&#8226 Returns Within: </b>"
+//                        + data.getJSONObject("Item").getJSONObject("ReturnPolicy").getString("ReturnsWithin") + "</p><br>\n" +
+//                        "        <b><p style=\"text-indent: 10px;\">&#8226 Shipping Cost Paid By: </b>" +
+//                        data.getJSONObject("Item").getJSONObject("ReturnPolicy").getString("ShippingCostPaidBy") + "</p><br>\n" +
+//                        "        <b><p style=\"text-indent: 10px;\">&#8226 Returns Accepted: </b>" +
+//                        data.getJSONObject("Item").getJSONObject("ReturnPolicy").getString("ReturnsAccepted") + "</p><br><br>\n" +
+//                        "    </ul>\n" +
+//                        "    <hr>"
+//                , Html.FROM_HTML_MODE_COMPACT));
+
+        JSONObject item = data.getJSONObject("Item");
+        if (item.has("ReturnPolicy")) {
+            String returnStr = "";
+            JSONObject returnPolicy = item.getJSONObject("ReturnPolicy");
+            if (returnPolicy.has("Refund")) {
+                returnStr += "<b> &#8226 Refund: </b>" + returnPolicy.getString("Refund") + "<br>";
+            }
+            if (returnPolicy.has("ReturnsWithin")) {
+                returnStr += "<b> &#8226 ReturnsWithin: </b>" + returnPolicy.getString("ReturnsWithin") + "<br>";
+            }
+            if (returnPolicy.has("ShippingCostPaidBy")) {
+                returnStr += "<b> &#8226 ShippingCostPaidBy: </b>" + returnPolicy.getString("ShippingCostPaidBy") + "<br>";
+            }
+            if (returnPolicy.has("ReturnsAccepted")) {
+                returnStr += "<b> &#8226 ReturnsAccepted: </b>" + returnPolicy.getString("ReturnsAccepted") + "<br>";
+            }
+            TextView returnPoliciesStr = view.findViewById(R.id.returnPoliciesStr);
+            returnPoliciesStr.setText(Html.fromHtml(returnStr));
+        }
+        else {
+            TextView returnPoliciesStr = view.findViewById(R.id.returnPoliciesStr);
+            TextView returnPolicyHeading = view.findViewById(R.id.returnPolicyHeading);
+            returnPolicyHeading.setVisibility(View.INVISIBLE);
+            returnPoliciesStr.setVisibility(View.INVISIBLE);
+        }
     }
 }

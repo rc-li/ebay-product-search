@@ -75,7 +75,10 @@ public class CardListAdapter extends ArrayAdapter<DualCard> {
         TextView priceView1 = convertView.findViewById(R.id.priceView1);
         priceView1.setText("$" + price1);
         TextView conditionView1 = convertView.findViewById(R.id.conditionView1);
-        conditionView1.setText(itemCondition1);
+        if (!itemCondition1.equals(""))
+            conditionView1.setText(itemCondition1);
+        else
+            conditionView1.setText("N/A");
 
         // setting card 2
         if (getItem(position).card2.isEmpty) {
@@ -116,7 +119,10 @@ public class CardListAdapter extends ArrayAdapter<DualCard> {
             TextView priceView2 = convertView.findViewById(R.id.priceView2);
             priceView2.setText("$" + price2);
             TextView conditionView2 = convertView.findViewById(R.id.conditionView2);
-            conditionView2.setText(itemCondition2);
+            if (!itemCondition2.equals(""))
+                conditionView2.setText(itemCondition2);
+            else
+                conditionView2.setText("N/A");
         }
 
         final CardView card1 = convertView.findViewById(R.id.card1);
