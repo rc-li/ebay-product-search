@@ -179,19 +179,37 @@ public class ProductFrag extends android.app.Fragment {
             divider2.setVisibility(View.GONE);
         }
 
-        JSONArray NameValueList = data.getJSONObject("Item").getJSONObject("ItemSpecifics").getJSONArray("NameValueList");
-        int numSpecs = 0;
-        int i = 0;
-        String html = "";
-        while (numSpecs < 5 && i < NameValueList.length()) {
-            if (!NameValueList.getJSONObject(i).equals("Brand")) {
-                html += "<b><p style=\"padding: 0px;\">&#8226 "
-                        + NameValueList.getJSONObject(i).getJSONArray("Value").getString(0) + "</p></b>\n";
-                numSpecs++;
+        try {
+            JSONArray NameValueList = data.getJSONObject("Item").getJSONObject("ItemSpecifics").getJSONArray("NameValueList");
+            int numSpecs = 0;
+            int i = 0;
+            String html = "";
+            while (numSpecs < 5 && i < NameValueList.length()) {
+                if (!NameValueList.getJSONObject(i).equals("Brand")) {
+                    html += "<b><p style=\"padding: 0px;\">&#8226 "
+                            + NameValueList.getJSONObject(i).getJSONArray("Value").getString(0) + "</p></b>\n";
+                    numSpecs++;
+                }
+                i++;
             }
-            i++;
+            Log.d(TAG, "setData: ******************* numSpec = " + numSpecs);
+            if (numSpecs > 0) {
+                TextView specsView = view.findViewById(R.id.specsView);
+                specsView.setText(Html.fromHtml(html));
+            }
+            else {
+                view.findViewById(R.id.divider3).setVisibility(View.GONE);
+                view.findViewById(R.id.imageView9).setVisibility(View.GONE);
+                view.findViewById(R.id.textView12).setVisibility(View.GONE);
+                view.findViewById(R.id.specsView).setVisibility(View.GONE);
+            }
         }
-        TextView specsView = view.findViewById(R.id.specsView);
-        specsView.setText(Html.fromHtml(html));
+        catch (JSONException e) {
+            view.findViewById(R.id.divider3).setVisibility(View.GONE);
+            view.findViewById(R.id.imageView9).setVisibility(View.GONE);
+            view.findViewById(R.id.textView12).setVisibility(View.GONE);
+            view.findViewById(R.id.specsView).setVisibility(View.GONE);
+        }
+
     }
 }
