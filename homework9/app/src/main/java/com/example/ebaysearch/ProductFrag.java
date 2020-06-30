@@ -194,8 +194,8 @@ public class ProductFrag extends android.app.Fragment {
             String html = "";
             while (numSpecs < 5 && i < NameValueList.length()) {
                 if (!NameValueList.getJSONObject(i).equals("Brand")) {
-                    html += "<b><p style=\"padding: 0px;\">&#8226 "
-                            + NameValueList.getJSONObject(i).getJSONArray("Value").getString(0) + "</p></b>\n";
+                    html += "<b><span style=\"padding: 0px;\">&#8226 "
+                            + NameValueList.getJSONObject(i).getJSONArray("Value").getString(0) + "</span></b><br>\n";
                     numSpecs++;
                 }
                 i++;

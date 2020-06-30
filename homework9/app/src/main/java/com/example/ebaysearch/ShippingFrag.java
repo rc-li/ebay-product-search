@@ -133,6 +133,8 @@ public class ShippingFrag extends android.app.Fragment {
             String returnStr = "";
             JSONObject shippingInfo = item.getJSONArray("shippingInfo").getJSONObject(0);
 
+
+
             if (shippingInfo.has("handlingTime")) {
                 returnStr += "<p><b> &#8226 handling Time: </b>" + shippingInfo.getJSONArray("handlingTime").getString(0) + "</p>";
             }
@@ -149,9 +151,9 @@ public class ShippingFrag extends android.app.Fragment {
             if (shippingInfo.has("shippingType")) {
                 returnStr += "<p><b> &#8226 shipping Type: </b>" + shippingInfo.getJSONArray("shippingType").getString(0) + "</p>";
             }
-            if (item.has("country")) {
-                returnStr += "<p><b> &#8226 Shipping From: </b>" + item.getJSONArray("country").getString(0) + "</p>";
-            }
+//            if (item.has("country")) {
+//                returnStr += "<p><b> &#8226 Shipping From: </b>" + item.getJSONArray("country").getString(0) + "</p>";
+//            }
             if (shippingInfo.has("shipToLocations")) {
                 returnStr += "<p><b> &#8226 ship To Locations: </b>" + shippingInfo.getJSONArray("shipToLocations").getString(0) + "</p>";
             }

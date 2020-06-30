@@ -119,7 +119,13 @@ public class CardsActivity extends AppCompatActivity {
 
         JSONArray items = myJSON.getJSONObject("searchResult").getJSONArray("item");
         for (int i = 0; i < items.length(); i++) {
-            String galleryURL = items.getJSONObject(i).getJSONArray("galleryURL").getString(0);
+            String galleryURL;
+            try {
+                galleryURL = items.getJSONObject(i).getJSONArray("galleryURL").getString(0);
+            }
+            catch (JSONException e) {
+                galleryURL = "";
+            }
             String itemTitle = items.getJSONObject(i).getJSONArray("title").getString(0);
             String itemCondition;
             try {
@@ -128,7 +134,13 @@ public class CardsActivity extends AppCompatActivity {
             catch (JSONException e) {
                 itemCondition = "N/A";
             }
-            String isTopRated = items.getJSONObject(i).getJSONArray("topRatedListing").getString(0);
+            String isTopRated;
+            try {
+                isTopRated = items.getJSONObject(i).getJSONArray("topRatedListing").getString(0);
+            }
+            catch (JSONException e) {
+                isTopRated = "false";
+            }
             String shippingCost = items.getJSONObject(i).getJSONArray("shippingInfo").getJSONObject(0).getJSONArray("shippingServiceCost").getJSONObject(0).getString("__value__");
             String price = items.getJSONObject(i).getJSONArray("sellingStatus").getJSONObject(0).getJSONArray("convertedCurrentPrice").getJSONObject(0).getString("__value__");
             String itemID = items.getJSONObject(i).getJSONArray("itemId").getString(0);
