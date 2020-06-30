@@ -130,6 +130,9 @@ public class SellerInfoFrag extends android.app.Fragment {
             if (seller.has("FeedbackRatingStar")) {
                 returnStr += "<p><b> &#8226 FeedbackRatingStar: </b>" + seller.getString("FeedbackRatingStar") + "</p>";
             }
+            if (seller.has("TopRatedSeller")) {
+                returnStr += "<p><b> &#8226 TopRatedSeller: </b>" + "Yes" + "</p>";
+            }
             TextView sellerInfoStr = view.findViewById(R.id.sellerInfoStr);
             sellerInfoStr.setText(Html.fromHtml(returnStr));
         }
@@ -144,6 +147,21 @@ public class SellerInfoFrag extends android.app.Fragment {
         if (item.has("ReturnPolicy")) {
             String returnStr = "";
             JSONObject returnPolicy = item.getJSONObject("ReturnPolicy");
+            if (returnPolicy.has("Description")) {
+                returnStr += "<p><b> &#8226 Description: </b>" + returnPolicy.getString("Description") + "</P>";
+            }
+            if (returnPolicy.has("InternationalRefund")) {
+                returnStr += "<p><b> &#8226 International Refund: </b>" + returnPolicy.getString("InternationalRefund") + "</P>";
+            }
+            if (returnPolicy.has("InternationalReturnsAccepted")) {
+                returnStr += "<p><b> &#8226 International Returns Accepted: </b>" + returnPolicy.getString("InternationalReturnsAccepted") + "</P>";
+            }
+            if (returnPolicy.has("InternationalReturnsWithin")) {
+                returnStr += "<p><b> &#8226 International Returns Within: </b>" + returnPolicy.getString("InternationalReturnsWithin") + "</P>";
+            }
+            if (returnPolicy.has("InternationalShippingCostPaidBy")) {
+                returnStr += "<p><b> &#8226 International Shipping Cost Paid By: </b>" + returnPolicy.getString("InternationalShippingCostPaidBy") + "</P>";
+            }
             if (returnPolicy.has("Refund")) {
                 returnStr += "<p><b> &#8226 Refund: </b>" + returnPolicy.getString("Refund") + "</P>";
             }
