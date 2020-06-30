@@ -99,13 +99,13 @@
                 android:paddingTop="10dp">
 
                 <ImageView
-                    android:id="@+id/imageView7"
+                    android:id="@+id/infoIcon"
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
                     android:src="@drawable/information" />
 
                 <TextView
-                    android:id="@+id/textView9"
+                    android:id="@+id/productFeatureHeadingText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Product Features"
@@ -140,6 +140,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/brandLayout"
                 android:layout_width="match_parent"
                 android:layout_height="33dp"
                 android:orientation="horizontal">

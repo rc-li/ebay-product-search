@@ -150,16 +150,34 @@ public class ProductFrag extends android.app.Fragment {
         else
             shipCostView.setText(Html.fromHtml("<b>FREE</b> Shipping"));
 
+        TextView productFeatureHeadingText = view.findViewById(R.id.productFeatureHeadingText);
         TextView subtitleView = view.findViewById(R.id.subtitleView);
+        TextView brandView = view.findViewById(R.id.brandView);
+        boolean isSubtitleEmpty = false;
+        boolean isBrandEmpty = false;
         try {
             subtitleView.setText(data.getJSONObject("Item").getString("Subtitle"));
         }
         catch (JSONException e){
             LinearLayout subtitleLayout = view.findViewById(R.id.subtitleLayout);
             subtitleLayout.setVisibility(View.GONE);
+            isSubtitleEmpty = true;
         }
-        TextView brandView = view.findViewById(R.id.brandView);
-        brandView.setText(data.getJSONObject("Item").getJSONObject("ItemSpecifics").getJSONArray("NameValueList").getJSONObject(0).getJSONArray("Value").getString(0));
+        try {
+            brandView.setText(data.getJSONObject("Item").getJSONObject("ItemSpecifics").getJSONArray("NameValueList").getJSONObject(0).getJSONArray("Value").getString(0));
+        }
+        catch (JSONException e) {
+            LinearLayout brandLayout = view.findViewById(R.id.brandLayout);
+            brandLayout.setVisibility(View.GONE);
+            isBrandEmpty = true;
+        }
+        if (isSubtitleEmpty && isBrandEmpty) {
+            productFeatureHeadingText.setVisibility(View.GONE);
+            ImageView infoIcon = view.findViewById(R.id.infoIcon);
+            infoIcon.setVisibility(View.GONE);
+            View divider2 = view.findViewById(R.id.divider2);
+            divider2.setVisibility(View.GONE);
+        }
 
         JSONArray NameValueList = data.getJSONObject("Item").getJSONObject("ItemSpecifics").getJSONArray("NameValueList");
         int numSpecs = 0;
@@ -167,7 +185,7 @@ public class ProductFrag extends android.app.Fragment {
         String html = "";
         while (numSpecs < 5 && i < NameValueList.length()) {
             if (!NameValueList.getJSONObject(i).equals("Brand")) {
-                html += "        <b><p style=\"padding: 0px;\">&#8226 "
+                html += "<b><p style=\"padding: 0px;\">&#8226 "
                         + NameValueList.getJSONObject(i).getJSONArray("Value").getString(0) + "</p></b>\n";
                 numSpecs++;
             }
