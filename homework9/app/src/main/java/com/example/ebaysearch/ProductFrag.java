@@ -90,6 +90,7 @@ public class ProductFrag extends android.app.Fragment {
         DetailActivity activity = (DetailActivity) getActivity();
         String url = activity.makeURL();
         Log.d(TAG, "onCreateView: URL is: " + url);
+        Log.d(TAG, "onCreateView: //////////////// URL is " + url);
         getJson(url);
         return view;
     }
@@ -164,7 +165,14 @@ public class ProductFrag extends android.app.Fragment {
             isSubtitleEmpty = true;
         }
         try {
-            brandView.setText(data.getJSONObject("Item").getJSONObject("ItemSpecifics").getJSONArray("NameValueList").getJSONObject(0).getJSONArray("Value").getString(0));
+//            brandView.setText(data.getJSONObject("Item").getJSONObject("ItemSpecifics").getJSONArray("NameValueList").getJSONObject(0).getJSONArray("Value").getString(0));
+            JSONArray nameValueList = data.getJSONObject("Item").getJSONObject("ItemSpecifics").getJSONArray("NameValueList");
+            for (int i = 0; i < nameValueList.length(); i++) {
+                if (nameValueList.getJSONObject(i).getString("Name").equals("Brand")) {
+                    String brand = nameValueList.getJSONObject(i).getJSONArray("Value").getString(0);
+                    brandView.setText(brand);
+                }
+            }
         }
         catch (JSONException e) {
             LinearLayout brandLayout = view.findViewById(R.id.brandLayout);

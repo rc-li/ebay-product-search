@@ -29,6 +29,7 @@ app.get('/single-q?', function(req, res) {
                 "&ItemID=" + cardID +
                 "&IncludeSelector=Description,Details,ItemSpecifics";
     console.log("got single item query, cardID is: " + cardID)
+    console.log("************* single item URL composed: " + url)
     fetch(url)
         .then(response => response.json())
         .then((r) => {
