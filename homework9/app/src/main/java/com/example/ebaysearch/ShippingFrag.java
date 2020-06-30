@@ -155,6 +155,9 @@ public class ShippingFrag extends android.app.Fragment {
             if (shippingInfo.has("shipToLocations")) {
                 returnStr += "<p><b> &#8226 ship To Locations: </b>" + shippingInfo.getJSONArray("shipToLocations").getString(0) + "</p>";
             }
+            if (shippingInfo.has("shippingServiceCost")) {
+                returnStr += "<p><b> &#8226 shipping Service Cost: </b>" + shippingInfo.getJSONArray("shippingServiceCost").getJSONObject(0).getString("__value__") + "</p>";
+            }
             if (shippingInfo.has("expeditedShipping")) {
                 String isExpeditedShippingAvailable = shippingInfo.getJSONArray("expeditedShipping").getString(0);
                 if (isExpeditedShippingAvailable.equals("true")) {
@@ -163,7 +166,7 @@ public class ShippingFrag extends android.app.Fragment {
                 else {
                     isExpeditedShippingAvailable = "No";
                 }
-                returnStr += "<p><b> &#8226 FeedbackRatingStar: </b>" + isExpeditedShippingAvailable + "</p>";
+                returnStr += "<p><b> &#8226 expedited Shipping: </b>" + isExpeditedShippingAvailable + "</p>";
             }
             TextView shipInfoStr = view.findViewById(R.id.shipInfoStr);
             shipInfoStr.setText(Html.fromHtml(returnStr));
