@@ -81,7 +81,7 @@
         android:indeterminateTint="#C998D1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="gone" />
+        tools:visibility="visible" />
 
     <TextView
         android:id="@+id/progressBarText"
@@ -92,7 +92,7 @@
         android:text="Searching Products..."
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progressBar"
-        tools:visibility="gone" />
+        tools:visibility="visible" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swiperefresh_items"

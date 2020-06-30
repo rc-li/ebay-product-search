@@ -86,6 +86,7 @@ public class ProductFrag extends android.app.Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_product, container, false);
+        view.findViewById(R.id.scrollView).setVisibility(View.INVISIBLE);
         this.view = view;
         DetailActivity activity = (DetailActivity) getActivity();
         String url = activity.makeURL();
@@ -104,6 +105,8 @@ public class ProductFrag extends android.app.Fragment {
                         Log.d(TAG, "onResponse: got response: " + response);
                         ProgressBar progressBar = view.findViewById(R.id.progressBar);
                         progressBar.setVisibility(View.GONE);
+                        view.findViewById(R.id.progressBarText2).setVisibility(View.GONE);
+                        view.findViewById(R.id.scrollView).setVisibility(View.VISIBLE);
                         try {
                             setData(response);
                         } catch (JSONException e) {

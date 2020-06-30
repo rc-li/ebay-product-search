@@ -95,8 +95,6 @@ public class DetailActivity extends AppCompatActivity {
         actionBar.setTitle(card.getItemTitle());
 
         mQueue = Volley.newRequestQueue(this);
-//        String url = makeURL();
-//        getJson(url);
     }
 
     public Card getCard() {
@@ -131,60 +129,6 @@ public class DetailActivity extends AppCompatActivity {
         url += "http://10.0.2.2:3000/single-q?cardID=" + cardID;
 //        url += "http://ebay-8.wl.r.appspot.com/single-q?cardID=" + cardID;
         return url;
-    }
-
-    public void getJson(String url) {
-
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Log.d(TAG, "onResponse: got response: " + response);
-                        ProgressBar progressBar = findViewById(R.id.progressBar);
-                        progressBar.setVisibility(View.GONE);
-                        SellerInfoFrag sellerInfoFrag = (SellerInfoFrag) getFragmentManager().findFragmentById(R.id.SellerInfoFrag);
-                        Log.d(TAG, "onResponse: sellerInfoFrag is" + sellerInfoFrag);
-//                        sellerInfoFrag.setData(response);
-//                        parseJSON(response);
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        });
-
-        mQueue.add(request);
-    }
-
-    public ArrayList<Card> parseJSON(JSONObject myJSON) {
-        ArrayList<Card> cards = new ArrayList<Card>();
-        Log.d(TAG, "onCreate: Started making tabs");
-        Log.d(TAG, "parseJSON: JSON data: \n" + myJSON);
-//        ListView mListView = findViewById(R.id.listView);
-//        try {
-//            JSONArray items = myJSON.getJSONObject("searchResult").getJSONArray("item");
-//            for (int i = 0; i < items.length(); i++) {
-//                String galleryURL = items.getJSONObject(i).getJSONArray("galleryURL").getString(0);
-//                String itemTitle = items.getJSONObject(i).getJSONArray("title").getString(0);
-//                String itemCondition = items.getJSONObject(i).getJSONArray("condition").getJSONObject(0).getJSONArray("conditionDisplayName").getString(0);
-//                String isTopRated = items.getJSONObject(i).getJSONArray("topRatedListing").getString(0);
-//                String shippingCost = items.getJSONObject(i).getJSONArray("shippingInfo").getJSONObject(0).getJSONArray("shippingServiceCost").getJSONObject(0).getString("__value__");
-//                String price = items.getJSONObject(i).getJSONArray("sellingStatus").getJSONObject(0).getJSONArray("convertedCurrentPrice").getJSONObject(0).getString("__value__");
-//                String itemID = items.getJSONObject(i).getJSONArray("itemId").getString(0);
-//                Log.d(TAG, "parseJSON: itemID is " + itemID);
-//                cards.add(new Card(galleryURL,itemTitle,itemCondition,isTopRated,shippingCost,price, itemID));
-////                setCards(cards);
-//            }
-//
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-        return cards;
-    }
-
-    public JSONObject getData() {
-        return this.data;
     }
 
 }
