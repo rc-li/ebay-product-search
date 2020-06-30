@@ -119,19 +119,19 @@ public class SellerInfoFrag extends android.app.Fragment {
             String returnStr = "";
             JSONObject seller = item.getJSONObject("Seller");
             if (seller.has("FeedbackScore")) {
-                returnStr += "<p><b> &#8226 FeedbackScore: </b>" + seller.getString("FeedbackScore") + "</p>";
+                returnStr += "<p><b> &#8226 Feedback Score: </b>" + seller.getString("FeedbackScore") + "</p>";
             }
             if (seller.has("UserID")) {
-                returnStr += "<p><b> &#8226 UserID: </b>" + seller.getString("UserID") + "</p>";
+                returnStr += "<p><b> &#8226 User ID: </b>" + seller.getString("UserID") + "</p>";
             }
             if (seller.has("PositiveFeedbackPercent")) {
-                returnStr += "<p><b> &#8226 PositiveFeedbackPercent: </b>" + seller.getString("PositiveFeedbackPercent") + "</p>";
+                returnStr += "<p><b> &#8226 Positive Feedback Percent: </b>" + seller.getString("PositiveFeedbackPercent") + "</p>";
             }
             if (seller.has("FeedbackRatingStar")) {
-                returnStr += "<p><b> &#8226 FeedbackRatingStar: </b>" + seller.getString("FeedbackRatingStar") + "</p>";
+                returnStr += "<p><b> &#8226 Feedback Rating Star: </b>" + seller.getString("FeedbackRatingStar") + "</p>";
             }
             if (seller.has("TopRatedSeller")) {
-                returnStr += "<p><b> &#8226 TopRatedSeller: </b>" + "Yes" + "</p>";
+                returnStr += "<p><b> &#8226 Top Rated Seller: </b>" + "Yes" + "</p>";
             }
             TextView sellerInfoStr = view.findViewById(R.id.sellerInfoStr);
             sellerInfoStr.setText(Html.fromHtml(returnStr));
@@ -166,13 +166,13 @@ public class SellerInfoFrag extends android.app.Fragment {
                 returnStr += "<p><b> &#8226 Refund: </b>" + returnPolicy.getString("Refund") + "</P>";
             }
             if (returnPolicy.has("ReturnsWithin")) {
-                returnStr += "<p><b> &#8226 ReturnsWithin: </b>" + returnPolicy.getString("ReturnsWithin") + "</P>";
+                returnStr += "<p><b> &#8226 Returns Within: </b>" + returnPolicy.getString("ReturnsWithin") + "</P>";
             }
             if (returnPolicy.has("ShippingCostPaidBy")) {
-                returnStr += "<p><b> &#8226 ShippingCostPaidBy: </b>" + returnPolicy.getString("ShippingCostPaidBy") + "</P>";
+                returnStr += "<p><b> &#8226 Shipping Cost Paid By: </b>" + returnPolicy.getString("ShippingCostPaidBy") + "</P>";
             }
             if (returnPolicy.has("ReturnsAccepted")) {
-                returnStr += "<p><b> &#8226 ReturnsAccepted: </b>" + returnPolicy.getString("ReturnsAccepted") + "</P>";
+                returnStr += "<p><b> &#8226 Returns Accepted: </b>" + returnPolicy.getString("ReturnsAccepted") + "</P>";
             }
             TextView returnPoliciesStr = view.findViewById(R.id.returnPoliciesStr);
             returnPoliciesStr.setText(Html.fromHtml(returnStr));

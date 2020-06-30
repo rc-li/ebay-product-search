@@ -136,7 +136,7 @@ public class ShippingFrag extends android.app.Fragment {
 
 
             if (shippingInfo.has("handlingTime")) {
-                returnStr += "<p><b> &#8226 handling Time: </b>" + shippingInfo.getJSONArray("handlingTime").getString(0) + "</p>";
+                returnStr += "<p><b> &#8226 Handling Time: </b>" + shippingInfo.getJSONArray("handlingTime").getString(0) + "</p>";
             }
             if (shippingInfo.has("oneDayShippingAvailable")) {
                 String isOneDayAvailable = shippingInfo.getJSONArray("oneDayShippingAvailable").getString(0);
@@ -146,19 +146,19 @@ public class ShippingFrag extends android.app.Fragment {
                 else {
                     isOneDayAvailable = "No";
                 }
-                returnStr += "<p><b> &#8226 one Day Shipping Available: </b>" + isOneDayAvailable + "</p>";
+                returnStr += "<p><b> &#8226 One Day Shipping Available: </b>" + isOneDayAvailable + "</p>";
             }
             if (shippingInfo.has("shippingType")) {
-                returnStr += "<p><b> &#8226 shipping Type: </b>" + shippingInfo.getJSONArray("shippingType").getString(0) + "</p>";
+                returnStr += "<p><b> &#8226 Shipping Type: </b>" + shippingInfo.getJSONArray("shippingType").getString(0) + "</p>";
             }
 //            if (item.has("country")) {
 //                returnStr += "<p><b> &#8226 Shipping From: </b>" + item.getJSONArray("country").getString(0) + "</p>";
 //            }
             if (shippingInfo.has("shipToLocations")) {
-                returnStr += "<p><b> &#8226 ship To Locations: </b>" + shippingInfo.getJSONArray("shipToLocations").getString(0) + "</p>";
+                returnStr += "<p><b> &#8226 Ship To Locations: </b>" + shippingInfo.getJSONArray("shipToLocations").getString(0) + "</p>";
             }
             if (shippingInfo.has("shippingServiceCost")) {
-                returnStr += "<p><b> &#8226 shipping Service Cost: </b>" + shippingInfo.getJSONArray("shippingServiceCost").getJSONObject(0).getString("__value__") + "</p>";
+                returnStr += "<p><b> &#8226 Shipping Service Cost: </b>" + shippingInfo.getJSONArray("shippingServiceCost").getJSONObject(0).getString("__value__") + "</p>";
             }
             if (shippingInfo.has("expeditedShipping")) {
                 String isExpeditedShippingAvailable = shippingInfo.getJSONArray("expeditedShipping").getString(0);
@@ -168,7 +168,7 @@ public class ShippingFrag extends android.app.Fragment {
                 else {
                     isExpeditedShippingAvailable = "No";
                 }
-                returnStr += "<p><b> &#8226 expedited Shipping: </b>" + isExpeditedShippingAvailable + "</p>";
+                returnStr += "<p><b> &#8226 Expedited Shipping: </b>" + isExpeditedShippingAvailable + "</p>";
             }
             TextView shipInfoStr = view.findViewById(R.id.shipInfoStr);
             shipInfoStr.setText(Html.fromHtml(returnStr));
