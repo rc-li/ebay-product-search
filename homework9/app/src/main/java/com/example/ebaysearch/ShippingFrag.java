@@ -83,8 +83,6 @@ public class ShippingFrag extends android.app.Fragment {
         View view = inflater.inflate(R.layout.fragment_shipping, container, false);
         this.view = view;
         DetailActivity activity = (DetailActivity) getActivity();
-//        String url = activity.makeURL();
-//        getJson(url);
         Card card = activity.getCard();
         this.item = card.getItem();
         JSONObject item = null;

@@ -45,8 +45,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public String makeURL() {
-        String url = "http://10.0.2.2:3000/q?";
-//        String url = "http://ebay-8.wl.r.appspot.com/q?";
+//        String url = "http://10.0.2.2:3000/q?";
+        String url = "http://ebay-8.wl.r.appspot.com/q?";
 
         EditText keyEdit = findViewById(R.id.keywordEdit);
         String keyword = keyEdit.getText().toString();
