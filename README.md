@@ -22,12 +22,12 @@ eBayProducSearch.apk.1
 ### Web App
 
 **The search page**
-![Image of eBay web app](/ReadMe assets/webAppScreenshot.png)
+![Image of eBay web app](ReadMe assets/webAppScreenshot.png)
 
 Once the user filled out the search form and hit the "Search" button, the search results will be displayed as a card list underneath
 
 **Sample search result**
-![Image of web search result](/ReadMe assets/webSampleSearchResult.png)
+![Image of web search result](ReadMe assets/webSampleSearchResult.png)
 
 clicking on any link will open the product page on the official eBay website in a new tab
 
