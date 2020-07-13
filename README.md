@@ -45,7 +45,7 @@ The web app also adopted responsive design to fit in mobile and tablet devices
 
 When the app gets installed, it shows as a blue icon
 
-<img src="\ReadMe assets\startScreen.png" alt="startScreen" style="zoom: 80%;" />
+<img src="ReadMe assets\startScreen.png" alt="startScreen" style="zoom: 80%;" />
 
 The app displays a search form when launched
 
