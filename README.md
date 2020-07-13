@@ -22,7 +22,7 @@ eBayProducSearch.apk.1
 ### Web App
 
 **The search page**
-<img src="D:\github\571-homeworks\ReadMe assets\webAppScreenshot.png" alt="webAppScreenshot" />
+<img src="ReadMe assets\webAppScreenshot.png" alt="webAppScreenshot" />
 
 Once the user filled out the search form and hit the "Search" button, the search results will be displayed as a card list underneath
 
